@@ -1,9 +1,9 @@
 import React from "react";
-import {Login} from "../components/Forms/Login/Login";
-import {SignUp} from "../components/Forms/SignUp/SignUp";
+import {Login} from "../../components/Forms/Login/Login";
+import {SignUp} from "../../components/Forms/SignUp/SignUp";
 import "./home.css";
 
-const middleLogo = require("../images/Shirtastic-vertical.svg");
+const middleLogo = require("../../images/Shirtastic-vertical.svg");
 
 const year = new Date().getUTCFullYear();
 

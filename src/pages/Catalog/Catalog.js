@@ -1,5 +1,5 @@
 import React from "react";
-import PageLayout from "../components/PageLayout/PageLayout";
+import PageLayout from "../../components/PageLayout/PageLayout";
 
 const Catalog = () => <PageLayout>
   <h1>Catalog</h1>

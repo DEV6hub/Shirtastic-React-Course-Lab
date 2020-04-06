@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Route} from "react-router-dom";
-import Home from "./pages/Home";
-import Catalog from "./pages/Catalog";
-import CreateShirt from "./pages/CreateShirt";
+import Home from "./pages/Home/Home";
+import Catalog from "./pages/Catalog/Catalog";
+import CreateShirt from "./pages/CreateShirt/CreateShirt";
 import Checkout from "./components/Checkout/Checkout";
 import {CHECKOUT_STATE} from "./constants/checkoutState";
 
