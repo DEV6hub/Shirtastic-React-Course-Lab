@@ -1,17 +1,44 @@
 .home {
+    align-items: center;
+    background-image: url("../../images/Fractal.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:  var(--white);
     display: flex;
+    font-size: 0.875rem;
     justify-content: space-between;
     min-height: 100vh;
 }
 
-.home .login {
+.home .login,
+.home .sign-up {
+   flex: 1;
+}
 
+.home .login,
+.home .sign-up,
+.home .middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .home .middle {
-
+    background-color: var(--white);
+    color: var(--dark-blue);
+    justify-content: space-between;
+    min-height: 100vh;
+    width: 25%;
+    padding: 1.25rem 0;
+    font-size: 0.75rem;
 }
 
 .home .middle img {
-
+    width: 85%;
 }
+
+
+/*
+Can deal with responsiveness here
+ */
