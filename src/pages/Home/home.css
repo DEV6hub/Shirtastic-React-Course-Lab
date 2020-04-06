@@ -10,6 +10,10 @@
     min-height: 100vh;
 }
 
+.home h2 {
+    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0,0,0,0.5);
+}
+
 .home .login,
 .home .sign-up {
    flex: 1;
