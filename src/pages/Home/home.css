@@ -28,7 +28,8 @@
     align-items: center;
 }
 
-.home .login {
+.home .login,
+.home .sign-up {
     padding: 0 1.5rem;
 }
 

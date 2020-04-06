@@ -2,6 +2,7 @@ import React from "react";
 import FormInput from "../FormInput/FormInput";
 import {PrimaryButton} from "../../PrimaryButton/PrimaryButton";
 import Tabs from "../../Tabs/Tabs";
+import "./sign-up.css";
 
 const tabs = [
   {
@@ -16,11 +17,11 @@ const tabs = [
 
 export const SignUp = () => <div className="sign-up">
   <h2>Sign up</h2>
-  <div>
+  <div className="tabs-container">
     <Tabs tabs={tabs} />
   </div>
-  <form onSubmit={(e) => e.preventDefault()}>
-    <FormInput id="sign-up-email-address" label="Email Address" />
+  <form onSubmit={(e) => e.preventDefault()} className="sign-up">
+    <FormInput id="sign-up-email-address" label="Email Address" placeholder="Your Email Address" />
     <FormInput id="sign-up-password" label="Password" />
     <FormInput id="sign-up-confirm-password" label="Confirm Password" />
     <p>By clicking the Sign Up button below, you agree to our Terms of Service and Privacy Policy.</p>

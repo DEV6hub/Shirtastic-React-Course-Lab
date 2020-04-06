@@ -11,14 +11,18 @@ const twitterLogo = require("../../../images/logos/twitter.svg");
 
 export const Login = ({onLoginFn}) => <form onSubmit={(e) => e.preventDefault()} className="login">
   <h2>Log in</h2>
-  <PrimaryButton>
-    <img src={facebookLogo} alt={'Login with Facebook'} />
-    <span>with Facebook</span>
-  </PrimaryButton>
-  <PrimaryButton>
-    <img src={twitterLogo} alt={'Login with Twitter'} />
-    <span>with Twitter</span>
-  </PrimaryButton>
+  <Link to="/catalog">
+    <PrimaryButton>
+      <img src={facebookLogo} alt={'Login with Facebook'} />
+      <span>with Facebook</span>
+    </PrimaryButton>
+  </Link>
+  <Link to="/catalog">
+    <PrimaryButton>
+      <img src={twitterLogo} alt={'Login with Twitter'} />
+      <span>with Twitter</span>
+    </PrimaryButton>
+  </Link>
   <div className="or-divider">
     <div className="line">&nbsp;</div>
     <div>OR</div>
