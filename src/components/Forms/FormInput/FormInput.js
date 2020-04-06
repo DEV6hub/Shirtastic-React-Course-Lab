@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FormGroup from "../FormGroup/FormGroup";
+import "./form-input.css";
 
 const FormInput = ({id, label, children}) => <FormGroup>
   <label htmlFor={id}>{label}</label>

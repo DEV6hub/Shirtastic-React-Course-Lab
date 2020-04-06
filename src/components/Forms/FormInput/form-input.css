@@ -1,0 +1,12 @@
+.form-group label {
+    font-size: 0.625rem;
+    margin-bottom: 0.25rem;
+}
+
+.form-group input[type="text"] {
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+}
