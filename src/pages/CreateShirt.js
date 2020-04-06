@@ -1,3 +1,8 @@
 import React from "react";
+import PageLayout from "../components/PageLayout/PageLayout";
 
-export const CreateShirt = () => <h1>Create Shirt</h1>;
+const CreateShirt = () =>  <PageLayout>
+  <h1>Create Shirt</h1>
+</PageLayout>;
+
+export default CreateShirt;

@@ -7,7 +7,7 @@ const middleLogo = require("../images/Shirtastic-vertical.svg");
 
 const year = new Date().getUTCFullYear();
 
-export const Home = () => <div className="home">
+const Home = () => <div className="home">
   <div className="login">
     <Login/>
   </div>
@@ -19,3 +19,5 @@ export const Home = () => <div className="home">
     <SignUp/>
   </div>
 </div>;
+
+export default Home;

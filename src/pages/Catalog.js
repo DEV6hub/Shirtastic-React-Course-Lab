@@ -1,3 +1,8 @@
 import React from "react";
+import PageLayout from "../components/PageLayout/PageLayout";
 
-export const Catalog = () => <h1>Catalogue</h1>;
+const Catalog = () => <PageLayout>
+  <h1>Catalog</h1>
+</PageLayout>;
+
+export default Catalog;
