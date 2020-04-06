@@ -1,11 +1,23 @@
 import React from "react";
 import FormInput from "../FormInput/FormInput";
 import {PrimaryButton} from "../../PrimaryButton/PrimaryButton";
+import Tabs from "../../Tabs/Tabs";
+
+const tabs = [
+  {
+    id: "step-1-form",
+    text: "Step 1"
+  },
+  {
+    id: "step-2-form",
+    text: "Step 2"
+  },
+];
 
 export const SignUp = () => <div className="sign-up">
   <h2>Sign up</h2>
   <div>
-    Tab Component Here for step 2
+    <Tabs tabs={tabs} />
   </div>
   <form onSubmit={(e) => e.preventDefault()}>
     <FormInput id="sign-up-email-address" label="Email Address" />

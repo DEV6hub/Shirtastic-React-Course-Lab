@@ -9,7 +9,9 @@ const shoppingCartIcon = require("../../images/icons/icon-basket.svg");
 const Header = () => <header>
   <div>
     <NavigationButton onClick={() => alert("Nav Button Clicked")} />
-    <img src={headerLogo} alt="Shirtastic Logo - By Aquent Dev 6" />
+    <Link to="/">
+      <img src={headerLogo} alt="Shirtastic Logo - By Aquent Dev 6" />
+    </Link>
   </div>
   <div>
     <Link to="/create-shirt">

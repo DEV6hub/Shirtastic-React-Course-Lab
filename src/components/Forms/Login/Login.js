@@ -1,6 +1,8 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {PrimaryButton} from "../../PrimaryButton/PrimaryButton";
 import FormInput from "../FormInput/FormInput";
+
 
 
 const facebookLogo = require("../../../images/logos/facebook.svg");
@@ -19,7 +21,9 @@ export const Login = ({onLoginFn}) => <form onSubmit={(e) => e.preventDefault()}
   <div>OR</div>
   <FormInput id="login-email-address" label="Email Address" />
   <FormInput id="login-password" label="Password" />
-  <PrimaryButton>
-    Log in
-  </PrimaryButton>
+  <Link to="/catalog">
+    <PrimaryButton>
+      Log in
+    </PrimaryButton>
+  </Link>
 </form>;
