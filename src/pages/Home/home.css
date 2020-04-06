@@ -28,6 +28,10 @@
     align-items: center;
 }
 
+.home .login {
+    padding: 0 1.5rem;
+}
+
 .home .middle {
     background-color: var(--white);
     color: var(--dark-blue);

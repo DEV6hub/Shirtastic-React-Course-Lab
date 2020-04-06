@@ -19,7 +19,11 @@ export const Login = ({onLoginFn}) => <form onSubmit={(e) => e.preventDefault()}
     <img src={twitterLogo} alt={'Login with Twitter'} />
     <span>with Twitter</span>
   </PrimaryButton>
-  <div>OR</div>
+  <div className="or-divider">
+    <div className="line">&nbsp;</div>
+    <div>OR</div>
+    <div className="line">&nbsp;</div>
+  </div>
   <FormInput id="login-email-address" label="Email Address" />
   <FormInput id="login-password" label="Password" />
   <Link to="/catalog">
