@@ -1,9 +1,10 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./signup-step2.css";
 import FormInput from "../FormInput/FormInput";
-import {PrimaryButton} from "../../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../PrimaryButton/PrimaryButton";
 
-export const SignUpStep2 = () => <div className="step2-component">
+const SignUpStep2 = () => <div className="step2-component">
   <h2>Awesome!</h2>
   <p>Welcome to the club, where can we ship your shirts to? You can always provide this information at checkout.</p>
   <form className="step2-address">
@@ -24,8 +25,12 @@ export const SignUpStep2 = () => <div className="step2-component">
       </div>
     </div>
     <div className="actions">
-      <PrimaryButton>Do This later</PrimaryButton>
+      <Link to="/catalog">
+        <PrimaryButton>Do This later</PrimaryButton>
+      </Link>
       <PrimaryButton>Save</PrimaryButton>
     </div>
   </form>
 </div>;
+
+    export default SignUpStep2;

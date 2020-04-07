@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import NavigationButton from "../NavigationButton/NavigationButton";
-import {PrimaryButton} from "../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 const headerLogo = require("../../images/navlogo.png");
 const shoppingCartIcon = require("../../images/icons/icon-basket.svg");

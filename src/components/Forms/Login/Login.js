@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {PrimaryButton} from "../../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../PrimaryButton/PrimaryButton";
 import FormInput from "../FormInput/FormInput";
 import "./login.css";
 

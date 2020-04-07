@@ -1,0 +1,4 @@
+.content {
+    background-color: var(--pale-white);
+    flex-grow: 1;
+}

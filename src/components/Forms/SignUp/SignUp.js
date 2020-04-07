@@ -1,9 +1,9 @@
 import React from "react";
 import FormInput from "../FormInput/FormInput";
-import {PrimaryButton} from "../../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../PrimaryButton/PrimaryButton";
 import Tabs from "../../Tabs/Tabs";
 import "./sign-up.css";
-import {SignUpStep2} from "../SignUpStep2/SignUpStep2";
+import SignUpStep2 from "../SignUpStep2/SignUpStep2";
 
 const tabs = [
   {
