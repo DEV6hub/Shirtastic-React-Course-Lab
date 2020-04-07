@@ -1,6 +1,14 @@
+.sign-up-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 15rem;
+}
+
 .tabs-container {
     border-bottom: 0.0625rem solid var(--white);
     width: 100%;
+    max-width: 20rem;
     display: flex;
     justify-content: center;
 }
@@ -12,6 +20,7 @@ form.sign-up {
     margin-top: 1rem;
     width: 100%;
     max-width: 20rem;
+    padding: 0;
 }
 
 form.sign-up p {

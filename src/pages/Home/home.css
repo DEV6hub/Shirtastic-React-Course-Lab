@@ -14,26 +14,26 @@
     text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0,0,0,0.5);
 }
 
-.home .login,
-.home .sign-up {
+.home .left-column,
+.home .right-column {
    flex: 1;
 }
 
-.home .login,
-.home .sign-up,
-.home .middle {
+.home .left-column,
+.home .right-column,
+.home .middle-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.home .login,
-.home .sign-up {
+.home .left-column,
+.home .right-column {
     padding: 0 1.5rem;
 }
 
-.home .middle {
+.home .middle-column {
     background-color: var(--white);
     color: var(--dark-blue);
     justify-content: space-between;
@@ -43,7 +43,7 @@
     font-size: 0.75rem;
 }
 
-.home .middle img {
+.home .middle-column img {
     width: 85%;
 }
 

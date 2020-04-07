@@ -1,4 +1,5 @@
 import React from "react";
+import "./tabs.css";
 
 /*
 Format of the tabs
@@ -33,7 +34,7 @@ const Tab  = ({label, isActive, onClick, activeClassName}) => (
 );
 
 Tabs.defaultProps = {
-  activeColor: "white",
+  activeClassName: "active",
   onTabClick: (value) => {console.log(`${value} is being sent through but no function is handling it`)}
 };
 

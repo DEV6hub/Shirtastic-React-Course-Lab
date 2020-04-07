@@ -8,15 +8,15 @@ const middleLogo = require("../../images/Shirtastic-vertical.svg");
 const year = new Date().getUTCFullYear();
 
 const Home = () => <div className="home">
-    <div className="login">
+    <div className="left-column">
       <Login/>
     </div>
-    <div className="middle">
+    <div className="middle-column">
       <div>&nbsp;</div>
       <img src={middleLogo} alt="Shirtastic by Dev6" />
       <span>&copy; {year} Aquent DEV6 </span>
     </div>
-    <div className="sign-up">
+    <div className="right-column">
       <SignUp/>
     </div>
 </div>;

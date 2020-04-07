@@ -15,10 +15,10 @@ const tabs = [
   },
 ];
 
-export const SignUp = () => <div className="sign-up">
+export const SignUp = () => <div className="sign-up-component">
   <h2>Sign up</h2>
   <div className="tabs-container">
-    <Tabs tabs={tabs} />
+    <Tabs tabs={tabs} active={tabs[0].id} />
   </div>
   <form onSubmit={(e) => e.preventDefault()} className="sign-up">
     <FormInput id="sign-up-email-address" label="Email Address" placeholder="Your Email Address" />
