@@ -1,5 +1,5 @@
 .home {
-    align-items: center;
+    align-items: stretch;
     background-image: url("../../images/Fractal.png");
     background-repeat: no-repeat;
     background-size: cover;

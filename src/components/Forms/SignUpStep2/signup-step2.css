@@ -1,0 +1,21 @@
+.step2-component .step2-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step2-component .step2-row .form-group,
+.step2-component .step2-row .step2-row {
+    width: 48.5%;
+}
+
+.step2-component .step2-row .step2-row .form-group {
+    width: 47%;
+}
+
+.step2-component .actions {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

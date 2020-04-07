@@ -5,10 +5,13 @@
     max-width: 15rem;
 }
 
+.sign-up-component.step2 {
+    max-width: 30rem;
+}
+
 .tabs-container {
-    border-bottom: 0.0625rem solid var(--white);
+    border-bottom: 0.0625rem solid rgba(255,255,255,0.3);
     width: 100%;
-    max-width: 20rem;
     display: flex;
     justify-content: center;
 }
