@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Caveat|Cookie|Dancing+Script|Gloria+Hallelujah|Indie+Flower|Kaushan+Script|Libre+Barcode+39|Lora|Open+Sans|Orbitron|Pacifico|Roboto|Sacramento');
 
 :root {
+  --navy-blue: #274686;
   --dark-blue: #545871; /* Primary color */
   --pale-blue: #9597A6;
   --sky-blue: #10A2DC;

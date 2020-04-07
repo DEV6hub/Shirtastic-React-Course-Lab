@@ -1,0 +1,31 @@
+.catalog {
+    width: 100%;
+    max-width: 75rem;
+}
+
+.catalog .catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.0625rem solid var(--light-grey);
+}
+
+.catalog .catalog-header .tabs button {
+    color: var(--light-grey) !important;
+}
+
+.catalog .catalog-header .tabs button:first-child {
+    margin-left: 0;
+}
+
+.catalog .catalog-header .tabs button.active {
+    color: var(--navy-blue) !important;
+    border-bottom-color: var(--navy-blue) !important;
+}
+
+.catalog .catalog-header .shirts-displayed {
+    color: var(--dark-grey);
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
