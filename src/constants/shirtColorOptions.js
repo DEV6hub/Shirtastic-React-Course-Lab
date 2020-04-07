@@ -1,59 +1,52 @@
+import * as COLORS from "./colorOptions";
 
 const mensPrefix = "MensShirt-";
 const womensPrefix = "WomensShirt-";
 
 export const SHIRT_WHITE = {
-  color: "#ffffff",
-  colorName: "White",
+  colorOption: COLORS.COLOR_WHITE,
   menFile: `${mensPrefix}white.jpg`,
   womenFile: `${womensPrefix}white.jpg`
 };
 
 export const SHIRT_GREY = {
-  color: "#cdcdcd",
-  colorName: "Grey",
+  colorOption: COLORS.COLOR_GREY,
   menFile: `${mensPrefix}grey.jpg`,
   womenFile: `${womensPrefix}grey.jpg`
 };
 
 export const SHIRT_BLACK = {
-  color: "#444444",
-  colorName: "Black",
+  colorOption: COLORS.COLOR_BLACK,
   menFile: `${mensPrefix}black.jpg`,
   womenFile: `${womensPrefix}black.jpg`
 };
 
 export const SHIRT_BLUE = {
-  color: "#2674a8",
-  colorName: "Blue",
+  colorOption: COLORS.COLOR_BLUE,
   menFile: `${mensPrefix}blue.jpg`,
   womenFile: `${womensPrefix}blue.jpg`
 };
 
 export const SHIRT_GREEN = {
-  color: "#44a264",
-  colorName: "Green",
+  colorOption: COLORS.COLOR_GREEN,
   menFile: `${mensPrefix}green.jpg`,
   womenFile: `${womensPrefix}green.jpg`
 };
 
 export const SHIRT_YELLOW = {
-  color: "#f4da70",
-  colorName: "Yellow",
+  colorOption: COLORS.COLOR_YELLOW,
   menFile: `${mensPrefix}yellow.jpg`,
   womenFile: `${womensPrefix}yellow.jpg`
 };
 
 export const SHIRT_PURPLE = {
-  color: "#6e5bd6",
-  colorName: "Purple",
+  colorOption: COLORS.COLOR_PURPLE,
   menFile: `${mensPrefix}purple.jpg`,
   womenFile: `${womensPrefix}purple.jpg`
 };
 
 export const SHIRT_RED = {
-  color: "#a7386a",
-  colorName: "Red",
+  colorOption: COLORS.COLOR_RED,
   menFile: `${mensPrefix}red.jpg`,
   womenFile: `${womensPrefix}red.jpg`
 };
