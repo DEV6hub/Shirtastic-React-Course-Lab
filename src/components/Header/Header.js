@@ -2,23 +2,28 @@ import React from "react";
 import {Link} from "react-router-dom";
 import NavigationButton from "../NavigationButton/NavigationButton";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import "./header.css";
 
 const headerLogo = require("../../images/navlogo.png");
 const shoppingCartIcon = require("../../images/icons/icon-basket.svg");
 
 const Header = () => <header>
-  <div>
-    <NavigationButton onClick={() => alert("Nav Button Clicked")} />
+  <div className="left">
+    <Link to="/catalog">
+      <NavigationButton onClick={() => {}} />
+    </Link>
+    <div className="vertical-line" />
     <Link to="/">
-      <img src={headerLogo} alt="Shirtastic Logo - By Aquent Dev 6" />
+      <img src={headerLogo} className="logo" alt="Shirtastic Logo - By Aquent Dev 6" />
     </Link>
   </div>
-  <div>
+  <div className="right">
     <Link to="/create-shirt">
       <PrimaryButton>New Design</PrimaryButton>
     </Link>
-    <button onClick={() => alert("Shopping Cart Button Clicked")}>
-      <img src={shoppingCartIcon} />
+    <div className="vertical-line" />
+    <button className="cart-items" onClick={() => alert("Shopping Cart Button Clicked")}>
+      <img className="cart-icon" src={shoppingCartIcon} />
       <div className="total-items">
         0
       </div>

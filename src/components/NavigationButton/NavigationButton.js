@@ -1,10 +1,10 @@
 import React from "react";
+import "./navigation-button.css";
 
-const NavigationButton = ({onClick}) => <button onClick={onClick}>
-  Nav Button
-  <div className="line">&nbsp;</div>
-  <div className="line">&nbsp;</div>
-  <div className="line">&nbsp;</div>
+const NavigationButton = ({onClick}) => <button className="navigation" onClick={onClick}>
+  <div className="line" />
+  <div className="line" />
+  <div className="line" />
 </button>;
 
 export default NavigationButton;
