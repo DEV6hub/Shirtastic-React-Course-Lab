@@ -62,7 +62,7 @@ class Design extends React.Component {
 
  render() {
    return <div className="design-shirt">
-     <ShirtOptions onOptionSelected={this.whenOptionUpdated} />Anyways
+     <ShirtOptions onOptionSelected={this.whenOptionUpdated} />
      <ShirtPreview shirtToEdit={this.props.shirtToEdit} />
    </div>;
  }
