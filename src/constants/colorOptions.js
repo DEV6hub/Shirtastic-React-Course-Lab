@@ -1,42 +1,42 @@
 
 export const COLOR_WHITE = {
   color: "#ffffff",
-  colorName: "White",
+  name: "White",
 };
 
 export const COLOR_GREY = {
   color: "#cdcdcd",
-  colorName: "Grey",
+  name: "Grey",
 };
 
 export const COLOR_BLACK = {
   color: "#444444",
-  colorName: "Black",
+  name: "Black",
 };
 
 export const COLOR_BLUE = {
   color: "#2674a8",
-  colorName: "Blue",
+  name: "Blue",
 };
 
 export const COLOR_GREEN = {
   color: "#44a264",
-  colorName: "Green",
+  name: "Green",
 };
 
 export const COLOR_YELLOW = {
   color: "#f4da70",
-  colorName: "Yellow",
+  name: "Yellow",
 };
 
 export const COLOR_PURPLE = {
   color: "#6e5bd6",
-  colorName: "Purple",
+  name: "Purple",
 };
 
 export const COLOR_RED = {
   color: "#a7386a",
-  colorName: "Red",
+  name: "Red",
 };
 
 export const COLOR_OPTIONS = [

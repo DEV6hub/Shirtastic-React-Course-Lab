@@ -2,6 +2,7 @@ import React from "react";
 import PageLayout from "../../components/PageLayout/PageLayout";
 import "./catalog.css";
 import Tabs from "../../components/Tabs/Tabs";
+import Design from "../../components/Design/Design";
 
 const catalogTabs = [
   {
@@ -34,6 +35,7 @@ const Catalog = () => <PageLayout>
 
     </div>
   </div>
+  <Design />
 </PageLayout>;
 
 export default Catalog;
