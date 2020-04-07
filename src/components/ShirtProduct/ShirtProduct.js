@@ -18,7 +18,7 @@ shirt = {
 const shirtImagePath = "../../";
 
 const ShirtProduct = ({shirt}) => <div className="shirt-product">
-  <img src=
+
 </div>;
 
 export default ShirtProduct;
