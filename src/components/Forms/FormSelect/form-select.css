@@ -1,0 +1,8 @@
+.form-group select {
+    height: 2.25rem;
+    font-size: 0.875rem;
+    background-color: var(--white);
+    border: 0.0625rem solid var(--light-grey);
+    width: 100%;
+    cursor: pointer;
+}

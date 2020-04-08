@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FormGroup from "../FormGroup/FormGroup";
+import "./form-select.css";
 
 const FormSelect = ({id, label, options, children, value, onChangeFn}) => <FormGroup>
   <label htmlFor={id}>{label}</label>
@@ -16,7 +17,7 @@ const FormSelectOption = ({label, value}) => <option value={value}>
   {label}
 </option>;
 
-FormInput.propTypes = {
+FormSelect.propTypes = {
   id: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired
 };
