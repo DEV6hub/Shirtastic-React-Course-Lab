@@ -30,9 +30,9 @@ const tabOptions = [
   },
 ];
 
-const ShirtOptions = ({onOptionSelected}) => {
+const ShirtOptions = ({shirtToEdit, onOptionSelected}) => {
 
-  const [tab, setTab] = useState(tabOptions[3].id);
+  const [tab, setTab] = useState(tabOptions[0].id);
 
   return <div className="shirt-options">
     <div className="shirt-option-tabs">
@@ -40,25 +40,25 @@ const ShirtOptions = ({onOptionSelected}) => {
     </div>
     <div className="options">
       {tab === tabOptions[0].id && <ShirtStyles
+        selectedStyle={shirtToEdit.shirtStyle.id}
+        selectedShirtColor={shirtToEdit.shirtColor}
         onStyleSelected={data => onOptionSelected(data)}
-        selectedStyle={MEN.id}
-        selectedShirtColor={SHIRT_PURPLE}
       />}
       {tab === tabOptions[1].id && <ColorPicker
         title="Choose a shirt color"
-        selectedColor={COLOR_PURPLE}
+        selectedColor={shirtToEdit.shirtColor.colorOption}
         onColorSelected={color => onOptionSelected({type: SHIRT_COLOUR_EVENT, data: color})}
       />}
       {tab === tabOptions[2].id && <GraphicPicker
-        selectedGraphic={"graphic4.svg"}
-        selectedGraphicColor={COLOR_BLACK}
+        selectedGraphic={shirtToEdit.graphic}
+        selectedGraphicColor={shirtToEdit.graphicColor}
         onGraphicSelected={event => onOptionSelected(event)}
         onGraphicColorSelected={event => onOptionSelected(event)}
       />}
       {tab === tabOptions[3].id && <ShirtText
-        selectedTextColor={COLOR_BLACK}
-        selectedShirtFont={FONT_PACIFICO.font}
-        shirtText={"Hello"}
+        selectedTextColor={shirtToEdit.textColor}
+        selectedShirtFont={shirtToEdit.font}
+        shirtText={shirtToEdit.text}
         onOptionSelected={event => onOptionSelected(event)}
       />}
     </div>

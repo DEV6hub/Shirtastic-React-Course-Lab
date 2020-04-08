@@ -1,4 +1,5 @@
 import React from "react";
+import "./shirt-preview.css";
 
 const ShirtPreview = ({shirtToEdit}) => <div className="shirt-preview">
 Shirt Preview
