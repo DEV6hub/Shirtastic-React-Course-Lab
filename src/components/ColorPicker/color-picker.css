@@ -20,10 +20,6 @@
     position: relative;
 }
 
-.color-options .options button.color-option:focus {
-    outline: 0;
-}
-
 .color-options .options button.color-option .color-swatch {
     width: 3.125rem;
     height: 3.125rem;

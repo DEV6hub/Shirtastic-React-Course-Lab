@@ -4,7 +4,8 @@ import "./shirt-options.css";
 import ShirtStyles from "../ShirtStyles/ShirtStyles";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import {SHIRT_COLOUR_EVENT} from "../../constants/optionEventTypes";
-import {COLOR_WHITE} from "../../constants/colorOptions";
+import {COLOR_BLACK, COLOR_WHITE} from "../../constants/colorOptions";
+import GraphicPicker from "../GraphicPicker/GraphicPicker";
 
 const tabOptions = [
   {
@@ -27,7 +28,7 @@ const tabOptions = [
 
 const ShirtOptions = ({onOptionSelected}) => {
 
-  const [tab, setTab] = useState(tabOptions[0].id);
+  const [tab, setTab] = useState(tabOptions[2].id);
 
   return <div className="shirt-options">
     <div className="shirt-option-tabs">
@@ -39,6 +40,12 @@ const ShirtOptions = ({onOptionSelected}) => {
         title="Choose a shirt color"
         selectedColor={COLOR_WHITE}
         onColorSelected={color => onOptionSelected({type: SHIRT_COLOUR_EVENT, data: color})}
+      />}
+      {tab === tabOptions[2].id && <GraphicPicker
+        selectedGraphic={"graphic1.svg"}
+        selectedGraphicColor={COLOR_BLACK}
+        onGraphicSelected={event => onOptionSelected(event)}
+        onGraphicColorSelected={event => onOptionSelected(event)}
       />}
     </div>
   </div>;
