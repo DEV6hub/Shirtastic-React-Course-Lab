@@ -51,7 +51,7 @@ export const SHIRT_RED = {
   womenFile: `${womensPrefix}red.jpg`
 };
 
-export const COLOR_OPTIONS = [
+export const SHIRT_COLOR_OPTIONS = [
   SHIRT_WHITE,
   SHIRT_GREY,
   SHIRT_BLACK,

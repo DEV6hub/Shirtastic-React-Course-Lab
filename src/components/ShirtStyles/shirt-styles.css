@@ -2,6 +2,10 @@
     margin-bottom: 1rem;
 }
 
+.shirt-styles .style-options {
+    display: flex;
+}
+
 .shirt-styles button.shirt-style-option {
     max-width: 9.75rem;
     background-color: transparent;
