@@ -3,7 +3,7 @@ import "./design.css";
 import ShirtOptions from "../ShirtOptions/ShirtOptions";
 import ShirtPreview from "../ShirtPreview/ShirtPreview";
 import {SHIRT_PURPLE} from "../../constants/shirtColorOptions";
-import {COLOR_BLACK, COLOR_BLUE, COLOR_RED} from "../../constants/colorOptions";
+import {COLOR_BLUE, COLOR_YELLOW} from "../../constants/colorOptions";
 import {FONT_PACIFICO} from "../../constants/fontOptions";
 import {WOMEN} from "../../constants/shirtStyles";
 
@@ -46,17 +46,13 @@ const mockShirtToEdit = {
   shirtStyle: WOMEN,
   shirtColor: SHIRT_PURPLE,
   graphic: "graphic4.svg",
-  graphicColor: COLOR_RED,
-  text: 'Hello',
+  graphicColor: COLOR_BLUE,
+  text: 'Hello World',
   font: FONT_PACIFICO.font,
-  textColor: COLOR_BLUE,
+  textColor: COLOR_YELLOW,
 };
 
 class Design extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   selectStyle = style => this.props.selectStyle(style);
 

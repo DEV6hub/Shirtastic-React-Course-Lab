@@ -4,12 +4,8 @@ import "./shirt-options.css";
 import ShirtStyles from "../ShirtStyles/ShirtStyles";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import {SHIRT_COLOUR_EVENT} from "../../constants/optionEventTypes";
-import {COLOR_BLACK, COLOR_BLUE, COLOR_PURPLE, COLOR_WHITE} from "../../constants/colorOptions";
 import GraphicPicker from "../GraphicPicker/GraphicPicker";
-import {MEN} from "../../constants/shirtStyles";
-import {SHIRT_PURPLE, SHIRT_WHITE} from "../../constants/shirtColorOptions";
 import ShirtText from "../ShirtText/ShirtText";
-import {FONT_PACIFICO} from "../../constants/fontOptions";
 
 const tabOptions = [
   {
@@ -63,11 +59,6 @@ const ShirtOptions = ({shirtToEdit, onOptionSelected}) => {
       />}
     </div>
   </div>;
-};
-
-
-const ShirtStyle = ({onStyleSelected}) => {
-
 };
 
 export default ShirtOptions;

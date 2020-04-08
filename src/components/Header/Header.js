@@ -23,7 +23,7 @@ const Header = () => <header>
     </Link>
     <div className="vertical-line" />
     <button className="cart-items" onClick={() => alert("Shopping Cart Button Clicked")}>
-      <img className="cart-icon" src={shoppingCartIcon} />
+      <img className="cart-icon" src={shoppingCartIcon} alt="Icon of a shopping cart" />
       <div className="total-items">
         0
       </div>
