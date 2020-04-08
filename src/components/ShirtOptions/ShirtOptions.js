@@ -34,7 +34,7 @@ const ShirtOptions = ({onOptionSelected}) => {
       <Tabs tabs={tabOptions} active={tab} onTabClick={tabId => setTab(tabId)} />
     </div>
     <div className="options">
-      {tab === tabOptions[0].id && <ShirtStyles />}
+      {tab === tabOptions[0].id && <ShirtStyles onStyleSelected={data => onOptionSelected(data)} />}
     </div>
   </div>;
 };

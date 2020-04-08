@@ -53,7 +53,7 @@ class Design extends React.Component {
   changeTextFont = event => this.props.changeTextFont(event.target.value);
 
   whenOptionUpdated = (optionEvent) => {
-
+    console.log("Option Event Happened: ", optionEvent);
   };
 
  render() {
