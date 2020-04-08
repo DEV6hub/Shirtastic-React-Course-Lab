@@ -2,7 +2,7 @@ import React from "react";
 import "./design.css";
 import ShirtOptions from "../ShirtOptions/ShirtOptions";
 import ShirtPreview from "../ShirtPreview/ShirtPreview";
-import ShirtStyles from "../../constants/shirtStyles";
+
 
 /*
 props = {
@@ -33,10 +33,6 @@ shirtToEdit: {
 },
  */
 
-const shirtStyles = [
-  ShirtStyles.MEN,
-  ShirtStyles.WOMEN
-];
 
 class Design extends React.Component {
 

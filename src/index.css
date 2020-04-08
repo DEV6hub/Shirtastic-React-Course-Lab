@@ -15,6 +15,7 @@
   --white: #ffffff;
   --black: #333;
   --hit-target-dimension: 2.75rem;
+  --animation-timer: 200ms;
 }
 
 * {
@@ -52,4 +53,10 @@ button {
 
 a {
   text-decoration: none;
+}
+
+.options-heading {
+  font-size: 0.8125rem;
+  color: var(--sky-blue);
+  font-weight: 600;
 }
