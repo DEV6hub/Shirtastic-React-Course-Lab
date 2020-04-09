@@ -35,7 +35,7 @@ const Catalog = () => <PageLayout>
 
     </div>
   </div>
-  <Design />
+  {/*<Design />*/}
 </PageLayout>;
 
 export default Catalog;
