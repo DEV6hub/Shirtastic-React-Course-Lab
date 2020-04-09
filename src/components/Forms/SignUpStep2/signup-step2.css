@@ -9,6 +9,11 @@
     width: 48.5%;
 }
 
+.step2-component .step2-row .form-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
 .step2-component .step2-row .step2-row .form-group {
     width: 47%;
 }
@@ -19,3 +24,5 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
