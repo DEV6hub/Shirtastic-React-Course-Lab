@@ -10,7 +10,7 @@ const year = new Date().getUTCFullYear();
 
 const Home = () => {
 
-  const [step, setStep] = useState(SignUpTabs[1].id);
+  const [step, setStep] = useState(SignUpTabs[0].id);
 
   return <div className="home">
     {step === SignUpTabs[0].id && <div className="left-column">
