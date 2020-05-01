@@ -6,6 +6,12 @@ It is recommended to add these plugins to your IDE:
 🔹 Prettier
 🔹 EditorConfig
 
+- Clone the repo
+- npm install
+- npm start
+- npm run serve1 (in a separate terminal)
+- npm run serve2 (in a separate terminal)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
