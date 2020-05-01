@@ -25,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve1": "json-server --port 9001 ./mock-server/shirts.json",
+    "serve2": "json-server --port 9000 ./mock-server/user.json"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
