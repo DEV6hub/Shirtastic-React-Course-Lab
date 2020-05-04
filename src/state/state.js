@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
 import rootReducer from './reducers';
 
 export const StateContext = createContext();
@@ -19,6 +20,10 @@ export const StateProvider = ({ children }) => {
       {children}
     </StateContext.Provider>
   );
+};
+
+StateProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export const useStateValue = () => useContext(StateContext);
