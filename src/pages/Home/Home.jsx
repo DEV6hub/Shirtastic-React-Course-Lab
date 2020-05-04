@@ -7,8 +7,8 @@ import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
 import Shipping from '../../components/Shipping/Shipping';
 
-const background = require('../../images/Fractal.png');
-const logoVertical = require('../../images/Shirtastic-vertical.svg');
+import background from '../../images/Fractal.png';
+import logoVertical from '../../images/Shirtastic-vertical.svg';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState('1');
@@ -51,7 +51,7 @@ const Home = () => {
         <div className="center-column">
           <img className="vertical-logo" src={logoVertical} alt="vertical logo" />
           <div className="copyright text-center">
-            © 2018 DEV6 – A division of The New Toronto Group Inc.
+            © 2020 DEV6 – A division of The New Toronto Group Inc.
           </div>
         </div>
         <div className={`side-column ${activeTab === '2' ? 'shipping-col' : ''}`}>
