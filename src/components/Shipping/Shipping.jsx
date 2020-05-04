@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import axios from 'axios';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import './Shipping.css';
 import { Row, Col } from 'reactstrap';
@@ -13,6 +13,7 @@ const contactIntro =
   'Welcome to the club, where can we ship your shirts to? You can always provide this information at checkout';
 
 const Shipping = (props) => {
+  const history = useHistory();
   const [_, dispatch] = useStateValue();
   const { email, password } = props.signUpdata;
   const [name, setName] = useState('');
@@ -62,10 +63,10 @@ const Shipping = (props) => {
           .catch((error) => {
             console.log(error);
           });
-        props.history.push('/catalog');
+        history.push('/catalog');
       }
     },
-    [shippingForm, email, password, dispatch, info, props.history],
+    [info, email, password, history, dispatch],
   );
 
   const handleInputChange = useCallback(
@@ -267,4 +268,4 @@ const Shipping = (props) => {
   );
 };
 
-export default withRouter(Shipping);
+export default Shipping;

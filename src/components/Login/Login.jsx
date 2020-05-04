@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import { useHistory } from 'react-router-dom';
-import { useStateValue } from '../../state/state';
+// import { useStateValue } from '../../state/state';
 import {
   requestShirts,
   requestShirtsSuccess,
