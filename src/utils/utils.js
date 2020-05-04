@@ -1,4 +1,5 @@
-export function guid() {
+// eslint-disable-next-line import/prefer-default-export
+export const guid = () => {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
@@ -9,4 +10,4 @@ export function guid() {
     // s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4()
     s4()
   );
-}
+};
