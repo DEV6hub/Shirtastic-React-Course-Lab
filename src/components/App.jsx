@@ -12,9 +12,15 @@ const App = () => {
     <StateProvider>
       <Router>
         <div className="App">
-          <Route exact path="/" render={() => <Home />} />
-          <Route exact path="/catalog" render={() => <Catalog />} />
-          <Route path="/graphic/:graphicLogo" component={GraphicDisplay} />
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/catalog">
+            <Catalog />
+          </Route>
+          <Route path="/graphic/:graphicLogo">
+            <GraphicDisplay />
+          </Route>
         </div>
       </Router>
     </StateProvider>
