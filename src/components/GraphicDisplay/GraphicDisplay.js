@@ -1,17 +1,5 @@
 import React from 'react';
 
-const GraphicDisplay = (props) => (
-  <div>
-    <h3 style={styles.graphicHeader}>Graphic Logo</h3>
-    <img
-      style={styles.graphicContainer}
-      className="img-fluid shirt-graphic-img"
-      src={require(`../../images/${props.match.params.graphicLogo}`)}
-      alt="shirt graphic"
-    />
-  </div>
-);
-
 const styles = {
   greyFont: {
     color: 'grey',
@@ -29,5 +17,17 @@ const styles = {
     backgroundColor: 'grey',
   },
 };
+
+const GraphicDisplay = (props) => (
+  <div>
+    <h3 style={styles.graphicHeader}>Graphic Logo</h3>
+    <img
+      style={styles.graphicContainer}
+      className="img-fluid shirt-graphic-img"
+      src={require(`../../images/${props.match.params.graphicLogo}`)}
+      alt="shirt graphic"
+    />
+  </div>
+);
 
 export default GraphicDisplay;
