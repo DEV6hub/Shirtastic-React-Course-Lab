@@ -80,7 +80,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 name="name"
-                value={state.name}
+                defaultValue={state.name}
                 className="form-control form-control-sm"
               />
             </Col>

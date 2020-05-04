@@ -46,7 +46,7 @@ const Design = ({
   );
 
   const renderImage = useCallback((image, color) => {
-    return `${image}-${color.toLowerCase()}`;
+    return `${image}-${color?.toLowerCase()}`;
   }, []);
 
   return (
@@ -119,7 +119,7 @@ const Design = ({
                             // eslint-disable-next-line import/no-dynamic-require, global-require
                             src={require(`../../images/${renderImage(
                               style.image,
-                              shirtToEdit.shirtColor.name,
+                              shirtToEdit?.shirtColor?.name,
                             )}.jpg`)}
                             alt="shirt style"
                           />
