@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Design.css';
 import { Container, Row, Col, Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import { styleList } from '../../constants/styleList';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import Graphic from '../Graphic/Graphic';
 import Text from '../Text/Text';
-
-const background = require('../../images/Fractal.png');
+import background from '../../images/Fractal.png';
 
 const Design = ({
   shirtToEdit,
@@ -17,6 +17,7 @@ const Design = ({
   addShirtText,
   changeTextFont,
 }) => {
+  console.log(shirtToEdit, selectStyle, selectColor, selectGraphic, addShirtText, changeTextFont);
   const [activeTab, setActiveTab] = useState('1');
   const graphicImage = useRef(null);
 
@@ -115,6 +116,7 @@ const Design = ({
                         >
                           <img
                             className="img-fluid"
+                            // eslint-disable-next-line import/no-dynamic-require, global-require
                             src={require(`../../images/${renderImage(
                               style.image,
                               shirtToEdit.shirtColor.name,
@@ -196,4 +198,13 @@ const Design = ({
   );
 };
 
+// Design.propTypes = {
+// //   children: PropTypes.node.isRequired,
+//   shirtToEdit:PropTypes.?.isRequired,
+//   selectStyle,
+//   selectColor,
+//   selectGraphic,
+//   addShirtText,
+//   changeTextFont,
+// };
 export default Design;

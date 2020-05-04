@@ -3,7 +3,7 @@ import './Catalog.css';
 
 import { Row, Navbar, NavbarToggler } from 'reactstrap';
 
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Cart from '../../components/Cart/Cart';
 import SidenavShipping from '../../components/SidenavShipping/SidenavShipping';
 import Payment from '../../components/Payment/Payment';
@@ -12,10 +12,11 @@ import Design from '../../components/Design/Design';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 import { useStateValue } from '../../state/state';
 import { requestShirts, requestShirtsSuccess, requestShirtsFailure } from '../../state/actions';
+import navLogo from '../../images/navlogo.png';
 
-const navLogo = require('../../images/navlogo.png');
+const Catalog = () => {
+  const history = useHistory();
 
-const Catalog = (props) => {
   const cart = useRef(null);
   const cartOverlay = useRef(null);
   const shipping = useRef(null);
@@ -24,7 +25,6 @@ const Catalog = (props) => {
   const overlay = useRef(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [shirtsInCart, setShirtsInCart] = useState([]);
-  const [total, setTotal] = useState(0);
   const [openDesign, setOpenDesign] = useState(false);
   const initialShirt = {
     name: 'untitled_design',
@@ -203,7 +203,7 @@ const Catalog = (props) => {
 
     const list = shirtList;
     newShirt.image = `${newShirt.shirtStyle}-${newShirt.shirtColor.name.toLowerCase()}`;
-    newShirt.gender = newShirt.shirtStyle[0];
+    [newShirt.gender] = newShirt.shirtStyle;
 
     if (action === 'new') {
       newShirt.id = list.length + 1;
@@ -325,7 +325,7 @@ const Catalog = (props) => {
       </div>
       <Navbar color="faded" light>
         <Row className="nav-toggle-btn">
-          <NavbarToggler className="mr-2" onClick={() => props.history.push('/')} />
+          <NavbarToggler className="mr-2" onClick={() => history.push('/')} />
           <div className="vr" />
           <img className="nav-logo" src={navLogo} alt="logo" />
         </Row>
@@ -338,12 +338,12 @@ const Catalog = (props) => {
                 value={shirtToEdit.name}
                 onChange={setShirtTitle}
               />
-              <button className="primary-btn nav-btn" onClick={saveShirtDesign}>
+              <button type="button" className="primary-btn nav-btn" onClick={saveShirtDesign}>
                 SAVE DESIGN
               </button>
             </div>
           ) : (
-            <button className="primary-btn nav-btn" onClick={newShirtDesign}>
+            <button type="button" className="primary-btn nav-btn" onClick={newShirtDesign}>
               NEW DESIGN
             </button>
           )}
@@ -376,4 +376,4 @@ const Catalog = (props) => {
   );
 };
 
-export default withRouter(Catalog);
+export default Catalog;
