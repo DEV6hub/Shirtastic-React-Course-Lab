@@ -7,13 +7,13 @@ import {
   REQUEST_SHIRTS_FAILURE,
 } from '../constants/ActionTypes';
 
-export default function shirts(
+const shirts = (
   state = {
     fetchingShirts: false,
     shirtList: [],
   },
   action,
-) {
+) => {
   switch (action.type) {
     case CREATE_SHIRT:
       return [...state, action.shirt];
@@ -29,4 +29,6 @@ export default function shirts(
     default:
       return state;
   }
-}
+};
+
+export default shirts;

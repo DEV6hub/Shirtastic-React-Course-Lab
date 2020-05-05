@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { createUser } from '../../state/actions';
-import './SidenavShipping.css';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
+import { createUser } from '../../state/actions';
 import { countries, regions } from '../Models/CountriesAndRegions';
+import './SidenavShipping.css';
 
-const defaultState = {
+const defaultUserInfo = {
   name: '',
   email: '',
   address1: '',
@@ -17,8 +17,8 @@ const defaultState = {
   zip: '',
 };
 
-const SidenavShipping = (props) => {
-  const [state, setState] = useState(defaultState);
+const SidenavShipping = ({ openPayment }) => {
+  const [userInfo, setUserInfo] = useState(defaultUserInfo);
 
   // componentWillReceiveProps(nextProps) {
   //   setState({
@@ -39,8 +39,8 @@ const SidenavShipping = (props) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
 
-    setState({
-      ...state,
+    setUserInfo({
+      ...userInfo,
       [name]: value,
     });
   };
@@ -57,16 +57,12 @@ const SidenavShipping = (props) => {
   //   }
   // };
 
-  const updateUser = (event) => {
-    props.createUser(state);
-  };
-
-  const openPayment = () => {
-    props.openPayment();
+  const updateUser = () => {
+    createUser(userInfo);
   };
 
   // console.log(props.getUser());
-  const regionsForSelectedCountry = regions[props.user.country];
+  const regionsForSelectedCountry = regions[userInfo.country];
 
   return (
     <div>
@@ -80,7 +76,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 name="name"
-                defaultValue={state.name}
+                defaultValue={userInfo.name}
                 className="form-control form-control-sm"
               />
             </Col>
@@ -91,7 +87,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 name="email"
-                value={state.email}
+                value={userInfo.email}
                 className="form-control form-control-sm"
                 onChange={handleInputChange}
               />
@@ -103,7 +99,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 name="phone"
-                value={state.phone}
+                value={userInfo.phone}
                 className="form-control form-control-sm"
                 onChange={handleInputChange}
               />
@@ -115,7 +111,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 name="address1"
-                value={state.address1}
+                value={userInfo.address1}
                 className="form-control form-control-sm"
                 onChange={handleInputChange}
               />
@@ -127,7 +123,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 name="address2"
-                value={state.address2}
+                value={userInfo.address2}
                 className="form-control form-control-sm"
                 onChange={handleInputChange}
               />
@@ -139,7 +135,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 name="city"
-                value={state.city}
+                value={userInfo.city}
                 className="form-control form-control-sm"
                 onChange={handleInputChange}
               />
@@ -151,7 +147,7 @@ const SidenavShipping = (props) => {
               <br />
               <select
                 className="form-control form-control-sm"
-                value={state.country}
+                value={userInfo.country}
                 name="country"
                 onChange={handleInputChange}
                 id="country"
@@ -171,7 +167,7 @@ const SidenavShipping = (props) => {
               <br />
               <select
                 className="form-control form-control-sm"
-                value={state.province}
+                value={userInfo.province}
                 name="province"
                 onChange={handleInputChange}
                 id="region"
@@ -191,7 +187,7 @@ const SidenavShipping = (props) => {
               <input
                 type="text"
                 className="form-control form-control-sm"
-                value={state.zip}
+                value={userInfo.zip}
                 name="zip"
                 onChange={handleInputChange}
               />
@@ -205,7 +201,7 @@ const SidenavShipping = (props) => {
                 openPayment();
               }}
             >
-              GO TO PAYMENT ->
+              GO TO PAYMENT -&gt;
             </button>
           </div>
         </form>
@@ -214,9 +210,8 @@ const SidenavShipping = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    user: state.user.user,
-  };
-}
-export default connect(mapStateToProps, { createUser })(SidenavShipping);
+SidenavShipping.propTypes = {
+  openPayment: PropTypes.func.isRequired,
+};
+
+export default SidenavShipping;
