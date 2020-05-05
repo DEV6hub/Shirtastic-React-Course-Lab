@@ -107,7 +107,6 @@ const Design = ({
                   <Row className="select-style-row">
                     {styleList.map((style, index) => (
                       <Col key={index}>
-                        {console.log(style)}
                         <div
                           className={`style-img-container ${classnames({
                             active: shirtToEdit.shirtStyle === style.image,
