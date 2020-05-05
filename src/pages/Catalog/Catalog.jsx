@@ -10,9 +10,15 @@ import Payment from '../../components/Payment/Payment';
 import Confirmation from '../../components/Confirmation/Confirmation';
 import Design from '../../components/Design/Design';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
-import { useStateValue } from '../../state/state';
-import { requestShirts, requestShirtsSuccess, requestShirtsFailure } from '../../state/actions';
+// import { useStateValue } from '../../state/state';
+import * as actionTypes from '../../constants/ActionTypes';
+import {
+  requestShirts,
+  requestShirtsSuccess,
+  requestShirtsFailure,
+} from '../../state/actions/actions';
 import navLogo from '../../images/navlogo.png';
+import { useShirtsContext } from '../../state/contexts/shirts';
 
 const Catalog = () => {
   const history = useHistory();
@@ -42,12 +48,7 @@ const Catalog = () => {
   const [shirtToEdit, setShirtToEdit] = useState(initialShirt);
   const [action, setAction] = useState('');
 
-  const [
-    {
-      shirts: { shirtList, fetchingShirts },
-    },
-    dispatch,
-  ] = useStateValue();
+  const [{ shirtList, fetchingShirts }, shirtsDispatch] = useShirtsContext();
 
   const closeCart = useCallback(() => {
     console.log('Cart Closed');
@@ -291,14 +292,25 @@ const Catalog = () => {
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick, false);
-    dispatch(requestShirts());
+    shirtsDispatch({
+      type: actionTypes.REQUEST_SHIRTS,
+    });
+
     fetch('http://localhost:9001/shirts')
       .then((response) => response.json())
       .then(
-        (json) => dispatch(requestShirtsSuccess(json)),
-        (error) => dispatch(requestShirtsFailure(error)),
+        (json) =>
+          shirtsDispatch({
+            type: actionTypes.REQUEST_SHIRTS_SUCCESS,
+            response: json,
+          }),
+        (error) =>
+          shirtsDispatch({
+            type: actionTypes.REQUEST_SHIRTS_FAILURE,
+            error,
+          }),
       );
-  }, [dispatch, handleOutsideClick]);
+  }, [handleOutsideClick, shirtsDispatch]);
 
   return (
     <div>

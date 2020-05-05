@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { user } from '../reducers';
+import { userReducer } from '../reducers';
 
 export const UserContext = createContext();
 
@@ -8,7 +8,9 @@ export const UserProvider = ({ children }) => {
   const initialState = {};
 
   return (
-    <UserContext.Provider value={useReducer(user, initialState)}>{children}</UserContext.Provider>
+    <UserContext.Provider value={useReducer(userReducer, initialState)}>
+      {children}
+    </UserContext.Provider>
   );
 };
 

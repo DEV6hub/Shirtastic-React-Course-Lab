@@ -5,17 +5,22 @@ import { Link, useHistory } from 'react-router-dom';
 import './Shipping.css';
 import { Row, Col } from 'reactstrap';
 import { FormWithConstraints, FieldFeedbacks, FieldFeedback } from 'react-form-with-constraints';
-import { createdUser } from '../../state/actions';
+// import { createdUser } from '../../state/actions/actions';
 import { countries, regions } from '../Models/CountriesAndRegions';
-import { useStateValue } from '../../state/state';
+// import { useStateValue } from '../../state/state';
+import * as actionTypes from '../../constants/ActionTypes';
+
+import { useUserContext } from '../../state/contexts/user';
 
 const contactIntro =
   'Welcome to the club, where can we ship your shirts to? You can always provide this information at checkout';
 
 const Shipping = (props) => {
   const history = useHistory();
-  const [, dispatch] = useStateValue();
+  const [, userDispatch] = useUserContext();
+
   const { email, password } = props.signUpdata;
+
   const [name, setName] = useState('');
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
@@ -58,7 +63,8 @@ const Shipping = (props) => {
         })
           .then((response) => {
             console.log(response);
-            dispatch(createdUser(response.data));
+            // userDispatch(createdUser(response.data));
+            userDispatch({ type: actionTypes.CREATE_USER, reponse: response.data });
           })
           .catch((error) => {
             console.log(error);
@@ -66,7 +72,7 @@ const Shipping = (props) => {
         history.push('/catalog');
       }
     },
-    [info, email, password, history, dispatch],
+    [info, email, password, history, userDispatch],
   );
 
   const handleInputChange = useCallback(

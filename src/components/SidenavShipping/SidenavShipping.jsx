@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import { createUser } from '../../state/actions';
+import { createUser } from '../../state/actions/actions';
 import { countries, regions } from '../Models/CountriesAndRegions';
 import './SidenavShipping.css';
 

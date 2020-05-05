@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { shirts } from '../reducers';
+import { shirtsReducer } from '../reducers';
 
 export const ShirtsContext = createContext();
 
@@ -11,7 +11,7 @@ export const ShirtsProvider = ({ children }) => {
   };
 
   return (
-    <ShirtsContext.Provider value={useReducer(shirts, initialState)}>
+    <ShirtsContext.Provider value={useReducer(shirtsReducer, initialState)}>
       {children}
     </ShirtsContext.Provider>
   );

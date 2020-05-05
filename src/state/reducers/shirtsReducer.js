@@ -5,9 +5,9 @@ import {
   REQUEST_SHIRTS,
   REQUEST_SHIRTS_SUCCESS,
   REQUEST_SHIRTS_FAILURE,
-} from '../constants/ActionTypes';
+} from '../../constants/ActionTypes';
 
-const shirts = (
+const shirtsReducer = (
   state = {
     fetchingShirts: false,
     shirtList: [],
@@ -31,4 +31,4 @@ const shirts = (
   }
 };
 
-export default shirts;
+export default shirtsReducer;

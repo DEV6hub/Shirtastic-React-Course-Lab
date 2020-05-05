@@ -5,25 +5,28 @@ import './App.css';
 import Home from '../pages/Home/Home';
 import Catalog from '../pages/Catalog/Catalog';
 import GraphicDisplay from './GraphicDisplay/GraphicDisplay';
-import { StateProvider } from '../state/state';
+import { ShirtsProvider } from '../state/contexts/shirts';
+import { UserProvider } from '../state/contexts/user';
 
 const App = () => {
   return (
-    <StateProvider>
-      <Router>
-        <div className="App">
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/catalog">
-            <Catalog />
-          </Route>
-          <Route path="/graphic/:graphicLogo">
-            <GraphicDisplay />
-          </Route>
-        </div>
-      </Router>
-    </StateProvider>
+    <UserProvider>
+      <ShirtsProvider>
+        <Router>
+          <div className="App">
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/catalog">
+              <Catalog />
+            </Route>
+            <Route path="/graphic/:graphicLogo">
+              <GraphicDisplay />
+            </Route>
+          </div>
+        </Router>
+      </ShirtsProvider>
+    </UserProvider>
   );
 };
 

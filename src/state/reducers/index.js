@@ -1,4 +1,4 @@
-import shirts from './shirts';
-import user from './user';
+import shirtsReducer from './shirtsReducer';
+import userReducer from './userReducer';
 
-export { shirts, user };
+export { shirtsReducer, userReducer };

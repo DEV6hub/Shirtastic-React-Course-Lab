@@ -1,11 +1,11 @@
-import { CREATE_USER } from '../constants/ActionTypes';
+import { CREATE_USER } from '../../constants/ActionTypes';
 
-export default function user(
+const userReducer = (
   state = {
     user: {},
   },
   action,
-) {
+) => {
   switch (action.type) {
     case CREATE_USER:
       return {
@@ -15,4 +15,6 @@ export default function user(
     default:
       return state;
   }
-}
+};
+
+export default userReducer;
