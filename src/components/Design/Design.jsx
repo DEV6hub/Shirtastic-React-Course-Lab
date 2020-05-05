@@ -9,6 +9,10 @@ import Graphic from '../Graphic/Graphic';
 import Text from '../Text/Text';
 import background from '../../images/Fractal.png';
 
+const renderImage = (image, color) => {
+  return `${image}-${color?.toLowerCase() || ''}`;
+};
+
 const Design = ({
   shirtToEdit,
   selectStyle,
@@ -17,7 +21,6 @@ const Design = ({
   addShirtText,
   changeTextFont,
 }) => {
-  console.log(shirtToEdit, selectStyle, selectColor, selectGraphic, addShirtText, changeTextFont);
   const [activeTab, setActiveTab] = useState('1');
   const graphicImage = useRef(null);
 
@@ -44,10 +47,6 @@ const Design = ({
     },
     [graphicImage, selectGraphic],
   );
-
-  const renderImage = useCallback((image, color) => {
-    return `${image}-${color?.toLowerCase()}`;
-  }, []);
 
   return (
     <Container fluid className="design-container">
@@ -108,6 +107,7 @@ const Design = ({
                   <Row className="select-style-row">
                     {styleList.map((style, index) => (
                       <Col key={index}>
+                        {console.log(style)}
                         <div
                           className={`style-img-container ${classnames({
                             active: shirtToEdit.shirtStyle === style.image,
@@ -198,13 +198,34 @@ const Design = ({
   );
 };
 
-// Design.propTypes = {
-// //   children: PropTypes.node.isRequired,
-//   shirtToEdit:PropTypes.?.isRequired,
-//   selectStyle,
-//   selectColor,
-//   selectGraphic,
-//   addShirtText,
-//   changeTextFont,
-// };
+Design.propTypes = {
+  //   children: PropTypes.node.isRequired,
+  shirtToEdit: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired,
+    subtotal: PropTypes.number.isRequired,
+    shirtStyle: PropTypes.string.isRequired,
+    shirtColor: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    }),
+    text: PropTypes.string.isRequired,
+    textColor: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    }),
+    font: PropTypes.string.isRequired,
+    graphic: PropTypes.string.isRequired,
+    graphicColor: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+  selectStyle: PropTypes.func.isRequired,
+  selectColor: PropTypes.func.isRequired,
+  selectGraphic: PropTypes.func.isRequired,
+  addShirtText: PropTypes.func.isRequired,
+  changeTextFont: PropTypes.func.isRequired,
+};
 export default Design;

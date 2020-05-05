@@ -31,7 +31,13 @@ const Shirt = ({ addToCart, editShirt, shirt }) => (
         <Col className="text" xs="8">
           <strong>${shirt.price}</strong>
         </Col>
-        <Col className="icon-edit" xs="2" onClick={editShirt} />
+        <Col
+          className="icon-edit"
+          xs="2"
+          onClick={() => {
+            editShirt(shirt);
+          }}
+        />
       </Row>
     </Container>
   </Card>

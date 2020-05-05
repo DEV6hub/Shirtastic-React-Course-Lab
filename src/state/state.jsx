@@ -12,9 +12,9 @@ export const StateProvider = ({ children }) => {
     },
     user: { user: {} },
   };
-  console.log('rootReducer + iS', typeof rootReducer, typeof initialState);
+  // console.log('rootReducer + iS', typeof rootReducer, typeof initialState);
   // const value = useReducer(rootReducer, initialState);
-  console.log('StateProvider -> useReducer', useReducer);
+  // console.log('StateProvider -> useReducer', useReducer);
   return (
     <StateContext.Provider value={useReducer(rootReducer, initialState)}>
       {children}
