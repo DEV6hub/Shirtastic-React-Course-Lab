@@ -14,7 +14,7 @@ const contactIntro =
 
 const Shipping = (props) => {
   const history = useHistory();
-  const [_, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
   const { email, password } = props.signUpdata;
   const [name, setName] = useState('');
   const [address1, setAddress1] = useState('');

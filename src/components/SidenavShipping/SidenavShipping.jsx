@@ -45,17 +45,17 @@ const SidenavShipping = (props) => {
     });
   };
 
-  const updateShippingInfo = (event) => {
-    const field = event.currentTarget;
-    const val = field.value;
-    setState({
-      [field.id]: val,
-    });
+  // const updateShippingInfo = (event) => {
+  //   const field = event.currentTarget;
+  //   const val = field.value;
+  //   setState({
+  //     [field.id]: val,
+  //   });
 
-    if (field.id === 'country') {
-      setState({ region: '' });
-    }
-  };
+  //   if (field.id === 'country') {
+  //     setState({ region: '' });
+  //   }
+  // };
 
   const updateUser = (event) => {
     props.createUser(state);
