@@ -17,15 +17,22 @@ const shirtsReducer = (
   switch (action.type) {
     case CREATE_SHIRT:
       return [...state, action.shirt];
+
     case UPDATE_SHIRT:
       return state.map((shirt) => (shirt.id === action.id ? action.shirt : shirt));
+
     case DELETE_SHIRT:
       return state.filter((shirt) => shirt.id !== action.id);
+
+    case REQUEST_SHIRTS:
+      return { ...state, shirtList: [], fetchingShirts: true };
+
     case REQUEST_SHIRTS_SUCCESS:
       return { ...state, shirtList: action.response, fetchingShirts: false };
-    case REQUEST_SHIRTS:
-      return { ...state, fetchingShirts: true };
+
     case REQUEST_SHIRTS_FAILURE:
+      return { ...state, shirtList: [], fetchingShirts: false };
+
     default:
       return state;
   }

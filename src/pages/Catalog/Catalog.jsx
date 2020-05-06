@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './Catalog.css';
-
 import { Row, Navbar, NavbarToggler } from 'reactstrap';
-
 import { useHistory } from 'react-router-dom';
 import Cart from '../../components/Cart/Cart';
 import SidenavShipping from '../../components/SidenavShipping/SidenavShipping';
@@ -10,13 +8,12 @@ import Payment from '../../components/Payment/Payment';
 import Confirmation from '../../components/Confirmation/Confirmation';
 import Design from '../../components/Design/Design';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
-// import { useStateValue } from '../../state/state';
-import * as actionTypes from '../../constants/ActionTypes';
 import {
-  requestShirts,
-  requestShirtsSuccess,
-  requestShirtsFailure,
-} from '../../state/actions/actions';
+  REQUEST_SHIRTS,
+  REQUEST_SHIRTS_SUCCESS,
+  REQUEST_SHIRTS_FAILURE,
+} from '../../constants/ActionTypes';
+
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirts';
 
@@ -293,7 +290,7 @@ const Catalog = () => {
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick, false);
     shirtsDispatch({
-      type: actionTypes.REQUEST_SHIRTS,
+      type: REQUEST_SHIRTS,
     });
 
     fetch('http://localhost:9001/shirts')
@@ -301,12 +298,12 @@ const Catalog = () => {
       .then(
         (json) =>
           shirtsDispatch({
-            type: actionTypes.REQUEST_SHIRTS_SUCCESS,
+            type: REQUEST_SHIRTS_SUCCESS,
             response: json,
           }),
         (error) =>
           shirtsDispatch({
-            type: actionTypes.REQUEST_SHIRTS_FAILURE,
+            type: REQUEST_SHIRTS_FAILURE,
             error,
           }),
       );
