@@ -22,7 +22,7 @@ const CatalogTabs = ({ shirtList, editShirt, addToCart }) => {
       <Nav tabs className="catalog-tabs">
         <NavItem>
           <NavLink
-            className={classnames({ active: activeTab === '1' })}
+            className={activeTab === '1' ? 'active' : ''}
             onClick={() => {
               toggle('1');
             }}
@@ -32,7 +32,7 @@ const CatalogTabs = ({ shirtList, editShirt, addToCart }) => {
         </NavItem>
         <NavItem>
           <NavLink
-            className={classnames({ active: activeTab === '2' })}
+            className={activeTab === '2' ? 'active' : ''}
             onClick={() => {
               toggle('2');
             }}
@@ -42,7 +42,7 @@ const CatalogTabs = ({ shirtList, editShirt, addToCart }) => {
         </NavItem>
         <NavItem>
           <NavLink
-            className={classnames({ active: activeTab === '3' })}
+            className={activeTab === '3' ? 'active' : ''}
             onClick={() => {
               toggle('3');
             }}

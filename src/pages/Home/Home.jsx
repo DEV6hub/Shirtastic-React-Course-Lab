@@ -16,6 +16,7 @@ const Home = () => {
   const [password, setPassword] = useState('');
   const info = { activeTab, email, password };
 
+  // TODO AH Replace with smaller code
   const toggle = useCallback(
     (tab) => {
       if (activeTab !== tab) {
