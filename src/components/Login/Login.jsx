@@ -1,6 +1,8 @@
 import React from 'react';
 import './Login.css';
 import { useHistory } from 'react-router-dom';
+
+import PrimaryButton from '../PrimaryButton/primary-button';
 import facebookIcon from '../../images/facebook.svg';
 import twitterIcon from '../../images/twitter.svg';
 
@@ -16,20 +18,24 @@ const Login = () => {
     <div className="login-container">
       <div className="text-center">
         <h2>Log in</h2>
-        <br />
-        <button type="button" className="primary-btn" onClick={handleLogin}>
-          <img className="facebook-icon" src={facebookIcon} alt="facebook icon" />
-          WITH FACEBOOK
-        </button>
-        <button type="button" className="primary-btn" onClick={handleLogin}>
-          <img className="twitter-icon" src={twitterIcon} alt="twitter icon" />
-          WITH TWITTER
-        </button>
+
+        <PrimaryButton>
+          <img src={facebookIcon} alt="Login with Facebook" />
+          <span>with Facebook</span>
+        </PrimaryButton>
+
+        <PrimaryButton>
+          <img src={twitterIcon} alt="Login with Twitter" />
+          <span>with Twitter</span>
+        </PrimaryButton>
       </div>
-      <br />
-      <div className="hr">
-        <span>OR</span>
+
+      <div className="or-divider">
+        <div className="line">&nbsp;</div>
+        <div>OR</div>
+        <div className="line">&nbsp;</div>
       </div>
+
       <form onSubmit={handleLogin}>
         <div className="form-group">
           <label htmlFor="email">Email Address</label>

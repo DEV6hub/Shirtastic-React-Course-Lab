@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900');
 @import url('https://fonts.googleapis.com/css?family=Caveat|Cookie|Dancing+Script|Gloria+Hallelujah|Indie+Flower|Kaushan+Script|Libre+Barcode+39|Lora|Open+Sans|Orbitron|Pacifico|Roboto|Sacramento');
-@import "~bootstrap/dist/css/bootstrap.css";
+/* @import "~bootstrap/dist/css/bootstrap.css"; */
 
 .App {
   font-family: 'Montserrat', sans-serif;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 h2 {
@@ -31,8 +31,8 @@ label {
   min-width: 144px;
   height: 35px;
   border-radius: 18px;
-  background-color: #10A2DC;
-  color: #FFFFFF;
+  background-color: #10a2dc;
+  color: #ffffff;
   outline: 0;
   border: 0;
   transition-duration: 0.4s;
@@ -43,14 +43,17 @@ label {
 }
 
 .primary-btn:hover {
-  background-color: #00B7FF;
+  background-color: #00b7ff;
 }
 
-.primary-btn:focus, .primary-btn:active:focus, .primary-btn.active:focus {
+.primary-btn:focus,
+.primary-btn:active:focus,
+.primary-btn.active:focus {
   outline: 0;
 }
 
-.primary-btn.active, .primary-btn:active {
+.primary-btn.active,
+.primary-btn:active {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
   transition-delay: 0s;
 }
