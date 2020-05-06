@@ -4,7 +4,7 @@ import * as types from '../constants/ActionTypes';
 describe('shirts reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({
-      fetchingShirts: false,
+      isFetchingShirts: false,
       shirtList: [],
     });
   });
@@ -16,7 +16,7 @@ describe('shirts reducer', () => {
         response: [],
       }),
     ).toEqual({
-      fetchingShirts: false,
+      isFetchingShirts: false,
       shirtList: [],
     });
   });

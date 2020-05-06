@@ -45,10 +45,6 @@ const Login = () => {
           </button>
         </div>
       </form>
-      {/* <h1>{fetchingShirts ? 'YES' : 'NO'}</h1>
-      {shirtList.map((shirt) => (
-        <p key={shirt.name}>{shirt.name}</p>
-      ))} */}
     </div>
   );
 };

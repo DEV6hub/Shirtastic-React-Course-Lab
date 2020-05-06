@@ -89,4 +89,6 @@ const CatalogTabs = ({ shirtList, editShirt, addToCart }) => {
   );
 };
 
+// TODO AH Add Props Validation
+
 export default CatalogTabs;

@@ -12,13 +12,17 @@ import {
   REQUEST_SHIRTS,
   REQUEST_SHIRTS_SUCCESS,
   REQUEST_SHIRTS_FAILURE,
+  CREATE_SHIRT,
+  UPDATE_SHIRT,
 } from '../../constants/ActionTypes';
-
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirts';
 
 const Catalog = () => {
   const history = useHistory();
+  const [shirtsState, shirtsDispatch] = useShirtsContext();
+  // This can be combined with the line above - separated here for clarity
+  const { shirtList, isFetchingShirts } = shirtsState;
 
   const cart = useRef(null);
   const cartOverlay = useRef(null);
@@ -44,8 +48,6 @@ const Catalog = () => {
   };
   const [shirtToEdit, setShirtToEdit] = useState(initialShirt);
   const [action, setAction] = useState('');
-
-  const [{ shirtList, fetchingShirts }, shirtsDispatch] = useShirtsContext();
 
   const closeCart = useCallback(() => {
     console.log('Cart Closed');
@@ -196,19 +198,18 @@ const Catalog = () => {
   );
 
   const saveShirtDesign = useCallback(() => {
-    const newShirt = shirtToEdit;
+    // Make a copy of the edited shirt object - to assert that we are not changing state data directly
+    const newShirt = { ...shirtToEdit };
     console.log('Shirt Save');
 
-    const list = shirtList;
+    // Some derived shirt attributes
     newShirt.image = `${newShirt.shirtStyle}-${newShirt.shirtColor.name.toLowerCase()}`;
     [newShirt.gender] = newShirt.shirtStyle;
 
     if (action === 'new') {
-      newShirt.id = list.length + 1;
-      newShirt.description = 'Custom Shirt Design';
-      list.push(newShirt);
+      shirtsDispatch({ type: CREATE_SHIRT, shirt: newShirt });
     } else {
-      list[newShirt.id - 1] = newShirt;
+      shirtsDispatch({ type: UPDATE_SHIRT, shirt: newShirt });
     }
 
     const blankShirt = {
@@ -228,7 +229,7 @@ const Catalog = () => {
     setOpenDesign(false);
     setAction('');
     setShirtToEdit(blankShirt);
-  }, [action, shirtList, shirtToEdit]);
+  }, [action, shirtToEdit, shirtsDispatch]);
 
   const selectStyle = useCallback(
     (style) => {
@@ -239,6 +240,7 @@ const Catalog = () => {
     [shirtToEdit],
   );
 
+  // TODO AH Consider changing to reducer - this is a reducer-like code
   const selectColor = useCallback(
     (color, attribute) => {
       const shirt = { ...shirtToEdit };
@@ -376,7 +378,7 @@ const Catalog = () => {
           />
         ) : (
           <div>
-            {fetchingShirts ? <h1 style={{ color: 'red' }}>FETCHING SHIRTS</h1> : ''}
+            {isFetchingShirts ? <h1 style={{ color: 'red' }}>FETCHING SHIRTS</h1> : ''}
             <CatalogTabs shirtList={shirtList} addToCart={addToCart} editShirt={editShirt} />
           </div>
         )}

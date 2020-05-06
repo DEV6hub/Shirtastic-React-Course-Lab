@@ -6,7 +6,7 @@ export const ShirtsContext = createContext();
 
 export const ShirtsProvider = ({ children }) => {
   const initialState = {
-    fetchingShirts: false,
+    isFetchingShirts: false,
     shirtList: [],
   };
 
