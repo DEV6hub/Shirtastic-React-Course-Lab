@@ -199,6 +199,8 @@ const Design = ({
 Design.propTypes = {
   //   children: PropTypes.node.isRequired,
   shirtToEdit: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     quantity: PropTypes.number.isRequired,
