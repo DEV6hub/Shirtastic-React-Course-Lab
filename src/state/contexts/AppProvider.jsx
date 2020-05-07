@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ShirtsProvider } from './shirts';
-import { UserProvider } from './user';
+import { ShirtsProvider } from './shirtsContext';
+import { UserProvider } from './userContext';
 
 const AppProvider = ({ children }) => {
   return (

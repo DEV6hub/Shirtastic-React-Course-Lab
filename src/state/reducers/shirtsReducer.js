@@ -1,46 +1,56 @@
 import {
   CREATE_SHIRT,
   UPDATE_SHIRT,
-  DELETE_SHIRT,
   REQUEST_SHIRTS,
   REQUEST_SHIRTS_SUCCESS,
   REQUEST_SHIRTS_FAILURE,
 } from '../../constants/ActionTypes';
 
-const shirtsReducer = (state, action) => {
-  console.log('Shirts Reducer state:', state);
+const shirtsReducer = (prevState, action) => {
+  console.log('Shirts Reducer previous state:', prevState);
   console.log('Shirts Reducer action:', action);
+
+  let newState = null;
+
   switch (action.type) {
     case CREATE_SHIRT:
-      return {
-        ...state,
-        shirtList: [
-          ...state.shirtList,
-          { ...action.shirt, id: state.shirtList.length + 1, description: 'Custom Shirt Design' },
-        ],
+      newState = {
+        ...prevState,
+        shirtList: [...prevState.shirtList, action.shirt],
       };
+      return newState;
 
     case UPDATE_SHIRT:
-      return {
-        ...state,
-        shirtList: state.shirtList.map((shirt) =>
+      newState = {
+        ...prevState,
+        shirtList: prevState.shirtList.map((shirt) =>
           shirt.id === action.shirt.id ? action.shirt : shirt,
         ),
       };
-    case DELETE_SHIRT:
-      return state.filter((shirt) => shirt.id !== action.id);
+      return newState;
+
+    // Delete is not currently supported by UI
+    // case DELETE_SHIRT:
+    //   return state.filter((shirt) => shirt.id !== action.id);
 
     case REQUEST_SHIRTS:
-      return { ...state, shirtList: [], isFetchingShirts: true };
+      newState = { ...prevState, shirtList: [], isFetchingShirts: true };
+      return newState;
 
     case REQUEST_SHIRTS_SUCCESS:
-      return { ...state, shirtList: action.response, isFetchingShirts: false };
+      newState = {
+        ...prevState,
+        shirtList: action.response.filter((item) => !!item.name),
+        isFetchingShirts: false,
+      };
+      return newState;
 
     case REQUEST_SHIRTS_FAILURE:
-      return { ...state, shirtList: [], isFetchingShirts: false };
+      newState = { ...prevState, shirtList: [], isFetchingShirts: false };
+      return newState;
 
     default:
-      return state;
+      return prevState;
   }
 };
 

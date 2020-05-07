@@ -8,21 +8,28 @@ import Payment from '../../components/Payment/Payment';
 import Confirmation from '../../components/Confirmation/Confirmation';
 import Design from '../../components/Design/Design';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
-import {
-  REQUEST_SHIRTS,
-  REQUEST_SHIRTS_SUCCESS,
-  REQUEST_SHIRTS_FAILURE,
-  CREATE_SHIRT,
-  UPDATE_SHIRT,
-} from '../../constants/ActionTypes';
 import navLogo from '../../images/navlogo.png';
-import { useShirtsContext } from '../../state/contexts/shirts';
+import { useShirtsContext } from '../../state/contexts/shirtsContext';
+
+const initialShirt = {
+  id: 0, // the id will be replaced with the new available number on save
+  image: '',
+  name: 'untitled_design',
+  price: 18.99,
+  quantity: 0,
+  subtotal: 0,
+  shirtStyle: 'MensShirt',
+  shirtColor: { name: 'white', color: '#FFFFFF' },
+  text: '',
+  textColor: { name: 'white', color: '#FFFFFF' },
+  font: "'Montserrat', sans-serif",
+  graphic: '',
+  graphicColor: { name: 'white', color: '#FFFFFF' },
+};
 
 const Catalog = () => {
   const history = useHistory();
-  const [shirtsState, shirtsDispatch] = useShirtsContext();
-  // This can be combined with the line above - separated here for clarity
-  const { shirtList, isFetchingShirts } = shirtsState;
+  const { isFetchingShirts, shirtList, loadShirts, createShirt, updateShirt } = useShirtsContext();
 
   const cart = useRef(null);
   const cartOverlay = useRef(null);
@@ -33,19 +40,7 @@ const Catalog = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [shirtsInCart, setShirtsInCart] = useState([]);
   const [openDesign, setOpenDesign] = useState(false);
-  const initialShirt = {
-    name: 'untitled_design',
-    price: 18.99,
-    quantity: 0,
-    subtotal: 0,
-    shirtStyle: 'MensShirt',
-    shirtColor: { name: 'white', color: '#FFFFFF' },
-    text: '',
-    textColor: { name: 'white', color: '#FFFFFF' },
-    font: "'Montserrat', sans-serif",
-    graphic: '',
-    graphicColor: { name: 'white', color: '#FFFFFF' },
-  };
+
   const [shirtToEdit, setShirtToEdit] = useState(initialShirt);
   const [action, setAction] = useState('');
 
@@ -207,29 +202,15 @@ const Catalog = () => {
     [newShirt.gender] = newShirt.shirtStyle;
 
     if (action === 'new') {
-      shirtsDispatch({ type: CREATE_SHIRT, shirt: newShirt });
+      createShirt(newShirt);
     } else {
-      shirtsDispatch({ type: UPDATE_SHIRT, shirt: newShirt });
+      updateShirt(newShirt);
     }
-
-    const blankShirt = {
-      name: 'untitled_design',
-      price: 18.99,
-      quantity: 0,
-      subtotal: 0,
-      shirtStyle: 'MensShirt',
-      shirtColor: { name: 'white', color: '#FFFFFF' },
-      text: '',
-      textColor: { name: 'white', color: '#FFFFFF' },
-      font: "'Montserrat', sans-serif",
-      graphic: '',
-      graphicColor: { name: 'white', color: '#FFFFFF' },
-    };
 
     setOpenDesign(false);
     setAction('');
-    setShirtToEdit(blankShirt);
-  }, [action, shirtToEdit, shirtsDispatch]);
+    setShirtToEdit(initialShirt);
+  }, [action, createShirt, shirtToEdit, updateShirt]);
 
   const selectStyle = useCallback(
     (style) => {
@@ -291,25 +272,11 @@ const Catalog = () => {
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick, false);
-    shirtsDispatch({
-      type: REQUEST_SHIRTS,
-    });
+  }, [handleOutsideClick]);
 
-    fetch('http://localhost:9001/shirts')
-      .then((response) => response.json())
-      .then(
-        (json) =>
-          shirtsDispatch({
-            type: REQUEST_SHIRTS_SUCCESS,
-            response: json,
-          }),
-        (error) =>
-          shirtsDispatch({
-            type: REQUEST_SHIRTS_FAILURE,
-            error,
-          }),
-      );
-  }, [handleOutsideClick, shirtsDispatch]);
+  useEffect(() => {
+    loadShirts();
+  }, [loadShirts]);
 
   return (
     <div>
@@ -379,7 +346,7 @@ const Catalog = () => {
         ) : (
           <div>
             {isFetchingShirts ? <h1 style={{ color: 'red' }}>FETCHING SHIRTS</h1> : ''}
-            <CatalogTabs shirtList={shirtList} addToCart={addToCart} editShirt={editShirt} />
+            <CatalogTabs addToCart={addToCart} editShirt={editShirt} />
           </div>
         )}
       </div>

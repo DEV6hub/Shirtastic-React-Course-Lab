@@ -9,8 +9,7 @@ It is recommended to add these plugins to your IDE:
 - Clone the repo
 - npm install
 - npm start
-- npm run serve1 (in a separate terminal)
-- npm run serve2 (in a separate terminal)
+- npm run serve:db
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
