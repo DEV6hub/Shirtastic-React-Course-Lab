@@ -1,20 +1,11 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { shirtsReducer } from '../reducers';
+import useShirts from '../../hooks/useShirts';
 
 const ShirtsContext = createContext();
 
 export const ShirtsProvider = ({ children }) => {
-  const initialState = {
-    isFetchingShirts: false,
-    shirtList: [],
-  };
-
-  return (
-    <ShirtsContext.Provider value={useReducer(shirtsReducer, initialState)}>
-      {children}
-    </ShirtsContext.Provider>
-  );
+  return <ShirtsContext.Provider value={useShirts()}>{children}</ShirtsContext.Provider>;
 };
 
 ShirtsProvider.propTypes = {

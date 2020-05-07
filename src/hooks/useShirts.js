@@ -1,5 +1,15 @@
+import { useReducer } from 'react';
+import { shirtsReducer } from '../state/reducers';
+
+const initialState = {
+  isFetchingShirts: false,
+  shirtList: [],
+};
+
 const useShirts = () => {
-  return null;
+  const [shirtsState, shirtsDispatcher] = useReducer(shirtsReducer, initialState);
+
+  return [shirtsState, shirtsDispatcher];
 };
 
 export default useShirts;
