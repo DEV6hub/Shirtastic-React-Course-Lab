@@ -50,7 +50,7 @@ const useShirts = () => {
       // Insert into database
       postShirt(shirtWithId);
       // Add to state
-      shirtsDispatcher({ type: CREATE_SHIRT, shirtWithId });
+      shirtsDispatcher({ type: CREATE_SHIRT, shirt: shirtWithId });
     },
     [shirtsState.shirtList.length],
   );

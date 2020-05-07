@@ -275,7 +275,6 @@ const Catalog = () => {
   }, [handleOutsideClick]);
 
   useEffect(() => {
-    console.log(1);
     loadShirts();
   }, [loadShirts]);
 
@@ -347,7 +346,7 @@ const Catalog = () => {
         ) : (
           <div>
             {isFetchingShirts ? <h1 style={{ color: 'red' }}>FETCHING SHIRTS</h1> : ''}
-            <CatalogTabs shirtList={shirtList} addToCart={addToCart} editShirt={editShirt} />
+            <CatalogTabs addToCart={addToCart} editShirt={editShirt} />
           </div>
         )}
       </div>

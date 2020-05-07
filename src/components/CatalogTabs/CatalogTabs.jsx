@@ -3,8 +3,11 @@ import './CatalogTabs.css';
 import { Container, Row, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 
 import Shirt from '../Shirt/Shirt';
+import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
-const CatalogTabs = ({ shirtList, editShirt, addToCart }) => {
+const CatalogTabs = ({ editShirt, addToCart }) => {
+  const { shirtList } = useShirtsContext();
+  console.log(shirtList);
   const [activeTab, setActiveTab] = useState('1');
 
   const toggle = useCallback(
@@ -54,9 +57,11 @@ const CatalogTabs = ({ shirtList, editShirt, addToCart }) => {
         <TabPane tabId="1">
           {/* All Shirt List Goes Here */}
           <Row>
-            {shirtList.map((shirt) => (
-              <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} editShirt={editShirt} />
-            ))}
+            {shirtList.map((shirt) => {
+              return (
+                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} editShirt={editShirt} />
+              );
+            })}
           </Row>
         </TabPane>
         <TabPane tabId="2">
