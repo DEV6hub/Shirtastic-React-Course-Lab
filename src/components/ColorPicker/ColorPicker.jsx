@@ -1,7 +1,6 @@
 import React from 'react';
 import './ColorPicker.css';
 import { Row } from 'reactstrap';
-import classnames from 'classnames';
 import { colors } from '../../constants/colors';
 
 const ColorPicker = ({ selectColor, attribute, selectedColor, title }) => (
@@ -11,9 +10,9 @@ const ColorPicker = ({ selectColor, attribute, selectedColor, title }) => (
       {colors.map((color, index) => (
         <div key={index}>
           <div
-            className={`color-div ${classnames({
-              active: selectedColor.name.toLowerCase() === color.name.toLowerCase(),
-            })}`}
+            className={`color-div ${
+              selectedColor.name.toLowerCase() === color.name.toLowerCase() ? 'active' : ''
+            }`}
             onClick={() => selectColor(color, attribute)}
             style={{ backgroundColor: color.color }}
           />

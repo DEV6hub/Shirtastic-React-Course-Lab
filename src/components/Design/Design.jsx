@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Design.css';
 import { Container, Row, Col, Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { styleList } from '../../constants/styleList';
 import ColorPicker from '../ColorPicker/ColorPicker';
@@ -60,7 +59,7 @@ const Design = ({
               <Nav tabs className="style-tabs">
                 <NavItem>
                   <NavLink
-                    className={classnames({ active: activeTab === '1' })}
+                    className={activeTab === '1' ? 'active' : ''}
                     onClick={() => {
                       toggle('1');
                     }}
@@ -70,7 +69,7 @@ const Design = ({
                 </NavItem>
                 <NavItem>
                   <NavLink
-                    className={classnames({ active: activeTab === '2' })}
+                    className={activeTab === '2' ? 'active' : ''}
                     onClick={() => {
                       toggle('2');
                     }}
@@ -80,7 +79,7 @@ const Design = ({
                 </NavItem>
                 <NavItem>
                   <NavLink
-                    className={classnames({ active: activeTab === '3' })}
+                    className={activeTab === '3' ? 'active' : ''}
                     onClick={() => {
                       toggle('3');
                     }}
@@ -90,7 +89,7 @@ const Design = ({
                 </NavItem>
                 <NavItem>
                   <NavLink
-                    className={classnames({ active: activeTab === '4' })}
+                    className={activeTab === '4' ? 'active' : ''}
                     onClick={() => {
                       toggle('4');
                     }}
@@ -108,9 +107,9 @@ const Design = ({
                     {styleList.map((style, index) => (
                       <Col key={index}>
                         <div
-                          className={`style-img-container ${classnames({
-                            active: shirtToEdit.shirtStyle === style.image,
-                          })}`}
+                          className={`style-img-container ${
+                            shirtToEdit.shirtStyle === style.image ? 'active' : ''
+                          }`}
                           onClick={() => selectStyle(style.image)}
                         >
                           <img

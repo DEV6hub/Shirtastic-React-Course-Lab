@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import './Home.css';
 import { Container, Row, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-import classnames from 'classnames';
 
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
@@ -60,7 +59,7 @@ const Home = () => {
           <Nav tabs className="home-tabs">
             <NavItem>
               <NavLink
-                className={classnames({ active: activeTab === '1' })}
+                className={activeTab === '1' ? 'active' : ''}
                 onClick={() => {
                   toggle('1');
                 }}
@@ -70,7 +69,7 @@ const Home = () => {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: activeTab === '2' })}
+                className={activeTab === '2' ? 'active' : ''}
                 onClick={() => {
                   toggle('2');
                 }}

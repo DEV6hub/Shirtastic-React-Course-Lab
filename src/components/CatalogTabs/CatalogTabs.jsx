@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import './CatalogTabs.css';
-import classnames from 'classnames';
 import { Container, Row, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 
 import Shirt from '../Shirt/Shirt';

@@ -1,7 +1,6 @@
 import React from 'react';
 import './Graphic.css';
 import { Row } from 'reactstrap';
-import classnames from 'classnames';
 import { graphics } from '../../constants/graphics';
 
 const Graphic = ({ selectedGraphic, selectGraphic }) => (
@@ -11,7 +10,7 @@ const Graphic = ({ selectedGraphic, selectGraphic }) => (
       {graphics.map((graphic, index) => (
         <div key={index}>
           <div
-            className={`graphic-div ${classnames({ active: selectedGraphic === graphic.image })}`}
+            className={`graphic-div ${selectedGraphic === graphic.image ? 'active' : ''}`}
             onClick={() => selectGraphic(graphic.image)}
           >
             <img src={require(`../../images/${graphic.image}`)} alt="graphic" />
