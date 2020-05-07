@@ -29,9 +29,9 @@ const shirtsReducer = (prevState, action) => {
       };
       return newState;
 
-    // Delete is not currently supported by UI
+    // Delete is not currently implemented in the UI
     // case DELETE_SHIRT:
-    //   return state.filter((shirt) => shirt.id !== action.id);
+    // state.shirtList.filter((shirt) => shirt.id !== action.id);
 
     case REQUEST_SHIRTS:
       newState = { ...prevState, shirtList: [], isFetchingShirts: true };

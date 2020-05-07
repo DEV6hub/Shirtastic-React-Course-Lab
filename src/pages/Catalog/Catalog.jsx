@@ -354,4 +354,6 @@ const Catalog = () => {
   );
 };
 
+Catalog.propTypes = {};
+
 export default Catalog;
