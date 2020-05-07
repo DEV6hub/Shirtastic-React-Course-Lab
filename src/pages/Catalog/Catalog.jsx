@@ -8,21 +8,12 @@ import Payment from '../../components/Payment/Payment';
 import Confirmation from '../../components/Confirmation/Confirmation';
 import Design from '../../components/Design/Design';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
-import {
-  REQUEST_SHIRTS,
-  REQUEST_SHIRTS_SUCCESS,
-  REQUEST_SHIRTS_FAILURE,
-  CREATE_SHIRT,
-  UPDATE_SHIRT,
-} from '../../constants/ActionTypes';
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
 const Catalog = () => {
   const history = useHistory();
-  const [shirtsState, shirtsDispatch] = useShirtsContext();
-  // This can be combined with the line above - separated here for clarity
-  const { shirtList, isFetchingShirts } = shirtsState;
+  const { isFetchingShirts, shirtList, loadShirts, createShirt, updateShirt } = useShirtsContext();
 
   const cart = useRef(null);
   const cartOverlay = useRef(null);
@@ -207,9 +198,9 @@ const Catalog = () => {
     [newShirt.gender] = newShirt.shirtStyle;
 
     if (action === 'new') {
-      shirtsDispatch({ type: CREATE_SHIRT, shirt: newShirt });
+      createShirt(newShirt);
     } else {
-      shirtsDispatch({ type: UPDATE_SHIRT, shirt: newShirt });
+      updateShirt(newShirt);
     }
 
     const blankShirt = {
@@ -229,7 +220,7 @@ const Catalog = () => {
     setOpenDesign(false);
     setAction('');
     setShirtToEdit(blankShirt);
-  }, [action, shirtToEdit, shirtsDispatch]);
+  }, [action, createShirt, shirtToEdit, updateShirt]);
 
   const selectStyle = useCallback(
     (style) => {
@@ -291,25 +282,12 @@ const Catalog = () => {
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick, false);
-    shirtsDispatch({
-      type: REQUEST_SHIRTS,
-    });
+  }, [handleOutsideClick]);
 
-    fetch('http://localhost:9001/shirts')
-      .then((response) => response.json())
-      .then(
-        (json) =>
-          shirtsDispatch({
-            type: REQUEST_SHIRTS_SUCCESS,
-            response: json,
-          }),
-        (error) =>
-          shirtsDispatch({
-            type: REQUEST_SHIRTS_FAILURE,
-            error,
-          }),
-      );
-  }, [handleOutsideClick, shirtsDispatch]);
+  useEffect(() => {
+    console.log(1);
+    loadShirts();
+  }, [loadShirts]);
 
   return (
     <div>
