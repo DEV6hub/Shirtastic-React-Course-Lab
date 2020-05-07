@@ -10,7 +10,7 @@ import { countries, regions } from '../Models/CountriesAndRegions';
 // import { useStateValue } from '../../state/state';
 import * as actionTypes from '../../constants/ActionTypes';
 
-import { useUserContext } from '../../state/contexts/user';
+import { useUserContext } from '../../state/contexts/userContext';
 
 const contactIntro =
   'Welcome to the club, where can we ship your shirts to? You can always provide this information at checkout';

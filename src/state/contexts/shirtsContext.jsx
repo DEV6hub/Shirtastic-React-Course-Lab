@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { shirtsReducer } from '../reducers';
 
-export const ShirtsContext = createContext();
+const ShirtsContext = createContext();
 
 export const ShirtsProvider = ({ children }) => {
   const initialState = {

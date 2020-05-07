@@ -16,7 +16,7 @@ import {
   UPDATE_SHIRT,
 } from '../../constants/ActionTypes';
 import navLogo from '../../images/navlogo.png';
-import { useShirtsContext } from '../../state/contexts/shirts';
+import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
 const Catalog = () => {
   const history = useHistory();
