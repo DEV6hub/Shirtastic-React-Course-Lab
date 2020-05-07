@@ -7,6 +7,7 @@ import {
   CREATE_SHIRT,
   UPDATE_SHIRT,
 } from '../constants/ActionTypes';
+import { putShirt, postShirt, getShirts } from '../utils/shirtsApi';
 
 const initialState = {
   isFetchingShirts: false,
@@ -16,10 +17,15 @@ const initialState = {
 const useShirts = () => {
   const [shirtsState, shirtsDispatcher] = useReducer(shirtsReducer, initialState);
 
-  const fetchShirts = useCallback(async () => {
+  // Load shirts from API and fill the internal state
+  const loadShirts = useCallback(async () => {
+    shirtsDispatcher({
+      type: REQUEST_SHIRTS,
+    });
+
     try {
-      const response = await fetch('http://localhost:9000/shirts');
-      const data = await response.json();
+      // Load shirts data from database
+      const data = await getShirts();
       shirtsDispatcher({
         type: REQUEST_SHIRTS_SUCCESS,
         response: data,
@@ -32,37 +38,29 @@ const useShirts = () => {
     }
   }, []);
 
-  const postShirts = useCallback(async () => {
-    await fetch('http://localhost:9000/shirts', {
-      method: 'POST',
-      body: JSON.stringify(shirtsState.shirtList),
-    });
-  }, [shirtsState.shirtList]);
-
-  // Load shirts from API and fill the internal state
-  const loadShirts = useCallback(() => {
-    shirtsDispatcher({
-      type: REQUEST_SHIRTS,
-    });
-    fetchShirts();
-  }, [fetchShirts]);
-
   // Create a new shirt, add to internal state, post to API
   const createShirt = useCallback(
     (shirt) => {
-      shirtsDispatcher({ type: CREATE_SHIRT, shirt });
-      postShirts();
+      // Add the next id number
+      const shirtWithId = {
+        ...shirt,
+        id: shirtsState.shirtList.length + 1,
+        description: 'Custom Shirt Design',
+      };
+      // Insert into database
+      postShirt(shirtWithId);
+      // Add to state
+      shirtsDispatcher({ type: CREATE_SHIRT, shirtWithId });
     },
-    [postShirts],
+    [shirtsState.shirtList.length],
   );
 
-  const updateShirt = useCallback(
-    (shirt) => {
-      shirtsDispatcher({ type: UPDATE_SHIRT, shirt });
-      postShirts();
-    },
-    [postShirts],
-  );
+  const updateShirt = useCallback((shirt) => {
+    // Update database
+    putShirt(shirt);
+    // Update state
+    shirtsDispatcher({ type: UPDATE_SHIRT, shirt });
+  }, []);
 
   return {
     isFetchingShirts: shirtsState.isFetchingShirts,

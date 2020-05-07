@@ -11,6 +11,22 @@ import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
+const initialShirt = {
+  id: 0, // the id will be replaced with the new available number on save
+  image: '',
+  name: 'untitled_design',
+  price: 18.99,
+  quantity: 0,
+  subtotal: 0,
+  shirtStyle: 'MensShirt',
+  shirtColor: { name: 'white', color: '#FFFFFF' },
+  text: '',
+  textColor: { name: 'white', color: '#FFFFFF' },
+  font: "'Montserrat', sans-serif",
+  graphic: '',
+  graphicColor: { name: 'white', color: '#FFFFFF' },
+};
+
 const Catalog = () => {
   const history = useHistory();
   const { isFetchingShirts, shirtList, loadShirts, createShirt, updateShirt } = useShirtsContext();
@@ -24,19 +40,7 @@ const Catalog = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [shirtsInCart, setShirtsInCart] = useState([]);
   const [openDesign, setOpenDesign] = useState(false);
-  const initialShirt = {
-    name: 'untitled_design',
-    price: 18.99,
-    quantity: 0,
-    subtotal: 0,
-    shirtStyle: 'MensShirt',
-    shirtColor: { name: 'white', color: '#FFFFFF' },
-    text: '',
-    textColor: { name: 'white', color: '#FFFFFF' },
-    font: "'Montserrat', sans-serif",
-    graphic: '',
-    graphicColor: { name: 'white', color: '#FFFFFF' },
-  };
+
   const [shirtToEdit, setShirtToEdit] = useState(initialShirt);
   const [action, setAction] = useState('');
 
@@ -203,23 +207,9 @@ const Catalog = () => {
       updateShirt(newShirt);
     }
 
-    const blankShirt = {
-      name: 'untitled_design',
-      price: 18.99,
-      quantity: 0,
-      subtotal: 0,
-      shirtStyle: 'MensShirt',
-      shirtColor: { name: 'white', color: '#FFFFFF' },
-      text: '',
-      textColor: { name: 'white', color: '#FFFFFF' },
-      font: "'Montserrat', sans-serif",
-      graphic: '',
-      graphicColor: { name: 'white', color: '#FFFFFF' },
-    };
-
     setOpenDesign(false);
     setAction('');
-    setShirtToEdit(blankShirt);
+    setShirtToEdit(initialShirt);
   }, [action, createShirt, shirtToEdit, updateShirt]);
 
   const selectStyle = useCallback(
