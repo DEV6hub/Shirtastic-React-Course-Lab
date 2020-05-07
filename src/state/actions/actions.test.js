@@ -24,7 +24,7 @@ describe('async actions', () => {
     fetchMock.restore();
   });
   it('creates REQUEST_SHIRTS_SUCCESS when sucessfuly fetching shirts', () => {
-    fetchMock.get('http://localhost:9001/shirts', { body: { shirts: [] } });
+    fetchMock.get('http://localhost:9000/shirts', { body: { shirts: [] } });
     const expectedActions = [
       { type: types.REQUEST_SHIRTS },
       { type: types.REQUEST_SHIRTS_SUCCESS, response: { shirts: [] } },

@@ -18,7 +18,7 @@ const useShirts = () => {
 
   const fetchShirts = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:9001/shirts');
+      const response = await fetch('http://localhost:9000/shirts');
       const data = await response.json();
       shirtsDispatcher({
         type: REQUEST_SHIRTS_SUCCESS,
@@ -32,13 +32,14 @@ const useShirts = () => {
     }
   }, []);
 
-  const postShirts = useCallback(async (shirtList) => {
-    await fetch('http://localhost:9001/shirts', {
+  const postShirts = useCallback(async () => {
+    await fetch('http://localhost:9000/shirts', {
       method: 'POST',
-      body: JSON.stringify(shirtList),
+      body: JSON.stringify(shirtsState.shirtList),
     });
-  }, []);
+  }, [shirtsState.shirtList]);
 
+  // Load shirts from API and fill the internal state
   const loadShirts = useCallback(() => {
     shirtsDispatcher({
       type: REQUEST_SHIRTS,
@@ -46,6 +47,7 @@ const useShirts = () => {
     fetchShirts();
   }, [fetchShirts]);
 
+  // Create a new shirt, add to internal state, post to API
   const createShirt = useCallback(
     (shirt) => {
       shirtsDispatcher({ type: CREATE_SHIRT, shirt });
@@ -54,9 +56,13 @@ const useShirts = () => {
     [postShirts],
   );
 
-  const updateShirt = useCallback((shirt) => {
-    shirtsDispatcher({ type: UPDATE_SHIRT, shirt });
-  }, []);
+  const updateShirt = useCallback(
+    (shirt) => {
+      shirtsDispatcher({ type: UPDATE_SHIRT, shirt });
+      postShirts();
+    },
+    [postShirts],
+  );
 
   return {
     isFetchingShirts: shirtsState.isFetchingShirts,

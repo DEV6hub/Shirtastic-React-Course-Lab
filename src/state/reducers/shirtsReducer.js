@@ -34,7 +34,11 @@ const shirtsReducer = (state, action) => {
       return { ...state, shirtList: [], isFetchingShirts: true };
 
     case REQUEST_SHIRTS_SUCCESS:
-      return { ...state, shirtList: action.response, isFetchingShirts: false };
+      return {
+        ...state,
+        shirtList: action.response.filter((item) => !!item.name),
+        isFetchingShirts: false,
+      };
 
     case REQUEST_SHIRTS_FAILURE:
       return { ...state, shirtList: [], isFetchingShirts: false };

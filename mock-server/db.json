@@ -1,4 +1,16 @@
 {
+  "userInfo": {
+    "name": "Lalarukh Mahmood",
+    "address1": "11 Ester Drive",
+    "address2": "",
+    "phone": "",
+    "city": "Scarborough",
+    "country": "canada",
+    "province": "Ontario",
+    "zip": "m9b 2e1",
+    "email": "",
+    "password": ""
+  },
   "shirts": [
     {
       "id": 1,
