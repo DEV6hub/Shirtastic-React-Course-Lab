@@ -10,7 +10,7 @@ import Confirmation from '../Confirmation/Confirmation';
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
-const Navigation = ({ isDesign, shirtTitle, setShirtTitle }) => {
+const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) => {
   const { shirtList } = useShirtsContext();
 
   const cart = useRef(null);
@@ -205,7 +205,7 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle }) => {
                   setShirtTitle(event.target.value);
                 }}
               />
-              <button type="button" className="btn primary-btn nav-btn">
+              <button type="button" className="btn primary-btn nav-btn" onClick={handleSaveShirt}>
                 SAVE DESIGN
               </button>
             </div>
@@ -227,8 +227,15 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle }) => {
 
 Navigation.propTypes = {
   isDesign: PropTypes.bool.isRequired,
-  shirtTitle: PropTypes.string.isRequired,
-  setShirtTitle: PropTypes.func.isRequired,
+  shirtTitle: PropTypes.string,
+  setShirtTitle: PropTypes.func,
+  handleSaveShirt: PropTypes.func,
+};
+
+Navigation.defaultProps = {
+  shirtTitle: null,
+  setShirtTitle: null,
+  handleSaveShirt: null,
 };
 
 export default Navigation;

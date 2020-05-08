@@ -136,13 +136,6 @@ const Design = () => {
   );
 
   const [activeTab, setActiveTab] = useState('1');
-  const graphicImage = useRef(null);
-
-  useEffect(() => {
-    if (shirtToEdit?.image) {
-      graphicImage.current.style.display = 'block';
-    }
-  }, [shirtToEdit]);
 
   const toggle = useCallback(
     (tab) => {
@@ -156,17 +149,22 @@ const Design = () => {
   const selectGraphicHandler = useCallback(
     (graphic) => {
       // Show Image
-      graphicImage.current.style.display = 'block';
+      // graphicImage.current.style.display = 'block';
       selectGraphic(graphic);
     },
-    [graphicImage, selectGraphic],
+    [selectGraphic],
   );
 
   if (!shirtToEdit) return null;
 
   return (
     <>
-      <Navigation isDesign shirtTitle={shirtToEdit.name} setShirtTitle={setShirtTitle} />
+      <Navigation
+        isDesign
+        shirtTitle={shirtToEdit.name}
+        setShirtTitle={setShirtTitle}
+        handleSaveShirt={saveShirtDesign}
+      />
       <Container fluid className="design-container">
         <div className="design-background">
           <img src={background} alt="background" />
@@ -295,13 +293,13 @@ const Design = () => {
                 )}.jpg`)}
                 alt="shirt style"
               />
-              <img
-                ref={graphicImage}
-                className="img-fluid graphic-img"
-                style={{ display: 'none' }}
-                src={shirtToEdit.graphic ? require(`../../images/${shirtToEdit.graphic}`) : ''}
-                alt="shirt graphic"
-              />
+              {shirtToEdit?.graphic && (
+                <img
+                  className="img-fluid graphic-img"
+                  src={shirtToEdit?.graphic ? require(`../../images/${shirtToEdit.graphic}`) : ''}
+                  alt="shirt graphic"
+                />
+              )}
               <div
                 className="shirt-text"
                 style={{ color: shirtToEdit.textColor.color, fontFamily: shirtToEdit.font }}
