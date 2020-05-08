@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react';
+import { useReducer, useCallback, useEffect } from 'react';
 import { shirtsReducer } from '../state/reducers';
 import {
   REQUEST_SHIRTS,
@@ -37,6 +37,10 @@ const useShirts = () => {
       });
     }
   }, []);
+
+  useEffect(() => {
+    loadShirts();
+  }, [loadShirts]);
 
   // Create a new shirt, add to internal state, post to API
   const createShirt = useCallback(
