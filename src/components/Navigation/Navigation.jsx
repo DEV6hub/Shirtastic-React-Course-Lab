@@ -1,7 +1,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Navbar, NavbarToggler } from 'reactstrap';
-import { useHistory, Link } from 'react-router-dom';
+import { Row, Navbar, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import Cart from '../Cart/Cart';
 import SidenavShipping from '../SidenavShipping/SidenavShipping';
 import Payment from '../Payment/Payment';
@@ -10,8 +10,7 @@ import Confirmation from '../Confirmation/Confirmation';
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
-const Navigation = ({ isDesign }) => {
-  const history = useHistory();
+const Navigation = ({ isDesign, shirtTitle, setShirtTitle }) => {
   const { shirtList } = useShirtsContext();
 
   const cart = useRef(null);
@@ -151,12 +150,6 @@ const Navigation = ({ isDesign }) => {
     [shirtsInCart],
   );
 
-  const setShirtTitle = useCallback((event) => {
-    const shirt = { ...shirtToEdit };
-    shirt.name = event.target.value;
-    setShirtToEdit(shirt);
-  }, []);
-
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick, false);
   }, [handleOutsideClick]);
@@ -194,7 +187,9 @@ const Navigation = ({ isDesign }) => {
 
       <Navbar color="faded" light>
         <Row className="nav-toggle-btn">
-          <NavbarToggler className="mr-2" onClick={() => history.push('/')} />
+          <Col className="mr-2">
+            <Link to="/" className="navbar-toggler-icon" />
+          </Col>
           <div className="vr" />
           <img className="nav-logo" src={navLogo} alt="logo" />
         </Row>
@@ -204,10 +199,13 @@ const Navigation = ({ isDesign }) => {
               <input
                 className="input-shirt-title"
                 type="text"
-                value={shirtToEdit.name}
-                onChange={setShirtTitle}
+                value={shirtTitle}
+                // value={shirtToEdit.name}
+                onChange={(event) => {
+                  setShirtTitle(event.target.value);
+                }}
               />
-              <button type="button" className="primary-btn nav-btn">
+              <button type="button" className="btn primary-btn nav-btn">
                 SAVE DESIGN
               </button>
             </div>
@@ -229,6 +227,8 @@ const Navigation = ({ isDesign }) => {
 
 Navigation.propTypes = {
   isDesign: PropTypes.bool.isRequired,
+  shirtTitle: PropTypes.string.isRequired,
+  setShirtTitle: PropTypes.func.isRequired,
 };
 
 export default Navigation;

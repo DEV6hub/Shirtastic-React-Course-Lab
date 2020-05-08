@@ -32,7 +32,6 @@ const initialShirt = {
 };
 
 const Design = () => {
-  console.log('In Design...');
   const history = useHistory();
   const [shirtToEdit, setShirtToEdit] = useState(null);
   const { shirtId } = useParams();
@@ -57,6 +56,11 @@ const Design = () => {
     }
   }, [action, shirtIdNumber, shirtList]);
 
+  // Sync the shirt title with the navigation bar input
+  const setShirtTitle = (newTitle) => {
+    setShirtToEdit({ ...shirtToEdit, name: newTitle });
+  };
+
   // TODO AH Consider changing to reducer - this is a reducer-like code
   const selectColor = (color, attribute) => {
     const shirt = { ...shirtToEdit };
@@ -77,7 +81,7 @@ const Design = () => {
   };
 
   const saveShirtDesign = useCallback(() => {
-    // Make a copy of the edited shirt object - to assert that we are not changing state data directly
+    // Make a copy of the edited shirt object - to show that we are not changing state data directly
     const shirtToSave = {
       ...shirtToEdit,
       image: `${shirtToEdit.shirtStyle}-${shirtToEdit.shirtColor.name.toLowerCase()}`,
@@ -162,7 +166,7 @@ const Design = () => {
 
   return (
     <>
-      <Navigation isDesign />
+      <Navigation isDesign shirtTitle={shirtToEdit.name} setShirtTitle={setShirtTitle} />
       <Container fluid className="design-container">
         <div className="design-background">
           <img src={background} alt="background" />

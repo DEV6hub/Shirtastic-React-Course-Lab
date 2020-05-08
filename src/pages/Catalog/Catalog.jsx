@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React from 'react';
 import './Catalog.css';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
