@@ -1,29 +1,61 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 import './Design.css';
 import { Container, Row, Col, Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { styleList } from '../../constants/styleList';
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import Graphic from '../../components/Graphic/Graphic';
 import Text from '../../components/Text/Text';
 import background from '../../images/Fractal.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
+import Navigation from '../../components/Navigation/Navigation';
 
 const renderImage = (image, color) => {
   return `${image}-${color?.toLowerCase() || ''}`;
 };
 
+const initialShirt = {
+  id: 0, // the id will be replaced with the new available number on save
+  image: '',
+  name: 'untitled_design',
+  price: 18.99,
+  quantity: 0,
+  subtotal: 0,
+  shirtStyle: 'MensShirt',
+  shirtColor: { name: 'white', color: '#FFFFFF' },
+  text: '',
+  textColor: { name: 'white', color: '#FFFFFF' },
+  font: "'Montserrat', sans-serif",
+  graphic: '',
+  graphicColor: { name: 'white', color: '#FFFFFF' },
+};
+
 const Design = () => {
+  console.log('In Design...');
+  const history = useHistory();
   const [shirtToEdit, setShirtToEdit] = useState(null);
   const { shirtId } = useParams();
+  const { search } = useLocation();
   const shirtIdNumber = Number(shirtId);
-  const { shirtList } = useShirtsContext();
-  console.log(33333);
+  const { shirtList, createShirt, updateShirt } = useShirtsContext();
+
+  const action = new URLSearchParams(search).get('action') || 'edit';
 
   useEffect(() => {
-    setShirtToEdit(shirtList.find((item) => item.id === shirtIdNumber));
-  }, [shirtIdNumber, shirtList]);
+    switch (action) {
+      case 'edit':
+        setShirtToEdit(shirtList.find((item) => item.id === shirtIdNumber));
+        break;
+      case 'new':
+        setShirtToEdit(initialShirt);
+        break;
+      default:
+        console.log('Invalid design action');
+        setShirtToEdit(null);
+        break;
+    }
+  }, [action, shirtIdNumber, shirtList]);
 
   // TODO AH Consider changing to reducer - this is a reducer-like code
   const selectColor = (color, attribute) => {
@@ -43,6 +75,25 @@ const Design = () => {
     }
     setShirtToEdit(shirt);
   };
+
+  const saveShirtDesign = useCallback(() => {
+    // Make a copy of the edited shirt object - to assert that we are not changing state data directly
+    const shirtToSave = {
+      ...shirtToEdit,
+      image: `${shirtToEdit.shirtStyle}-${shirtToEdit.shirtColor.name.toLowerCase()}`,
+      gender: shirtToEdit.shirtStyle[0],
+    };
+    console.log('Shirt Save');
+
+    if (action === 'new') {
+      createShirt(shirtToSave);
+    } else {
+      updateShirt(shirtToSave);
+    }
+
+    setShirtToEdit(null);
+    history.push('/catalog');
+  }, [action, createShirt, history, shirtToEdit, updateShirt]);
 
   const selectStyle = useCallback(
     (style) => {
@@ -110,151 +161,154 @@ const Design = () => {
   if (!shirtToEdit) return null;
 
   return (
-    <Container fluid className="design-container">
-      <div className="design-background">
-        <img src={background} alt="background" />
-      </div>
-      <Row className="style-config-row">
-        <Col className="style-config-col">
-          <Card className="style-card">
-            <div className="style-tabs-container">
-              <Nav tabs className="style-tabs">
-                <NavItem>
-                  <NavLink
-                    className={activeTab === '1' ? 'active' : ''}
-                    onClick={() => {
-                      toggle('1');
-                    }}
-                  >
-                    Styles
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={activeTab === '2' ? 'active' : ''}
-                    onClick={() => {
-                      toggle('2');
-                    }}
-                  >
-                    Colours
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={activeTab === '3' ? 'active' : ''}
-                    onClick={() => {
-                      toggle('3');
-                    }}
-                  >
-                    Graphics
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={activeTab === '4' ? 'active' : ''}
-                    onClick={() => {
-                      toggle('4');
-                    }}
-                  >
-                    Text
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </div>
-            <TabContent activeTab={activeTab}>
-              <TabPane tabId="1">
-                <Container fluid className="select-style-container">
-                  <div className="style-title">Choose a shirt style</div>
-                  <Row className="select-style-row">
-                    {styleList.map((style, index) => (
-                      <Col key={index}>
-                        <div
-                          className={`style-img-container ${
-                            shirtToEdit.shirtStyle === style.image ? 'active' : ''
-                          }`}
-                          onClick={() => selectStyle(style.image)}
-                        >
-                          <img
-                            className="img-fluid"
-                            // eslint-disable-next-line import/no-dynamic-require, global-require
-                            src={require(`../../images/${renderImage(
-                              style.image,
-                              shirtToEdit?.shirtColor?.name,
-                            )}.jpg`)}
-                            alt="shirt style"
-                          />
-                        </div>
-                        <div className="style-description">{style.description}</div>
-                      </Col>
-                    ))}
-                  </Row>
-                </Container>
-              </TabPane>
-              <TabPane tabId="2">
-                <ColorPicker
-                  selectColor={selectColor}
-                  attribute="shirt"
-                  selectedColor={shirtToEdit.shirtColor}
-                  title="Choose a shirt colour"
-                />
-              </TabPane>
-              <TabPane tabId="3">
-                <Graphic
-                  selectedGraphic={shirtToEdit.graphic}
-                  selectGraphic={selectGraphicHandler}
-                />
-                <hr />
-                <ColorPicker
-                  selectColor={selectColor}
-                  attribute="graphic"
-                  selectedColor={shirtToEdit.graphicColor}
-                  title="Change graphic colour"
-                />
-              </TabPane>
-              <TabPane tabId="4">
-                <Text
-                  text={shirtToEdit.text}
-                  addShirtText={addShirtText}
-                  changeTextFont={changeTextFont}
-                  font={shirtToEdit.font}
-                />
-                <ColorPicker
-                  selectColor={selectColor}
-                  attribute="text"
-                  selectedColor={shirtToEdit.textColor}
-                  title="Change text colour"
-                />
-              </TabPane>
-            </TabContent>
-          </Card>
-        </Col>
-        <Col className="style-config-col">
-          <Card className="img-configurator" id="imageRef">
-            <img
-              className="img-fluid"
-              src={require(`../../images/${renderImage(
-                shirtToEdit.shirtStyle,
-                shirtToEdit.shirtColor.name,
-              )}.jpg`)}
-              alt="shirt style"
-            />
-            <img
-              ref={graphicImage}
-              className="img-fluid graphic-img"
-              style={{ display: 'none' }}
-              src={shirtToEdit.graphic ? require(`../../images/${shirtToEdit.graphic}`) : ''}
-              alt="shirt graphic"
-            />
-            <div
-              className="shirt-text"
-              style={{ color: shirtToEdit.textColor.color, fontFamily: shirtToEdit.font }}
-            >
-              {shirtToEdit.text}
-            </div>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Navigation isDesign />
+      <Container fluid className="design-container">
+        <div className="design-background">
+          <img src={background} alt="background" />
+        </div>
+        <Row className="style-config-row">
+          <Col className="style-config-col">
+            <Card className="style-card">
+              <div className="style-tabs-container">
+                <Nav tabs className="style-tabs">
+                  <NavItem>
+                    <NavLink
+                      className={activeTab === '1' ? 'active' : ''}
+                      onClick={() => {
+                        toggle('1');
+                      }}
+                    >
+                      Styles
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={activeTab === '2' ? 'active' : ''}
+                      onClick={() => {
+                        toggle('2');
+                      }}
+                    >
+                      Colours
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={activeTab === '3' ? 'active' : ''}
+                      onClick={() => {
+                        toggle('3');
+                      }}
+                    >
+                      Graphics
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={activeTab === '4' ? 'active' : ''}
+                      onClick={() => {
+                        toggle('4');
+                      }}
+                    >
+                      Text
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+              </div>
+              <TabContent activeTab={activeTab}>
+                <TabPane tabId="1">
+                  <Container fluid className="select-style-container">
+                    <div className="style-title">Choose a shirt style</div>
+                    <Row className="select-style-row">
+                      {styleList.map((style, index) => (
+                        <Col key={index}>
+                          <div
+                            className={`style-img-container ${
+                              shirtToEdit.shirtStyle === style.image ? 'active' : ''
+                            }`}
+                            onClick={() => selectStyle(style.image)}
+                          >
+                            <img
+                              className="img-fluid"
+                              // eslint-disable-next-line import/no-dynamic-require, global-require
+                              src={require(`../../images/${renderImage(
+                                style.image,
+                                shirtToEdit?.shirtColor?.name,
+                              )}.jpg`)}
+                              alt="shirt style"
+                            />
+                          </div>
+                          <div className="style-description">{style.description}</div>
+                        </Col>
+                      ))}
+                    </Row>
+                  </Container>
+                </TabPane>
+                <TabPane tabId="2">
+                  <ColorPicker
+                    selectColor={selectColor}
+                    attribute="shirt"
+                    selectedColor={shirtToEdit.shirtColor}
+                    title="Choose a shirt colour"
+                  />
+                </TabPane>
+                <TabPane tabId="3">
+                  <Graphic
+                    selectedGraphic={shirtToEdit.graphic}
+                    selectGraphic={selectGraphicHandler}
+                  />
+                  <hr />
+                  <ColorPicker
+                    selectColor={selectColor}
+                    attribute="graphic"
+                    selectedColor={shirtToEdit.graphicColor}
+                    title="Change graphic colour"
+                  />
+                </TabPane>
+                <TabPane tabId="4">
+                  <Text
+                    text={shirtToEdit.text}
+                    addShirtText={addShirtText}
+                    changeTextFont={changeTextFont}
+                    font={shirtToEdit.font}
+                  />
+                  <ColorPicker
+                    selectColor={selectColor}
+                    attribute="text"
+                    selectedColor={shirtToEdit.textColor}
+                    title="Change text colour"
+                  />
+                </TabPane>
+              </TabContent>
+            </Card>
+          </Col>
+          <Col className="style-config-col">
+            <Card className="img-configurator" id="imageRef">
+              <img
+                className="img-fluid"
+                src={require(`../../images/${renderImage(
+                  shirtToEdit.shirtStyle,
+                  shirtToEdit.shirtColor.name,
+                )}.jpg`)}
+                alt="shirt style"
+              />
+              <img
+                ref={graphicImage}
+                className="img-fluid graphic-img"
+                style={{ display: 'none' }}
+                src={shirtToEdit.graphic ? require(`../../images/${shirtToEdit.graphic}`) : ''}
+                alt="shirt graphic"
+              />
+              <div
+                className="shirt-text"
+                style={{ color: shirtToEdit.textColor.color, fontFamily: shirtToEdit.font }}
+              >
+                {shirtToEdit.text}
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

@@ -5,7 +5,7 @@ import { Container, Row, Nav, NavItem, NavLink, TabContent, TabPane } from 'reac
 import Shirt from '../Shirt/Shirt';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
-const CatalogTabs = ({ editShirt, addToCart }) => {
+const CatalogTabs = ({ addToCart }) => {
   const { shirtList } = useShirtsContext();
   console.log(shirtList);
   const [activeTab, setActiveTab] = useState('1');
@@ -58,9 +58,7 @@ const CatalogTabs = ({ editShirt, addToCart }) => {
           {/* All Shirt List Goes Here */}
           <Row>
             {shirtList.map((shirt) => {
-              return (
-                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} editShirt={editShirt} />
-              );
+              return <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} />;
             })}
           </Row>
         </TabPane>
@@ -72,7 +70,7 @@ const CatalogTabs = ({ editShirt, addToCart }) => {
                 return shirt.gender === 'M';
               })
               .map((shirt) => (
-                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} editShirt={editShirt} />
+                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} />
               ))}
           </Row>
         </TabPane>
@@ -84,7 +82,7 @@ const CatalogTabs = ({ editShirt, addToCart }) => {
                 return shirt.gender === 'W';
               })
               .map((shirt) => (
-                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} editShirt={editShirt} />
+                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} />
               ))}
           </Row>
         </TabPane>
