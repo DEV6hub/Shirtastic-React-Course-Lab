@@ -9,11 +9,11 @@ import Confirmation from '../Confirmation/Confirmation';
 
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
-import useShoppingCart from '../../hooks/useShoppingCart';
+import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
 
 const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) => {
   const { shirtList } = useShirtsContext();
-  const { shirtsInCart, removeFromCart, emptyCart, setShirtsInCart } = useShoppingCart();
+  const { shirtsInCart, removeFromCart, emptyCart, setShirtsInCart } = useShoppingCartContext();
 
   const cart = useRef(null);
   const cartOverlay = useRef(null);

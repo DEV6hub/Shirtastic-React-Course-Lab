@@ -1,12 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import './CatalogTabs.css';
 import { Container, Row, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 
 import Shirt from '../Shirt/Shirt';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
-const CatalogTabs = ({ addToCart }) => {
+const CatalogTabs = () => {
   const { shirtList } = useShirtsContext();
   console.log(shirtList);
   const [activeTab, setActiveTab] = useState('1');
@@ -59,7 +58,7 @@ const CatalogTabs = ({ addToCart }) => {
           {/* All Shirt List Goes Here */}
           <Row>
             {shirtList.map((shirt) => {
-              return <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} />;
+              return <Shirt key={shirt.id} shirt={shirt} />;
             })}
           </Row>
         </TabPane>
@@ -71,7 +70,7 @@ const CatalogTabs = ({ addToCart }) => {
                 return shirt.gender === 'M';
               })
               .map((shirt) => (
-                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} />
+                <Shirt key={shirt.id} shirt={shirt} />
               ))}
           </Row>
         </TabPane>
@@ -83,7 +82,7 @@ const CatalogTabs = ({ addToCart }) => {
                 return shirt.gender === 'W';
               })
               .map((shirt) => (
-                <Shirt key={shirt.id} shirt={shirt} addToCart={addToCart} />
+                <Shirt key={shirt.id} shirt={shirt} />
               ))}
           </Row>
         </TabPane>
@@ -92,7 +91,5 @@ const CatalogTabs = ({ addToCart }) => {
   );
 };
 
-CatalogTabs.propTypes = {
-  addToCart: PropTypes.func.isRequired,
-};
+CatalogTabs.propTypes = {};
 export default CatalogTabs;
