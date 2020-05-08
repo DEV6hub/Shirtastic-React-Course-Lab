@@ -6,7 +6,7 @@ import Cart from '../../components/Cart/Cart';
 import SidenavShipping from '../../components/SidenavShipping/SidenavShipping';
 import Payment from '../../components/Payment/Payment';
 import Confirmation from '../../components/Confirmation/Confirmation';
-import Design from '../../components/Design/Design';
+import Design from '../Design/Design';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';

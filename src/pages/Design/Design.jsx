@@ -3,9 +3,9 @@ import './Design.css';
 import { Container, Row, Col, Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { styleList } from '../../constants/styleList';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import Graphic from '../Graphic/Graphic';
-import Text from '../Text/Text';
+import ColorPicker from '../../components/ColorPicker/ColorPicker';
+import Graphic from '../../components/Graphic/Graphic';
+import Text from '../../components/Text/Text';
 import background from '../../images/Fractal.png';
 
 const renderImage = (image, color) => {
