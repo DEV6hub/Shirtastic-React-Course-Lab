@@ -6,6 +6,7 @@ import Home from '../pages/Home/Home';
 import Catalog from '../pages/Catalog/Catalog';
 import GraphicDisplay from './GraphicDisplay/GraphicDisplay';
 import AppProvider from '../state/contexts/AppProvider';
+import Design from '../pages/Design/Design';
 
 const App = () => {
   return (
@@ -17,6 +18,9 @@ const App = () => {
           </Route>
           <Route exact path="/catalog">
             <Catalog />
+          </Route>
+          <Route exact path="/design/:shirtId">
+            <Design />
           </Route>
           <Route path="/graphic/:graphicLogo">
             <GraphicDisplay />

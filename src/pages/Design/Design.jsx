@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import './Design.css';
 import { Container, Row, Col, Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import PropTypes from 'prop-types';
@@ -7,24 +8,83 @@ import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import Graphic from '../../components/Graphic/Graphic';
 import Text from '../../components/Text/Text';
 import background from '../../images/Fractal.png';
+import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
 const renderImage = (image, color) => {
   return `${image}-${color?.toLowerCase() || ''}`;
 };
 
-const Design = ({
-  shirtToEdit,
-  selectStyle,
-  selectColor,
-  selectGraphic,
-  addShirtText,
-  changeTextFont,
-}) => {
+const Design = () => {
+  const [shirtToEdit, setShirtToEdit] = useState(null);
+  const { shirtId } = useParams();
+  const shirtIdNumber = Number(shirtId);
+  const { shirtList } = useShirtsContext();
+  console.log(33333);
+
+  useEffect(() => {
+    setShirtToEdit(shirtList.find((item) => item.id === shirtIdNumber));
+  }, [shirtIdNumber, shirtList]);
+
+  // TODO AH Consider changing to reducer - this is a reducer-like code
+  const selectColor = (color, attribute) => {
+    const shirt = { ...shirtToEdit };
+    switch (attribute) {
+      case 'shirt':
+        shirt.shirtColor = color;
+        break;
+      case 'text':
+        shirt.textColor = color;
+        break;
+      case 'graphic':
+        shirt.graphicColor = color;
+        break;
+      default:
+        break;
+    }
+    setShirtToEdit(shirt);
+  };
+
+  const selectStyle = useCallback(
+    (style) => {
+      const shirt = { ...shirtToEdit };
+      shirt.shirtStyle = style;
+      setShirtToEdit(shirt);
+    },
+    [shirtToEdit],
+  );
+
+  const selectGraphic = useCallback(
+    (graphic) => {
+      const shirt = { ...shirtToEdit };
+      shirt.graphic = graphic;
+      setShirtToEdit(shirt);
+    },
+    [shirtToEdit],
+  );
+
+  const addShirtText = useCallback(
+    (text) => {
+      const shirt = { ...shirtToEdit };
+      shirt.text = text;
+      setShirtToEdit(shirt);
+    },
+    [shirtToEdit],
+  );
+
+  const changeTextFont = useCallback(
+    (font) => {
+      const shirt = { ...shirtToEdit };
+      shirt.font = font;
+      setShirtToEdit(shirt);
+    },
+    [shirtToEdit],
+  );
+
   const [activeTab, setActiveTab] = useState('1');
   const graphicImage = useRef(null);
 
   useEffect(() => {
-    if (shirtToEdit.image) {
+    if (shirtToEdit?.image) {
       graphicImage.current.style.display = 'block';
     }
   }, [shirtToEdit]);
@@ -46,6 +106,8 @@ const Design = ({
     },
     [graphicImage, selectGraphic],
   );
+
+  if (!shirtToEdit) return null;
 
   return (
     <Container fluid className="design-container">
@@ -196,36 +258,6 @@ const Design = ({
   );
 };
 
-Design.propTypes = {
-  //   children: PropTypes.node.isRequired,
-  shirtToEdit: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
-    subtotal: PropTypes.number.isRequired,
-    shirtStyle: PropTypes.string.isRequired,
-    shirtColor: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-    }),
-    text: PropTypes.string.isRequired,
-    textColor: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-    }),
-    font: PropTypes.string.isRequired,
-    graphic: PropTypes.string.isRequired,
-    graphicColor: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
-  selectStyle: PropTypes.func.isRequired,
-  selectColor: PropTypes.func.isRequired,
-  selectGraphic: PropTypes.func.isRequired,
-  addShirtText: PropTypes.func.isRequired,
-  changeTextFont: PropTypes.func.isRequired,
-};
+Design.propTypes = {};
+
 export default Design;

@@ -6,7 +6,6 @@ import Cart from '../../components/Cart/Cart';
 import SidenavShipping from '../../components/SidenavShipping/SidenavShipping';
 import Payment from '../../components/Payment/Payment';
 import Confirmation from '../../components/Confirmation/Confirmation';
-import Design from '../Design/Design';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
@@ -212,71 +211,9 @@ const Catalog = () => {
     setShirtToEdit(initialShirt);
   }, [action, createShirt, shirtToEdit, updateShirt]);
 
-  const selectStyle = useCallback(
-    (style) => {
-      const shirt = { ...shirtToEdit };
-      shirt.shirtStyle = style;
-      setShirtToEdit(shirt);
-    },
-    [shirtToEdit],
-  );
-
-  // TODO AH Consider changing to reducer - this is a reducer-like code
-  const selectColor = useCallback(
-    (color, attribute) => {
-      const shirt = { ...shirtToEdit };
-      switch (attribute) {
-        case 'shirt':
-          shirt.shirtColor = color;
-          break;
-        case 'text':
-          shirt.textColor = color;
-          break;
-        case 'graphic':
-          shirt.graphicColor = color;
-          break;
-        default:
-          break;
-      }
-      setShirtToEdit(shirt);
-    },
-    [shirtToEdit],
-  );
-
-  const selectGraphic = useCallback(
-    (graphic) => {
-      const shirt = { ...shirtToEdit };
-      shirt.graphic = graphic;
-      setShirtToEdit(shirt);
-    },
-    [shirtToEdit],
-  );
-
-  const addShirtText = useCallback(
-    (text) => {
-      const shirt = { ...shirtToEdit };
-      shirt.text = text;
-      setShirtToEdit(shirt);
-    },
-    [shirtToEdit],
-  );
-
-  const changeTextFont = useCallback(
-    (font) => {
-      const shirt = { ...shirtToEdit };
-      shirt.font = font;
-      setShirtToEdit(shirt);
-    },
-    [shirtToEdit],
-  );
-
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick, false);
   }, [handleOutsideClick]);
-
-  useEffect(() => {
-    loadShirts();
-  }, [loadShirts]);
 
   return (
     <div>
@@ -334,21 +271,11 @@ const Catalog = () => {
       </Navbar>
       <div>
         <div className="overlay" ref={overlay} />
-        {openDesign ? (
-          <Design
-            shirtToEdit={shirtToEdit}
-            selectStyle={selectStyle}
-            selectColor={selectColor}
-            selectGraphic={selectGraphic}
-            addShirtText={addShirtText}
-            changeTextFont={changeTextFont}
-          />
-        ) : (
-          <div>
-            {isFetchingShirts ? <h1 style={{ color: 'red' }}>FETCHING SHIRTS</h1> : ''}
-            <CatalogTabs addToCart={addToCart} editShirt={editShirt} />
-          </div>
-        )}
+        <div>
+          {isFetchingShirts ? <h1 style={{ color: 'red' }}>FETCHING SHIRTS</h1> : ''}
+          <CatalogTabs addToCart={addToCart} editShirt={editShirt} />
+        </div>
+        }
       </div>
     </div>
   );

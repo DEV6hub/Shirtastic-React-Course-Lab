@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Shirt.css';
 import { Container, Row, Col, Card } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import shirtShape from '../Models/shirtShape';
 
-const Shirt = ({ addToCart, editShirt, shirt }) => (
+const Shirt = ({ addToCart, shirt }) => (
   <Card className="text-center">
     {shirt.graphic ? (
       <Link to={`/graphic/${shirt.graphic}`}>
@@ -31,16 +33,17 @@ const Shirt = ({ addToCart, editShirt, shirt }) => (
         <Col className="text" xs="8">
           <strong>${shirt.price}</strong>
         </Col>
-        <Col
-          className="icon-edit"
-          xs="2"
-          onClick={() => {
-            editShirt(shirt);
-          }}
-        />
+        <Col xs="2">
+          <Link to={`/design/${shirt.id}`} className="icon-edit" />
+        </Col>
       </Row>
     </Container>
   </Card>
 );
+
+Shirt.propTypes = {
+  shirt: PropTypes.shape(shirtShape).isRequired,
+  addToCart: PropTypes.func.isRequired,
+};
 
 export default Shirt;
