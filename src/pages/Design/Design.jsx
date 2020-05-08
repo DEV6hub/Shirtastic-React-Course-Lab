@@ -221,9 +221,10 @@ const Design = () => {
                   <Container fluid className="select-style-container">
                     <div className="style-title">Choose a shirt style</div>
                     <Row className="select-style-row">
-                      {styleList.map((style, index) => (
-                        <Col key={index}>
-                          <div
+                      {styleList.map((style) => (
+                        <Col key={style.image}>
+                          <button
+                            type="button"
                             className={`style-img-container ${
                               shirtToEdit.shirtStyle === style.image ? 'active' : ''
                             }`}
@@ -238,7 +239,7 @@ const Design = () => {
                               )}.jpg`)}
                               alt="shirt style"
                             />
-                          </div>
+                          </button>
                           <div className="style-description">{style.description}</div>
                         </Col>
                       ))}

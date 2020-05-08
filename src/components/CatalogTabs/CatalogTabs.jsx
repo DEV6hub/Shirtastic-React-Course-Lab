@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './CatalogTabs.css';
 import { Container, Row, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 
@@ -91,6 +92,7 @@ const CatalogTabs = ({ addToCart }) => {
   );
 };
 
-// TODO AH Add Props Validation
-
+CatalogTabs.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};
 export default CatalogTabs;

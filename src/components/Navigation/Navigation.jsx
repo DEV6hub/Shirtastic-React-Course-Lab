@@ -9,9 +9,11 @@ import Confirmation from '../Confirmation/Confirmation';
 
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
+import useShoppingCart from '../../hooks/useShoppingCart';
 
 const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) => {
   const { shirtList } = useShirtsContext();
+  const { shirtsInCart, removeFromCart, emptyCart, setShirtsInCart } = useShoppingCart();
 
   const cart = useRef(null);
   const cartOverlay = useRef(null);
@@ -21,7 +23,6 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
   const overlay = useRef(null);
 
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [shirtsInCart, setShirtsInCart] = useState([]);
 
   const closeCart = useCallback(() => {
     console.log('Cart Closed');
@@ -76,13 +77,13 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
       shirt.quantity = 0;
     });
     setShowConfirmation(true);
-    setShirtsInCart([]);
+    emptyCart();
     payment.current.style.width = '100%';
     cart.current.style.width = '0';
     shipping.current.style.width = '0';
     shippingOverlay.current.style.display = 'none';
     cartOverlay.current.style.display = 'none';
-  }, [shirtList]);
+  }, [emptyCart, shirtList]);
 
   const goToCatalog = useCallback(() => {
     console.log('Go Back To Catalog');
@@ -95,43 +96,6 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
     shipping.current.style.right = '0';
     setShowConfirmation(false);
   }, []);
-
-  const addToCart = useCallback(
-    (shirt) => {
-      console.log('Add to Cart');
-      const cartItems = [...shirtsInCart];
-      const index = cartItems.findIndex((item) => {
-        return shirt.image === item.image;
-      });
-      if (index !== -1) {
-        // If shirt exists in cart, update its quantity in cart
-        cartItems[index].quantity += 1;
-        cartItems[index].subtotal = cartItems[index].quantity * cartItems[index].price;
-      } else {
-        // Update the shirt quantity and add it to cart
-        shirt.quantity += 1;
-        shirt.subtotal = shirt.quantity * shirt.price;
-        cartItems.push(shirt);
-      }
-      // Update the state with new list
-      setShirtsInCart(cartItems);
-    },
-    [shirtsInCart],
-  );
-
-  const removeFromCart = useCallback(
-    (shirt) => {
-      console.log('Remove');
-      shirt.quantity = 0;
-      const cartItems = [...shirtsInCart];
-      const index = cartItems.findIndex((item) => {
-        return shirt.image === item.image;
-      });
-      cartItems.splice(index, 1);
-      setShirtsInCart(cartItems);
-    },
-    [shirtsInCart],
-  );
 
   const updateQuantity = useCallback(
     (shirt) => {
@@ -147,7 +111,7 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
       }
       setShirtsInCart(cartItems);
     },
-    [shirtsInCart],
+    [setShirtsInCart, shirtsInCart],
   );
 
   useEffect(() => {
