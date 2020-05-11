@@ -4,8 +4,8 @@ import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 // import classnames from 'classnames';
 
 import Login from '../../components/Login/Login';
-import Signup from '../../components/Signup/Signup';
-import Shipping from '../../components/Shipping/Shipping';
+import SignUp from '../../components/Forms/Signup/Signup';
+// import Shipping from '../../components/Shipping/Shipping';
 
 import logoVertical from '../../images/Shirtastic-vertical.svg';
 
@@ -39,7 +39,6 @@ const Home = () => {
     <div className="home">
       {activeTab === '1' ? (
         <div className="left-column">
-          {/* Login Component Goes Here */}
           <Login userSignUpData={info} />
         </div>
       ) : null}
@@ -52,8 +51,10 @@ const Home = () => {
         </div>
       </div>
       <div className={`left-column ${activeTab === '2' ? 'shipping-col' : ''}`}>
-        {activeTab === '1' ? <h2 className="text-center">Sign up</h2> : null}
-        <Nav tabs className="home-tabs">
+        {/* {activeTab === '1' ? <h2 className="text-center">Sign up</h2> : null} */}
+        <SignUp />
+        {/* <SignUp activeTab={step} updateTab={setStep}/> */}
+        {/* <Nav tabs className="home-tabs">
           <NavItem>
             <NavLink
               className={activeTab === '1' ? 'active' : ''}
@@ -74,17 +75,15 @@ const Home = () => {
               Step 2
             </NavLink>
           </NavItem>
-        </Nav>
-        <TabContent activeTab={activeTab}>
+        </Nav> */}
+        {/* <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
-            {/* Signup Component Goes Here */}
             <Signup onSelectTabId={selectedTabId} userSignUpData={signUpData} />
           </TabPane>
           <TabPane tabId="2">
-            {/* Shipping Component Goes Here */}
             <Shipping signUpdata={info} />
           </TabPane>
-        </TabContent>
+        </TabContent> */}
       </div>
     </div>
   );
