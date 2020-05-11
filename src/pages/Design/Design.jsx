@@ -17,10 +17,10 @@ const renderImage = (image, color) => {
 
 const Design = () => {
   const history = useHistory();
+  const { search } = useLocation();
   const [shirtToEdit, setShirtToEdit] = useState(null);
   const [activeTab, setActiveTab] = useState('1');
   const { shirtId } = useParams();
-  const { search } = useLocation();
   const shirtIdNumber = Number(shirtId);
   const { shirtList, createShirt, updateShirt } = useShirtsContext();
 
@@ -48,7 +48,6 @@ const Design = () => {
     setShirtToEdit({ ...shirtToEdit, name: newTitle });
   };
 
-  // TODO AH Consider changing to reducer - this is a reducer-like code
   const selectColor = (color, attribute) => {
     const shirt = { ...shirtToEdit };
     switch (attribute) {
@@ -68,7 +67,6 @@ const Design = () => {
   };
 
   const saveShirtDesign = useCallback(() => {
-    // Make a copy of the edited shirt object - to show that we are not changing state data directly
     const shirtToSave = {
       ...shirtToEdit,
       image: `${shirtToEdit.shirtStyle}-${shirtToEdit.shirtColor.name.toLowerCase()}`,
