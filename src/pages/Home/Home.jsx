@@ -45,6 +45,7 @@ const Home = () => {
       ) : null}
 
       <div className="middle-column">
+        <div>&nbsp;</div>
         <img className="vertical-logo" src={logoVertical} alt="vertical logo" />
         <div className="copyright text-center">
           © 2020 DEV6 – A division of The New Toronto Group Inc.

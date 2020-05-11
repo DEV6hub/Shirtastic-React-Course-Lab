@@ -3,6 +3,7 @@ import './Login.css';
 import { useHistory, Link } from 'react-router-dom';
 
 import PrimaryButton from '../PrimaryButton/primary-button';
+import FormInput from '../Forms/FormInput/FormInput';
 import facebookIcon from '../../images/facebook.svg';
 import twitterIcon from '../../images/twitter.svg';
 
@@ -36,27 +37,18 @@ const Login = () => {
         <div className="line">&nbsp;</div>
       </div>
 
+      {
+        // TODO KRA Fine tune styling
+      }
       <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
-          <input type="email" className="form-control" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="pwd">Password</label>
-          <input type="password" className="form-control" />
-        </div>
-        <br />
+        <FormInput id="login-email-address" label="Email Address" />
+        <FormInput id="login-password" label="Password" />
 
         <Link to="/catalog">
           <PrimaryButton>
             <span>LOG IN</span>
           </PrimaryButton>
         </Link>
-        {/* <div className="text-center">
-          <button type="submit" className="primary-btn">
-            LOG IN
-          </button>
-        </div> */}
       </form>
     </div>
   );
