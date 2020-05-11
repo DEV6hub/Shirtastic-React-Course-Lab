@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import PrimaryButton from '../PrimaryButton/primary-button';
 import facebookIcon from '../../images/facebook.svg';
@@ -45,11 +45,18 @@ const Login = () => {
           <label htmlFor="pwd">Password</label>
           <input type="password" className="form-control" />
         </div>
-        <div className="text-center">
+        <br />
+
+        <Link to="/catalog">
+          <PrimaryButton>
+            <span>LOG IN</span>
+          </PrimaryButton>
+        </Link>
+        {/* <div className="text-center">
           <button type="submit" className="primary-btn">
             LOG IN
           </button>
-        </div>
+        </div> */}
       </form>
     </div>
   );
