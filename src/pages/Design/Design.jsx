@@ -34,6 +34,7 @@ const Design = () => {
         setShirtToEdit(initialShirt);
         break;
       default:
+        // eslint-disable-next-line no-console
         console.log('Invalid design action');
         setShirtToEdit(null);
         break;
