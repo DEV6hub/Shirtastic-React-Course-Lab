@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import './Design.css';
 import { Container, Row, Col, Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-// import PropTypes from 'prop-types';
 import { styleList } from '../../constants/styleList';
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import Graphic from '../../components/Graphic/Graphic';
@@ -10,37 +9,24 @@ import Text from '../../components/Text/Text';
 import background from '../../images/Fractal.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 import Navigation from '../../components/Navigation/Navigation';
+import initialShirt from '../../constants/initialShirt';
 
 const renderImage = (image, color) => {
   return `${image}-${color?.toLowerCase() || ''}`;
 };
 
-const initialShirt = {
-  id: 0, // the id will be replaced with the new available number on save
-  image: '',
-  name: 'untitled_design',
-  price: 18.99,
-  quantity: 0,
-  subtotal: 0,
-  shirtStyle: 'MensShirt',
-  shirtColor: { name: 'white', color: '#FFFFFF' },
-  text: '',
-  textColor: { name: 'white', color: '#FFFFFF' },
-  font: "'Montserrat', sans-serif",
-  graphic: '',
-  graphicColor: { name: 'white', color: '#FFFFFF' },
-};
-
 const Design = () => {
   const history = useHistory();
-  const [shirtToEdit, setShirtToEdit] = useState(null);
-  const { shirtId } = useParams();
   const { search } = useLocation();
+  const [shirtToEdit, setShirtToEdit] = useState(null);
+  const [activeTab, setActiveTab] = useState('1');
+  const { shirtId } = useParams();
   const shirtIdNumber = Number(shirtId);
   const { shirtList, createShirt, updateShirt } = useShirtsContext();
 
   const action = new URLSearchParams(search).get('action') || 'edit';
 
+  // Configure the page according to URL (shirt id and action) and Shirt List
   useEffect(() => {
     switch (action) {
       case 'edit':
@@ -50,6 +36,7 @@ const Design = () => {
         setShirtToEdit(initialShirt);
         break;
       default:
+        // eslint-disable-next-line no-console
         console.log('Invalid design action');
         setShirtToEdit(null);
         break;
@@ -61,7 +48,6 @@ const Design = () => {
     setShirtToEdit({ ...shirtToEdit, name: newTitle });
   };
 
-  // TODO AH Consider changing to reducer - this is a reducer-like code
   const selectColor = (color, attribute) => {
     const shirt = { ...shirtToEdit };
     switch (attribute) {
@@ -81,12 +67,12 @@ const Design = () => {
   };
 
   const saveShirtDesign = useCallback(() => {
-    // Make a copy of the edited shirt object - to show that we are not changing state data directly
     const shirtToSave = {
       ...shirtToEdit,
       image: `${shirtToEdit.shirtStyle}-${shirtToEdit.shirtColor.name.toLowerCase()}`,
       gender: shirtToEdit.shirtStyle[0],
     };
+    // eslint-disable-next-line no-console
     console.log('Shirt Save');
 
     if (action === 'new') {
@@ -101,41 +87,31 @@ const Design = () => {
 
   const selectStyle = useCallback(
     (style) => {
-      const shirt = { ...shirtToEdit };
-      shirt.shirtStyle = style;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, shirtStyle: style });
     },
     [shirtToEdit],
   );
 
   const selectGraphic = useCallback(
     (graphic) => {
-      const shirt = { ...shirtToEdit };
-      shirt.graphic = graphic;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, graphic });
     },
     [shirtToEdit],
   );
 
   const addShirtText = useCallback(
     (text) => {
-      const shirt = { ...shirtToEdit };
-      shirt.text = text;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, text });
     },
     [shirtToEdit],
   );
 
   const changeTextFont = useCallback(
     (font) => {
-      const shirt = { ...shirtToEdit };
-      shirt.font = font;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, font });
     },
     [shirtToEdit],
   );
-
-  const [activeTab, setActiveTab] = useState('1');
 
   const toggle = useCallback(
     (tab) => {
@@ -146,15 +122,7 @@ const Design = () => {
     [setActiveTab, activeTab],
   );
 
-  const selectGraphicHandler = useCallback(
-    (graphic) => {
-      // Show Image
-      // graphicImage.current.style.display = 'block';
-      selectGraphic(graphic);
-    },
-    [selectGraphic],
-  );
-
+  // Show nothing until the shirt data is loaded
   if (!shirtToEdit) return null;
 
   return (
@@ -255,10 +223,7 @@ const Design = () => {
                   />
                 </TabPane>
                 <TabPane tabId="3">
-                  <Graphic
-                    selectedGraphic={shirtToEdit.graphic}
-                    selectGraphic={selectGraphicHandler}
-                  />
+                  <Graphic selectedGraphic={shirtToEdit.graphic} selectGraphic={selectGraphic} />
                   <hr />
                   <ColorPicker
                     selectColor={selectColor}

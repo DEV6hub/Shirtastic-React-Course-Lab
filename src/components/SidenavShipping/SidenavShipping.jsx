@@ -1,24 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import { createUser } from '../../state/actions/actions';
 import { countries, regions } from '../Models/CountriesAndRegions';
 import './SidenavShipping.css';
-
-const defaultUserInfo = {
-  name: '',
-  email: '',
-  address1: '',
-  address2: '',
-  phone: '',
-  city: '',
-  country: '',
-  province: '',
-  zip: '',
-};
+import { useUserContext } from '../../state/contexts/userContext';
 
 const SidenavShipping = ({ openPayment }) => {
-  const [userInfo, setUserInfo] = useState(defaultUserInfo);
+  const [userInfo, setUserInfo] = useUserContext();
 
   // componentWillReceiveProps(nextProps) {
   //   setState({
