@@ -1,7 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import './Home.css';
-import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-// import classnames from 'classnames';
 
 import Login from '../../components/Login/Login';
 import SignUp from '../../components/Forms/Signup/Signup';
@@ -51,39 +49,7 @@ const Home = () => {
         </div>
       </div>
       <div className={`left-column ${activeTab === '2' ? 'shipping-col' : ''}`}>
-        {/* {activeTab === '1' ? <h2 className="text-center">Sign up</h2> : null} */}
         <SignUp />
-        {/* <SignUp activeTab={step} updateTab={setStep}/> */}
-        {/* <Nav tabs className="home-tabs">
-          <NavItem>
-            <NavLink
-              className={activeTab === '1' ? 'active' : ''}
-              onClick={() => {
-                toggle('1');
-              }}
-            >
-              Step 1
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={activeTab === '2' ? 'active' : ''}
-              onClick={() => {
-                toggle('2');
-              }}
-            >
-              Step 2
-            </NavLink>
-          </NavItem>
-        </Nav> */}
-        {/* <TabContent activeTab={activeTab}>
-          <TabPane tabId="1">
-            <Signup onSelectTabId={selectedTabId} userSignUpData={signUpData} />
-          </TabPane>
-          <TabPane tabId="2">
-            <Shipping signUpdata={info} />
-          </TabPane>
-        </TabContent> */}
       </div>
     </div>
   );
