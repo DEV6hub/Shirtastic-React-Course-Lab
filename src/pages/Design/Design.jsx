@@ -18,6 +18,7 @@ const renderImage = (image, color) => {
 const Design = () => {
   const history = useHistory();
   const [shirtToEdit, setShirtToEdit] = useState(null);
+  const [activeTab, setActiveTab] = useState('1');
   const { shirtId } = useParams();
   const { search } = useLocation();
   const shirtIdNumber = Number(shirtId);
@@ -25,6 +26,7 @@ const Design = () => {
 
   const action = new URLSearchParams(search).get('action') || 'edit';
 
+  // Configure the page according to URL (shirt id and action) and Shirt List
   useEffect(() => {
     switch (action) {
       case 'edit':
@@ -72,6 +74,7 @@ const Design = () => {
       image: `${shirtToEdit.shirtStyle}-${shirtToEdit.shirtColor.name.toLowerCase()}`,
       gender: shirtToEdit.shirtStyle[0],
     };
+    // eslint-disable-next-line no-console
     console.log('Shirt Save');
 
     if (action === 'new') {
@@ -86,41 +89,31 @@ const Design = () => {
 
   const selectStyle = useCallback(
     (style) => {
-      const shirt = { ...shirtToEdit };
-      shirt.shirtStyle = style;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, shirtStyle: style });
     },
     [shirtToEdit],
   );
 
   const selectGraphic = useCallback(
     (graphic) => {
-      const shirt = { ...shirtToEdit };
-      shirt.graphic = graphic;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, graphic });
     },
     [shirtToEdit],
   );
 
   const addShirtText = useCallback(
     (text) => {
-      const shirt = { ...shirtToEdit };
-      shirt.text = text;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, text });
     },
     [shirtToEdit],
   );
 
   const changeTextFont = useCallback(
     (font) => {
-      const shirt = { ...shirtToEdit };
-      shirt.font = font;
-      setShirtToEdit(shirt);
+      setShirtToEdit({ ...shirtToEdit, font });
     },
     [shirtToEdit],
   );
-
-  const [activeTab, setActiveTab] = useState('1');
 
   const toggle = useCallback(
     (tab) => {
@@ -131,15 +124,7 @@ const Design = () => {
     [setActiveTab, activeTab],
   );
 
-  const selectGraphicHandler = useCallback(
-    (graphic) => {
-      // Show Image
-      // graphicImage.current.style.display = 'block';
-      selectGraphic(graphic);
-    },
-    [selectGraphic],
-  );
-
+  // Show nothing until the shirt data is loaded
   if (!shirtToEdit) return null;
 
   return (
@@ -240,10 +225,7 @@ const Design = () => {
                   />
                 </TabPane>
                 <TabPane tabId="3">
-                  <Graphic
-                    selectedGraphic={shirtToEdit.graphic}
-                    selectGraphic={selectGraphicHandler}
-                  />
+                  <Graphic selectedGraphic={shirtToEdit.graphic} selectGraphic={selectGraphic} />
                   <hr />
                   <ColorPicker
                     selectColor={selectColor}
