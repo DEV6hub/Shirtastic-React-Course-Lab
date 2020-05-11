@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import './Design.css';
 import { Container, Row, Col, Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
-// import PropTypes from 'prop-types';
 import { styleList } from '../../constants/styleList';
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import Graphic from '../../components/Graphic/Graphic';
@@ -10,25 +9,10 @@ import Text from '../../components/Text/Text';
 import background from '../../images/Fractal.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 import Navigation from '../../components/Navigation/Navigation';
+import initialShirt from '../../constants/initialShirt';
 
 const renderImage = (image, color) => {
   return `${image}-${color?.toLowerCase() || ''}`;
-};
-
-const initialShirt = {
-  id: 0, // the id will be replaced with the new available number on save
-  image: '',
-  name: 'untitled_design',
-  price: 18.99,
-  quantity: 0,
-  subtotal: 0,
-  shirtStyle: 'MensShirt',
-  shirtColor: { name: 'white', color: '#FFFFFF' },
-  text: '',
-  textColor: { name: 'white', color: '#FFFFFF' },
-  font: "'Montserrat', sans-serif",
-  graphic: '',
-  graphicColor: { name: 'white', color: '#FFFFFF' },
 };
 
 const Design = () => {
