@@ -4,7 +4,7 @@ import './Home.css';
 import Login from '../../components/Login/Login';
 import SignUp from '../../components/Forms/Signup/Signup';
 // import Shipping from '../../components/Shipping/Shipping';
-
+import signupTabs from '../../constants/SignUpTabs';
 import logoVertical from '../../images/Shirtastic-vertical.svg';
 
 const Home = () => {
@@ -14,16 +14,16 @@ const Home = () => {
   const info = { activeTab, email, password };
 
   // TODO AH Replace with smaller code
-  const toggle = useCallback(
-    (tab) => {
-      if (activeTab !== tab) {
-        setActiveTab(tab);
-      }
-    },
-    [setActiveTab, activeTab],
-  );
+  // const toggle = useCallback(
+  //   (tab) => {
+  //     if (activeTab !== tab) {
+  //       setActiveTab(tab);
+  //     }
+  //   },
+  //   [setActiveTab, activeTab],
+  // );
 
-  const selectedTabId = useCallback((tabId) => setActiveTab(tabId), [setActiveTab]);
+  // const selectedTabId = useCallback((tabId) => setActiveTab(tabId), [setActiveTab]);
 
   const signUpData = useCallback(
     ({ email, password }) => {
@@ -32,6 +32,8 @@ const Home = () => {
     },
     [setEmail, setPassword],
   );
+
+  const [step, setStep] = useState(signupTabs[0].id);
 
   return (
     <div className="home">
@@ -49,7 +51,7 @@ const Home = () => {
         </div>
       </div>
       <div className={`left-column ${activeTab === '2' ? 'shipping-col' : ''}`}>
-        <SignUp />
+        <SignUp signupTabs={signupTabs} activeTab={step} updateTab={setStep} />
       </div>
     </div>
   );

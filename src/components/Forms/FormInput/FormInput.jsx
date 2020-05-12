@@ -5,9 +5,17 @@ import './form-input.css';
 
 const FormInput = ({ id, label, placeholder, children, inputValue, onChangeFn }) => (
   <FormGroup>
-    <label htmlFor={id}>{label}</label>
-    <input type="text" id={id} placeholder={placeholder} onChange={onChangeFn} value={inputValue} />
-    {children}
+    <div>
+      <label htmlFor={id}>{label}</label>
+      <input
+        type="text"
+        id={id}
+        placeholder={placeholder}
+        onChange={onChangeFn}
+        value={inputValue}
+      />
+      {children}
+    </div>
   </FormGroup>
 );
 
@@ -15,7 +23,11 @@ FormInput.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
   inputValue: PropTypes.string,
   onChangeFn: PropTypes.func,
 };

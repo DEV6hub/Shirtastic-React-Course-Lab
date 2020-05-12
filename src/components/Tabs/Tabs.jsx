@@ -49,6 +49,12 @@ const Tab = ({ label, isActive, onClick, activeClassName }) => (
   </button>
 );
 
+// key={tab.id}
+// isActive={tab.id === active}
+// label={tab.text}
+// onClick={() => onTabClick(tab.id)}
+// activeClassName={activeClassName}
+
 Tab.propTypes = {
   label: PropTypes.string,
   isActive: PropTypes.bool,

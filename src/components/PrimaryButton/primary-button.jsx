@@ -9,7 +9,11 @@ const PrimaryButton = ({ children }) => (
 );
 
 PrimaryButton.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
 };
 
 PrimaryButton.defaultProps = {

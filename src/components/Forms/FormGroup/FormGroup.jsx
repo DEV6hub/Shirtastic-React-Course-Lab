@@ -5,7 +5,11 @@ import './form-group.css';
 const FormGroup = ({ children }) => <div className="form-group">{children}</div>;
 
 FormGroup.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
 };
 
 FormGroup.defaultProps = {
