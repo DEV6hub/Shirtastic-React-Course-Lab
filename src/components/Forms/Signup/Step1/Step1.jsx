@@ -1,12 +1,12 @@
 import React from 'react';
-import FormInput from '../FormInput/FormInput';
-import PrimaryButton from '../../PrimaryButton/primary-button';
+import FormInput from '../../FormInput/FormInput';
+import PrimaryButton from '../../../PrimaryButton/primary-button';
 // import Tabs from '../../Tabs/Tabs';
 import './step1.css';
 // import SignUpStep2 from '../SignUpStep2/SignUpStep2';
 // import { SignUpTabs } from '../../../constants/signupTabs';
 
-const SignUp = () => {
+const Step1 = () => {
   return (
     <form onSubmit={(e) => e.preventDefault()} className="sign-up">
       <FormInput
@@ -24,4 +24,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Step1;
