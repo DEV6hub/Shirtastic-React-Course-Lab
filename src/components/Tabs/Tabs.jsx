@@ -13,31 +13,20 @@ tabs = [
  */
 const Tabs = ({ tabs, active, activeClassName, onTabClick }) => (
   <div className="tabs">
-    {/* {tabs.map((tab) => (
+    {tabs.map((tab) => (
       <Tab
-         key={tab.id}
-         isActive={tab.id === active}
-         label={tab.text}
-         onClick={() => onTabClick(tab.id)}
-         activeClassName={activeClassName}
-       />
-    )) */}
+        key={tab.id}
+        isActive={tab.id === active}
+        label={tab.text}
+        onClick={() => onTabClick(tab.id)}
+        activeClassName={activeClassName}
+      />
+    ))}
   </div>
 );
 
-// const Tab = ({ label, isActive, onClick, activeClassName }) => (
-//   <button className={isActive ? activeClassName : ''} onClick={onClick}>
-//     {label}
-//   </button>
-// );
-
 Tabs.propTypes = {
-  tabs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      someOther: PropTypes.string,
-    }),
-  ),
+  tabs: PropTypes.arrayOf(PropTypes.node),
   active: PropTypes.string,
   activeClassName: PropTypes.string,
   onTabClick: () => {
@@ -51,6 +40,28 @@ Tabs.defaultProps = {
   activeClassName: 'active',
   onTabClick: (value) => {
     console.log(`${value} is being sent through but no function is handling it`);
+  },
+};
+
+const Tab = ({ label, isActive, onClick, activeClassName }) => (
+  <button type="button" className={isActive ? activeClassName : ''} onClick={onClick}>
+    {label}
+  </button>
+);
+
+Tab.propTypes = {
+  label: PropTypes.string,
+  isActive: PropTypes.bool,
+  activeClassName: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+Tab.defaultProps = {
+  label: 'tab',
+  isActive: false,
+  activeClassName: 'active',
+  onClick: () => {
+    return null;
   },
 };
 
