@@ -7,7 +7,7 @@ const SignUp = ({ signupTabs }) => {
   return (
     <div className="step1">
       <h2>Sign up</h2>
-      {/* <Tabs activeClassName="active" /> */}
+      <Tabs tabs={signupTabs} activeClassName="active" />
       <Step1 />
     </div>
   );

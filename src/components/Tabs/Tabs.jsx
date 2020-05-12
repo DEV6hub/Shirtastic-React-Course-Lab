@@ -17,7 +17,7 @@ const Tabs = ({ tabs, active, activeClassName, onTabClick }) => (
       <Tab
         key={tab.id}
         isActive={tab.id === active}
-        label={tab.text}
+        label={tab.label}
         onClick={() => onTabClick(tab.id)}
         activeClassName={activeClassName}
       />
@@ -26,7 +26,12 @@ const Tabs = ({ tabs, active, activeClassName, onTabClick }) => (
 );
 
 Tabs.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.node),
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+    }),
+  ),
   active: PropTypes.string,
   activeClassName: PropTypes.string,
   onTabClick: () => {
@@ -35,7 +40,7 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
-  tabs: [],
+  tabs: [{ id: '', label: '' }],
   active: 'no',
   activeClassName: 'active',
   onTabClick: (value) => {
