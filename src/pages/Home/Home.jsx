@@ -13,18 +13,6 @@ const Home = () => {
   const [password, setPassword] = useState('');
   const info = { activeTab, email, password };
 
-  // TODO AH Replace with smaller code
-  // const toggle = useCallback(
-  //   (tab) => {
-  //     if (activeTab !== tab) {
-  //       setActiveTab(tab);
-  //     }
-  //   },
-  //   [setActiveTab, activeTab],
-  // );
-
-  // const selectedTabId = useCallback((tabId) => setActiveTab(tabId), [setActiveTab]);
-
   const signUpData = useCallback(
     ({ email, password }) => {
       setEmail(email);
@@ -37,12 +25,11 @@ const Home = () => {
 
   return (
     <div className="home">
-      {activeTab === '1' ? (
+      {step === signupTabs[0].id ? (
         <div className="left-column">
           <Login userSignUpData={info} />
         </div>
       ) : null}
-
       <div className="middle-column">
         <div>&nbsp;</div>
         <img className="vertical-logo" src={logoVertical} alt="vertical logo" />
@@ -50,7 +37,7 @@ const Home = () => {
           © 2020 DEV6 – A division of The New Toronto Group Inc.
         </div>
       </div>
-      <div className={`left-column ${activeTab === '2' ? 'shipping-col' : ''}`}>
+      <div className={`left-column ${step === signupTabs[0].id ? 'shipping-col' : ''}`}>
         <SignUp signupTabs={signupTabs} activeTab={step} updateTab={setStep} />
       </div>
     </div>

@@ -2,26 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './tabs.css';
 
-/*
-Format of the tabs
-tabs = [
-  {
-    id: some string to identify the tab. Unique,
-    text: the text that shows in the tab
-  }
-]
- */
-const Tabs = ({ tabs, active, activeClassName, onTabClick }) => (
-  <div className="tabs">
-    {tabs.map((tab) => (
-      <Tab
-        key={tab.id}
-        isActive={tab.id === active}
-        label={tab.label}
-        onClick={() => onTabClick(tab.id)}
-        activeClassName={activeClassName}
-      />
-    ))}
+const Tabs = ({ tabs, activeTab, activeClassName, onTabClick }) => (
+  <div className="tabs-container">
+    <div className="tabs">
+      {tabs.map((tab) => (
+        <Tab
+          key={tab.id}
+          isActive={tab.id === activeTab}
+          label={tab.label}
+          onClick={() => {
+            onTabClick(tab.id);
+          }}
+          activeClassName={activeClassName}
+        />
+      ))}
+    </div>
   </div>
 );
 
@@ -32,7 +27,7 @@ Tabs.propTypes = {
       label: PropTypes.string,
     }),
   ),
-  active: PropTypes.string,
+  activeTab: PropTypes.string,
   activeClassName: PropTypes.string,
   onTabClick: () => {
     return null;
@@ -41,7 +36,7 @@ Tabs.propTypes = {
 
 Tabs.defaultProps = {
   tabs: [{ id: '', label: '' }],
-  active: 'no',
+  activeTab: 'step-1-form',
   activeClassName: 'active',
   onTabClick: (value) => {
     console.log(`${value} is being sent through but no function is handling it`);
@@ -53,12 +48,6 @@ const Tab = ({ label, isActive, onClick, activeClassName }) => (
     {label}
   </button>
 );
-
-// key={tab.id}
-// isActive={tab.id === active}
-// label={tab.text}
-// onClick={() => onTabClick(tab.id)}
-// activeClassName={activeClassName}
 
 Tab.propTypes = {
   label: PropTypes.string,
