@@ -42,7 +42,7 @@ const Step2 = () => {
             id="step2-country"
             options={countryOptions}
             label="Country"
-            onChangeFn={(e) => setCountry(e.target.value)}
+            onChange={(e) => setCountry(e.target.value)}
             value={country}
           />
           <div className="step2-row">
