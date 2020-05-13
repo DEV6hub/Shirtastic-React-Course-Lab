@@ -1,10 +1,7 @@
 import React from 'react';
 import FormInput from '../../FormInput/FormInput';
 import PrimaryButton from '../../../PrimaryButton/primary-button';
-// import Tabs from '../../Tabs/Tabs';
 import './step1.css';
-// import SignUpStep2 from '../SignUpStep2/SignUpStep2';
-// import { SignUpTabs } from '../../../constants/signupTabs';
 
 const Step1 = () => {
   return (

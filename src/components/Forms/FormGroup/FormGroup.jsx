@@ -7,8 +7,8 @@ const FormGroup = ({ children }) => <div className="form-group">{children}</div>
 FormGroup.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
   ]),
 };
 
