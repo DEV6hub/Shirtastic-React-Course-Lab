@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Step1 from './Step1/Step1';
+import Step2 from './Step2/Step2';
 import Tabs from '../../Tabs/Tabs';
+// import signupTabs from '../../../constants/SignUpTabs';
 
 const SignUp = ({ signupTabs, activeTab, updateTab }) => {
   return (
@@ -15,7 +17,7 @@ const SignUp = ({ signupTabs, activeTab, updateTab }) => {
           updateTab(id);
         }}
       />
-      <Step1 />
+      {activeTab === signupTabs[0].id ? <Step1 /> : <Step2 />}
     </div>
   );
 };
