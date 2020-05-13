@@ -16,6 +16,7 @@ const Step1 = () => {
       <p>
         By clicking the Sign Up button below, you agree to our Terms of Service and Privacy Policy.
       </p>
+      {/* TODO AK Wrong HTML */}
       <PrimaryButton>Sign Up</PrimaryButton>
     </form>
   );

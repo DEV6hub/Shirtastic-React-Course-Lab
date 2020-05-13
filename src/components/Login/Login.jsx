@@ -18,12 +18,12 @@ const Login = () => {
   return (
     <div className="login-container">
       <h2>Log in</h2>
-
+      {/* TODO AK Wrong HTML */}
       <PrimaryButton>
         <img src={facebookIcon} alt="Login with Facebook" />
         <span>with Facebook</span>
       </PrimaryButton>
-
+      {/* TODO AK Wrong HTML */}
       <PrimaryButton>
         <img src={twitterIcon} alt="Login with Twitter" />
         <span>with Twitter</span>
@@ -38,7 +38,7 @@ const Login = () => {
       <form className="login" onSubmit={handleLogin}>
         <FormInput id="login-email-address" label="Email Address" />
         <FormInput id="login-password" label="Password" />
-
+        {/* TODO AK Wrong HTML */}
         <Link to="/catalog">
           <PrimaryButton>
             <span>LOG IN</span>
