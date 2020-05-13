@@ -17,19 +17,17 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <div className="text-center">
-        <h2>Log in</h2>
+      <h2>Log in</h2>
 
-        <PrimaryButton>
-          <img src={facebookIcon} alt="Login with Facebook" />
-          <span>with Facebook</span>
-        </PrimaryButton>
+      <PrimaryButton>
+        <img src={facebookIcon} alt="Login with Facebook" />
+        <span>with Facebook</span>
+      </PrimaryButton>
 
-        <PrimaryButton>
-          <img src={twitterIcon} alt="Login with Twitter" />
-          <span>with Twitter</span>
-        </PrimaryButton>
-      </div>
+      <PrimaryButton>
+        <img src={twitterIcon} alt="Login with Twitter" />
+        <span>with Twitter</span>
+      </PrimaryButton>
 
       <div className="or-divider">
         <div className="line">&nbsp;</div>
@@ -37,10 +35,7 @@ const Login = () => {
         <div className="line">&nbsp;</div>
       </div>
 
-      {
-        // TODO KRA Fine tune styling
-      }
-      <form onSubmit={handleLogin}>
+      <form className="login" onSubmit={handleLogin}>
         <FormInput id="login-email-address" label="Email Address" />
         <FormInput id="login-password" label="Password" />
 
