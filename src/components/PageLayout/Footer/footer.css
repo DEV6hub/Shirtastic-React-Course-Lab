@@ -1,0 +1,28 @@
+footer {
+  /* background-image: url("../../images/Fractal.png"); */
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  box-shadow: 0 -0.25rem 0.5rem 0 rgba(0, 0, 0, 0.4);
+  position: relative;
+  padding: 2.5rem 6rem;
+  font-size: 0.75rem;
+  line-height: 1.5em;
+}
+
+footer .left .dev6-logo {
+  max-width: 7rem;
+  margin-bottom: 0.5rem;
+}
+
+footer .right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .right .address {
+  margin-right: 3rem;
+}

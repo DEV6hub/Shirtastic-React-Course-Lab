@@ -120,7 +120,7 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
 
   return (
     <>
-      <div className="overlay" ref={overlay} />
+      {/* <div className="overlay" ref={overlay} />
 
       <div className="">
         <div id="cart" className="sidenav-cart" ref={cart}>
@@ -147,8 +147,8 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
             <Confirmation goToCatalog={goToCatalog} />
           )}
         </div>
-      </div>
-
+      </div> */}
+      Nav
       <Navbar color="faded" light>
         <Row className="nav-toggle-btn">
           <Col className="mr-2">
