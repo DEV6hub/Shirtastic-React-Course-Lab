@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './step2.css';
 import FormInput from '../../FormInput/FormInput';
 import PrimaryButton from '../../../PrimaryButton/primary-button';
 import { COUNTRIES, REGIONS } from '../../../../constants/countriesAndRegions';
 import FormSelect from '../../FormSelect/FormSelect';
 
-const Step2 = () => {
+const Step2 = ({ onComplete }) => {
   const [country, setCountry] = useState('');
 
   const countryOptions = COUNTRIES.map((item) => ({ text: item.name, value: item.id }));
@@ -19,6 +19,11 @@ const Step2 = () => {
       value: '',
     });
   }
+
+  const handleSignup = ($event) => {
+    $event.preventDefault();
+    onComplete($event, 1);
+  };
 
   return (
     <div className="step2-component">
@@ -61,14 +66,16 @@ const Step2 = () => {
           </div>
         </div>
         <div className="actions">
-          <Link to="/catalog">
-            <PrimaryButton>Do This later</PrimaryButton>
-          </Link>
-          <PrimaryButton>Save</PrimaryButton>
+          <PrimaryButton onClick={handleSignup}>Do This later</PrimaryButton>
+          <PrimaryButton onClick={handleSignup}>Save</PrimaryButton>
         </div>
       </form>
     </div>
   );
+};
+
+Step2.propTypes = {
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default Step2;
