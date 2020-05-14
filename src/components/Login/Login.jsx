@@ -18,16 +18,26 @@ const Login = () => {
   return (
     <div className="login-container">
       <h2>Log in</h2>
-      {/* TODO AK Wrong HTML */}
-      <PrimaryButton>
+
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://facebook.com"
+        className="button button-primary"
+      >
         <img src={facebookIcon} alt="Login with Facebook" />
         <span>with Facebook</span>
-      </PrimaryButton>
-      {/* TODO AK Wrong HTML */}
-      <PrimaryButton>
+      </a>
+
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://twitter.com"
+        className="button button-primary"
+      >
         <img src={twitterIcon} alt="Login with Twitter" />
         <span>with Twitter</span>
-      </PrimaryButton>
+      </a>
 
       <div className="or-divider">
         <div className="line">&nbsp;</div>

@@ -7,7 +7,8 @@ form.login {
   max-width: 15rem;
 }
 
-.login-container button.primary {
+.login-container button.primary,
+.login-container .button-primary {
   min-width: 8.75rem;
   margin-bottom: 1.5rem;
 }
