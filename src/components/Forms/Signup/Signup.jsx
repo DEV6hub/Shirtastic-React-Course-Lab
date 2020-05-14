@@ -5,6 +5,12 @@ import Step2 from './Step2/Step2';
 import Tabs from '../../Tabs/Tabs';
 
 const SignUp = ({ signupTabs, activeTab, updateTab }) => {
+  const onComplete = (e, step) => {
+    if (step === 0) {
+      updateTab(signupTabs[1].id);
+    }
+  };
+
   return (
     <div className="step1">
       {activeTab === signupTabs[0].id ? <h2>Sign up</h2> : null}
@@ -16,7 +22,11 @@ const SignUp = ({ signupTabs, activeTab, updateTab }) => {
           updateTab(id);
         }}
       />
-      {activeTab === signupTabs[0].id ? <Step1 /> : <Step2 />}
+      {activeTab === signupTabs[0].id ? (
+        <Step1 onComplete={onComplete} />
+      ) : (
+        <Step2 onComplete={onComplete} />
+      )}
     </div>
   );
 };

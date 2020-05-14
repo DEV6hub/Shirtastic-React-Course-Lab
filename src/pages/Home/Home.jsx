@@ -33,9 +33,7 @@ const Home = () => {
       <div className="middle-column">
         <div>&nbsp;</div>
         <img className="vertical-logo" src={logoVertical} alt="vertical logo" />
-        <div className="copyright text-center">
-          © 2020 DEV6 – A division of The New Toronto Group Inc.
-        </div>
+        <div className="copyright text-center">© 2020 Aquent DEV6.</div>
       </div>
       <div className={`left-column ${step === signupTabs[0].id ? 'shipping-col' : ''}`}>
         <SignUp signupTabs={signupTabs} activeTab={step} updateTab={setStep} />

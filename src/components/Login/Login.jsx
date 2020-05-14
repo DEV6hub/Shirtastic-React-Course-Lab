@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import PrimaryButton from '../PrimaryButton/primary-button';
 import FormInput from '../Forms/FormInput/FormInput';
@@ -48,12 +48,10 @@ const Login = () => {
       <form className="login" onSubmit={handleLogin}>
         <FormInput id="login-email-address" label="Email Address" />
         <FormInput id="login-password" label="Password" />
-        {/* TODO AK Wrong HTML */}
-        <Link to="/catalog">
-          <PrimaryButton>
-            <span>LOG IN</span>
-          </PrimaryButton>
-        </Link>
+
+        <PrimaryButton onClick={handleLogin}>
+          <span>LOG IN</span>
+        </PrimaryButton>
       </form>
     </div>
   );

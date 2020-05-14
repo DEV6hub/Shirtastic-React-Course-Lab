@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FormInput from '../../FormInput/FormInput';
 import PrimaryButton from '../../../PrimaryButton/primary-button';
 import './step1.css';
 
-const Step1 = () => {
+const Step1 = ({ onComplete }) => {
+  const handleSignup = ($event) => {
+    $event.preventDefault();
+    onComplete($event, 0);
+  };
+
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="sign-up">
+    <form onSubmit={handleSignup} className="sign-up">
       <FormInput
         id="sign-up-email-address"
         label="Email Address"
@@ -16,10 +22,13 @@ const Step1 = () => {
       <p>
         By clicking the Sign Up button below, you agree to our Terms of Service and Privacy Policy.
       </p>
-      {/* TODO AK Wrong HTML */}
-      <PrimaryButton>Sign Up</PrimaryButton>
+      <PrimaryButton onClick={handleSignup}>Sign Up</PrimaryButton>
     </form>
   );
+};
+
+Step1.propTypes = {
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default Step1;
