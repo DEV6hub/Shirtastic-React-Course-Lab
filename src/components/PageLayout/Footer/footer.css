@@ -1,5 +1,5 @@
 footer {
-  /* background-image: url("../../images/Fractal.png"); */
+  background-image: url('../../../images/Fractal.png');
   background-size: cover;
   display: flex;
   justify-content: space-between;

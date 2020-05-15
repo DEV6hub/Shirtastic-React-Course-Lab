@@ -1,13 +1,14 @@
 import React from 'react';
 import './footer.css';
 
-// const dev6Logo = require("../../images/logos/dev6logo-white.svg");
+import dev6Logo from '../../../images/dev6logo-white.svg';
+
 const year = new Date().getUTCFullYear();
 
 const Footer = () => (
   <footer>
     <div className="left">
-      {/* <img className="dev6-logo" src={dev6Logo} alt="Dev 6 Logo" /> */}
+      <img className="dev6-logo" src={dev6Logo} alt="Dev 6 Logo" />
       <div>&copy; {year} Aquent DEV6</div>
     </div>
     <div className="right">
