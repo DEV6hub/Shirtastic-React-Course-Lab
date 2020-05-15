@@ -1,7 +1,7 @@
 import React from 'react';
 import './footer.css';
 
-import dev6Logo from '../../../images/dev6logo-white.svg';
+import dev6Logo from '../../../images/logos/dev6logo-white.svg';
 
 const year = new Date().getUTCFullYear();
 
