@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './primary-button.css';
 
-const PrimaryButton = ({ children, onClick }) => (
-  <button className="primary" type="button" onClick={onClick}>
+const PrimaryButton = ({ children, onClick, btnStyle }) => (
+  <button className={btnStyle === 'primary' ? 'primary' : btnStyle} type="button" onClick={onClick}>
     {children}
   </button>
 );
@@ -15,11 +15,13 @@ PrimaryButton.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
   ]),
   onClick: PropTypes.func,
+  btnStyle: PropTypes.string,
 };
 
 PrimaryButton.defaultProps = {
   children: '',
   onClick: () => null,
+  btnStyle: 'primary',
 };
 
 export default PrimaryButton;

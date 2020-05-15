@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './step2.css';
 import FormInput from '../../FormInput/FormInput';
-import PrimaryButton from '../../../PrimaryButton/primary-button';
+import PrimaryButton from '../../../PrimaryButton/PrimaryButton';
 import { COUNTRIES, REGIONS } from '../../../../constants/countriesAndRegions';
 import FormSelect from '../../FormSelect/FormSelect';
 

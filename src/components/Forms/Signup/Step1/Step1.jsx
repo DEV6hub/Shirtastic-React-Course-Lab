@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FormInput from '../../FormInput/FormInput';
-import PrimaryButton from '../../../PrimaryButton/primary-button';
+import PrimaryButton from '../../../PrimaryButton/PrimaryButton';
 import './step1.css';
 
 const Step1 = ({ onComplete }) => {

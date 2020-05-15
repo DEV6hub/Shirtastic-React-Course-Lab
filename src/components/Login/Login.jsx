@@ -2,10 +2,10 @@ import React from 'react';
 import './Login.css';
 import { useHistory } from 'react-router-dom';
 
-import PrimaryButton from '../PrimaryButton/primary-button';
+import PrimaryButton from '../PrimaryButton/PrimaryButton';
 import FormInput from '../Forms/FormInput/FormInput';
-import facebookIcon from '../../images/facebook.svg';
-import twitterIcon from '../../images/twitter.svg';
+import facebookIcon from '../../images/logos/facebook.svg';
+import twitterIcon from '../../images/logos/twitter.svg';
 
 const Login = () => {
   const history = useHistory();
