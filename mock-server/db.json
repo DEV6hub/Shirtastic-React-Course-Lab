@@ -219,6 +219,32 @@
         "name": "white",
         "color": "#FFFFFF"
       }
+    },
+    {
+      "id": 9,
+      "image": "MensShirt-white",
+      "name": "untitled_design",
+      "price": 18.99,
+      "quantity": 0,
+      "subtotal": 0,
+      "shirtStyle": "MensShirt",
+      "shirtColor": {
+        "name": "white",
+        "color": "#FFFFFF"
+      },
+      "text": "",
+      "textColor": {
+        "name": "white",
+        "color": "#FFFFFF"
+      },
+      "font": "'Montserrat', sans-serif",
+      "graphic": "",
+      "graphicColor": {
+        "name": "white",
+        "color": "#FFFFFF"
+      },
+      "gender": "M",
+      "description": "Custom Shirt Design"
     }
   ]
 }
