@@ -26,6 +26,7 @@ const useShirts = () => {
     try {
       // Load shirts data from database
       const data = await getShirts();
+      console.log('data', data);
       shirtsDispatcher({
         type: REQUEST_SHIRTS_SUCCESS,
         response: data,
