@@ -56,16 +56,16 @@ const CatalogTabs = () => {
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
           {/* All Shirt List Goes Here */}
-          <Row>
+          <div className="shirts-container">
             {shirtList.map((shirt) => {
               // return shirt.name;
               return <Shirt key={shirt.id} shirt={shirt} />;
             })}
-          </Row>
+          </div>
         </TabPane>
         <TabPane tabId="2">
           {/* Men Shirt List Goes Here */}
-          <Row>
+          <div className="shirts-container">
             {/* {shirtList
               .filter((shirt) => {
                 return shirt.gender === 'M';
@@ -73,11 +73,11 @@ const CatalogTabs = () => {
               .map((shirt) => (
                 <Shirt key={shirt.id} shirt={shirt} />
               ))} */}
-          </Row>
+          </div>
         </TabPane>
         <TabPane tabId="3">
           {/* Women Shirt List Goes Here */}
-          <Row>
+          <div className="shirts-container">
             {/* {shirtList
               .filter((shirt) => {
                 return shirt.gender === 'W';
@@ -85,7 +85,7 @@ const CatalogTabs = () => {
               .map((shirt) => (
                 <Shirt key={shirt.id} shirt={shirt} />
               ))} */}
-          </Row>
+          </div>
         </TabPane>
       </TabContent>
     </Container>

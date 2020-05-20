@@ -1,10 +1,17 @@
-.fluid-container {
-    padding-top: 15px;
-    background-color: #EEEEEE;
+.shirts-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
+/* .fluid-container {
+    padding-top: 15px;
+    background-color: #EEEEEE;
+} */
+
 /* For catalog bootstrap tabs */
-.catalog-tabs li .nav-link{
+/* .catalog-tabs li .nav-link{
     font-size: 16px;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
@@ -18,3 +25,4 @@
     border-bottom: 2px solid #274686 !important;
     background-color: transparent !important;
 }
+*/

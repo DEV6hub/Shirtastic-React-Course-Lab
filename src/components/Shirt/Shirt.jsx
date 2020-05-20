@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Shirt.css';
-import { Container, Row, Col, Card } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import shirtShape from '../Models/shirtShape';
-import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
+// import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
 
 const Shirt = ({ shirt }) => {
-  const { addToCart } = useShoppingCartContext();
+  {
+    // TODO: AK Re-enable cart
+    // const { addToCart } = useShoppingCartContext();
+  }
   const genderFolder = shirt.gender === 'M' ? 'mens' : 'womens';
 
   return (
-    <Card className="text-center">
-      {/* {shirt.graphic ? (
+    <div className="shirt-wrapper">
+      {shirt.graphic ? (
         <Link to={`/graphic/${shirt.graphic}`}>
           <img
             className="img-fluid shirt-graphic-img"
@@ -20,37 +22,37 @@ const Shirt = ({ shirt }) => {
             alt="shirt graphic"
           />
         </Link>
-      ) : null} */}
-      {/* {shirt.text ? (
+      ) : null}
+      {shirt.text ? (
         <div
           className="shirt-text-final"
           style={{ color: shirt.textColor.color, fontFamily: shirt.font }}
         >
           {shirt.text}
         </div>
-      ) : null} */}
-      {/* {console.log(`../../images/shirts/${genderFolder}/${shirt.image}.jpg`)} */}
+      ) : null}
       <img
         className="img-fluid"
         src={require(`../../images/shirts/${genderFolder}/${shirt.image}.jpg`)}
         alt="Shirt"
       />
 
-      <h4 className="card-title">{shirt.name}</h4>
-      <p>{`../../images/shirts/${genderFolder}/${shirt.image}.jpg`}</p>
-      {/* <p className="description">{shirt.description}</p> */}
-      {/* <Container>
-        <Row className="btn-row">
-          <Col className="icon-basket" xs="2" onClick={() => addToCart(shirt)} />
-          <Col className="text" xs="8">
-            <strong>${shirt.price}</strong>
-          </Col>
-          <Col xs="2">
-            <Link to={`/design/${shirt.id}`} className="icon-edit" />
-          </Col>
-        </Row>
-      </Container> */}
-    </Card>
+      <h4 className="card-title text-center">{shirt.name}</h4>
+      <p className="description text-center">{shirt.description}</p>
+
+      <div className="controls-container">
+        {
+          // TODO: AK Fix link
+        }
+        <Link to="wew" className="control add-to-cart" />
+
+        <div className="control price">
+          <strong>${shirt.price}</strong>
+        </div>
+
+        <Link to={`/design/${shirt.id}`} className="control edit" />
+      </div>
+    </div>
   );
 };
 
