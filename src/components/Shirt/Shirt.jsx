@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import './Shirt.css';
 import { Link } from 'react-router-dom';
 import shirtShape from '../Models/shirtShape';
-// import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
+import PrimaryButton from '../PrimaryButton/PrimaryButton';
+import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
+import { useOverlayContext } from '../../state/contexts/overlayContext';
 
 const Shirt = ({ shirt }) => {
-  {
-    // TODO: AK Re-enable cart
-    // const { addToCart } = useShoppingCartContext();
-  }
+  const { addToCart } = useShoppingCartContext();
+  const { openOverlay } = useOverlayContext();
+
   const genderFolder = shirt.gender === 'M' ? 'mens' : 'womens';
 
   return (
@@ -42,9 +43,16 @@ const Shirt = ({ shirt }) => {
 
       <div className="controls-container">
         {
-          // TODO: AK Fix link
+          // TODO AK: Refactor Button to be able to render with various styles.
         }
-        <Link to="wew" className="control add-to-cart" />
+        <PrimaryButton
+          onClick={() => {
+            addToCart(shirt);
+            openOverlay();
+          }}
+        >
+          add to cart
+        </PrimaryButton>
 
         <div className="control price">
           <strong>${shirt.price}</strong>

@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 
 import { ShirtsProvider } from './shirtsContext';
 import { UserProvider } from './userContext';
+import { OverlayProvider } from './overlayContext';
 import { ShoppingCartProvider } from './shoppingCartContext';
 
 const AppProvider = ({ children }) => {
   return (
     <UserProvider>
-      <ShirtsProvider>
-        <ShoppingCartProvider>{children}</ShoppingCartProvider>
-      </ShirtsProvider>
+      <OverlayProvider>
+        <ShirtsProvider>
+          <ShoppingCartProvider>{children}</ShoppingCartProvider>
+        </ShirtsProvider>
+      </OverlayProvider>
     </UserProvider>
   );
 };

@@ -5,7 +5,7 @@ const useShoppingCart = () => {
 
   const addToCart = useCallback(
     (shirtToAdd) => {
-      console.log('Add to Cart');
+      console.log('Add to Cart', shirtToAdd);
       // Create a temp working array from cart contents
       const updatedShirtsList = [...shirtsInCart];
       const index = updatedShirtsList.findIndex((item) => {
