@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Row, Navbar, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Cart from '../Cart/Cart';
-import SidenavShipping from '../SidenavShipping/SidenavShipping';
-import Payment from '../Payment/Payment';
+import SidenavShipping from '../CheckoutFlow/SidenavShipping/SidenavShipping';
+import Payment from '../CheckoutFlow/Payment/Payment';
 import Confirmation from '../Confirmation/Confirmation';
 
 import navLogo from '../../images/navlogo.png';

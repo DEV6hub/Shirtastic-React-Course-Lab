@@ -19,7 +19,7 @@ const ShirtInCart = ({ shirt, updateQuantity, removeFromCart }) => {
         {shirt.graphic ? (
           <img
             className="img-fluid cart-shirt-graphic-img"
-            src={shirt.graphic ? require(`../../images/${shirt.graphic}`) : ''}
+            src={shirt.graphic ? require(`../../../images/${shirt.graphic}`) : ''}
             alt="shirt graphic"
           />
         ) : null}
@@ -33,7 +33,7 @@ const ShirtInCart = ({ shirt, updateQuantity, removeFromCart }) => {
         ) : null}
         <img
           className="img-fluid shirt-in-cart-img"
-          src={require(`../../images/${shirt.image}.jpg`)}
+          src={require(`../../../images/${shirt.image}.jpg`)}
           alt="shirt in cart"
         />
       </Col>

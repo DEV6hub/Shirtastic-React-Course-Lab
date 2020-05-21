@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import './Cart.css';
 import { Row, Col } from 'reactstrap';
 
-import ShirtInCart from '../ShirtInCart/ShirtInCart';
+import ShirtInCart from '../CheckoutFlow/ShirtInCart/ShirtInCart';
 
 const Cart = ({ openShipping, closeCart, shirtsInCart, removeFromCart, updateQuantity }) => {
   const calculateTotal = useCallback(() => {

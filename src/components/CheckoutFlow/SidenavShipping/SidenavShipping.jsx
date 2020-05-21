@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import { createUser } from '../../state/actions/actions';
-import { countries, regions } from '../Models/CountriesAndRegions';
+import { createUser } from '../../../state/actions/actions';
+import { countries, regions } from '../../Models/CountriesAndRegions';
 import './SidenavShipping.css';
-import { useUserContext } from '../../state/contexts/userContext';
+import { useUserContext } from '../../../state/contexts/userContext';
 
 const SidenavShipping = ({ openPayment }) => {
   const [userInfo, setUserInfo] = useUserContext();

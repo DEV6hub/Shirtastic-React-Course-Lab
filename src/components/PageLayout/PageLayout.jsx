@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Overlay from './Overlay/Overlay';
+import CheckoutFlow from '../CheckoutFlow/CheckoutFlow';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import './page-layout.css';
 
 const PageLayout = ({ children }) => (
   <>
-    <Overlay />
+    <Overlay>
+      <CheckoutFlow />
+    </Overlay>
     <Header />
     <div className="content">{children}</div>
     <Footer />
