@@ -19,8 +19,7 @@ const Cart = () => {
     <div>
       <div className="cart-container">
         <div className="cart-header">
-          <div className="cart-title">Shopping Cart</div>
-          {/* <Col className="cart-btn" xs="3" onClick={closeCart}> */}
+          <h3 className="cart-title">Shopping Cart</h3>
           <CartControls />
         </div>
         <hr />

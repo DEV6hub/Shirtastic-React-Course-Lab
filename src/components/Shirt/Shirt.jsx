@@ -48,7 +48,6 @@ const Shirt = ({ shirt }) => {
         <PrimaryButton
           onClick={() => {
             addToCart(shirt);
-            openOverlay();
           }}
         >
           add to cart
