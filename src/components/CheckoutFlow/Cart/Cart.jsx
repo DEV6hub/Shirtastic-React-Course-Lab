@@ -1,12 +1,15 @@
 import React, { useCallback } from 'react';
 import CartControls from '../CartControls/CartControls';
 import './Cart.css';
+import { useShoppingCartContext } from '../../../state/contexts/shoppingCartContext';
+import CartItem from '../CartItem/CartItem';
 
 // import ShirtInCart from '../ShirtInCart/ShirtInCart';
 
 // const Cart = ({ openShipping, closeCart, shirtsInCart, removeFromCart, updateQuantity }) => {
 
 const Cart = () => {
+  const { shirtsInCart, addToCart, removeFromCart } = useShoppingCartContext();
   // const calculateTotal = useCallback(() => {
   //   let total = 0;
   //   shirtsInCart.forEach((shirt) => {
@@ -24,16 +27,12 @@ const Cart = () => {
         </div>
         <hr />
 
-        {/* {shirtsInCart.map((shirt, index) => (
+        {shirtsInCart.map((shirt, index) => (
           <div key={index}>
-            <ShirtInCart
-              shirt={shirt}
-              removeFromCart={removeFromCart}
-              updateQuantity={updateQuantity}
-            />
+            <CartItem shirt={shirt} add={addToCart} remove={removeFromCart} />
             <hr />
           </div>
-        ))} */}
+        ))}
         {/* {shirtsInCart.length > 0 ? (
           <div className="subtotal">
             Subtotal: <span>${calculateTotal()}</span>

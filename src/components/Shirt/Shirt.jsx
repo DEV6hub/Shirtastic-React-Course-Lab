@@ -9,7 +9,6 @@ import { useOverlayContext } from '../../state/contexts/overlayContext';
 
 const Shirt = ({ shirt }) => {
   const { addToCart } = useShoppingCartContext();
-  const { openOverlay } = useOverlayContext();
 
   const genderFolder = shirt.gender === 'M' ? 'mens' : 'womens';
 

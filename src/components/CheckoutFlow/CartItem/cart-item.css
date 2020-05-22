@@ -1,90 +1,134 @@
-.shirt-in-cart-img {
-    background-color: #FFFFFF;
-    padding: 5px;
-    border: 1px solid #CDCDCD;
-    border-radius: 4px;
+.item-container {
+  display: flex;
 }
 
-.btn-close {
-    min-width: 22px;
-    width: 22px;
-    height: 22px;
-    border-radius: 11px;
-    padding: 3px;
+.item-container .item-img {
+  width: 40%;
+  padding: 0 15px;
+  position: relative;
 }
 
-.shirt-in-cart-middle {
-    margin-left: 15px;
-    margin-right: -15px;
+.item-container .item-data {
+  width: 60%;
 }
 
-.shirt-in-cart-title {
-    color: #10A2DC;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.shirt-in-cart-description {
-    color: #444444;
-    font-size: 10px;
-    font-weight: 400;
-}
-
-.size-select {
-    color: #10A2DC !important;
-    font-weight: bold;
-    font-size: 12px !important;
-    width: 174px !important;
-}
-
-.quantity-row {
-    margin-left: 0 !important;
-    align-items: center;
-}
-.quantity{
-    color: #274686;
-    font-weight: bold;
-    font-size: 12px;
-    width: 30px !important;
-    margin-right: 10px;
-    text-align: center;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.price-txt {
-    color: #444444;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.shirt-in-cart-title {
-    margin-bottom: 5px;
-}
-
-.shirt-in-cart-description, .size-select {
-    margin-bottom: 10px;
-}
-
-.cart-shirt-graphic-img, .cart-shirt-text-final {
-    position: absolute;
+.cart-shirt-graphic-img,
+.cart-shirt-text-final {
+  position: absolute;
 }
 .cart-shirt-graphic-img {
-    left: 36%;
-    top: 16%;
-    width: 32px;
+  left: 36%;
+  top: 16%;
+  width: 32px;
+}
+
+.shirt-in-cart-img {
+  background-color: #ffffff;
+  padding: 5px;
+  border: 1px solid #cdcdcd;
+  border-radius: 4px;
 }
 
 .cart-shirt-text-final {
-    left: 41%;
-    top: 41%;
-    font-size: 5px;
-    text-align: center;
-    width: 20px;
+  left: 41%;
+  top: 41%;
+  font-size: 5px;
+  text-align: center;
+  width: 20px;
+}
+
+h3 {
+  color: #10a2dc;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+h3 .small {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: #444;
+}
+
+.btn-close {
+  float: right;
+  margin-top: 10px;
+  min-width: 22px;
+  width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  padding: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #10a2dc;
+  color: #ffffff;
+  outline: 0;
+  border: 0;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition: -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin-bottom: 5px;
+}
+
+.shirt-in-cart-description,
+.size-select {
+  margin-bottom: 10px;
+}
+
+.size-select {
+  color: #10a2dc !important;
+  font-weight: bold;
+  font-size: 12px !important;
+  width: 174px !important;
+}
+
+.quantity-row {
+  margin-left: 0 !important;
+  align-items: center;
+  display: flex;
+}
+.quantity {
+  color: #274686;
+  font-weight: bold;
+  font-size: 12px;
+  width: 30px !important;
+  margin-right: 10px;
+  text-align: center;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.price {
+  color: #444444;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-control {
+  height: calc(1.8125rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
 }
