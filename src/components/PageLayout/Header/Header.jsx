@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CartControls from '../../CheckoutFlow/CartControls/CartControls';
 import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import './header.css';
-
 import headerLogo from '../../../images/navlogo.png';
-import shoppingCartIcon from '../../../images/icons/icon-basket.svg';
-import { useOverlayContext } from '../../../state/contexts/overlayContext';
 
 const Header = () => {
-  const { isOpen, openOverlay, closeOverlay } = useOverlayContext();
   return (
     <header>
       <div className="left">
@@ -28,33 +25,11 @@ const Header = () => {
         </Link>
       </div>
       <div className="right">
-        <PrimaryButton
-          onClick={() => {
-            openOverlay();
-          }}
-        >
-          Open
-        </PrimaryButton>
-        <PrimaryButton
-          onClick={() => {
-            closeOverlay();
-          }}
-        >
-          close
-        </PrimaryButton>
-        Status: {isOpen};
         <Link to="/create-shirt">
           <PrimaryButton>New Design</PrimaryButton>
         </Link>
         <div className="vertical-line" />
-        <button
-          type="button"
-          className="cart-items"
-          onClick={() => alert('Shopping Cart Button Clicked')}
-        >
-          <img className="cart-icon" src={shoppingCartIcon} alt="Icon of a shopping cart" />
-          <div className="total-items">0</div>
-        </button>
+        <CartControls />
       </div>
     </header>
   );

@@ -1,67 +1,39 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 0 0.5rem 0 rgba(0,0,0,0.2);
-    position: relative;
-    z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 header .left,
 header .right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 header .right {
-    margin-right: 0.75rem;
+  margin-right: 0.75rem;
 }
 
 header .vertical-line {
-    border-right: 0.0625rem solid var(--light-grey);
-    height: 3rem;
-    margin: 0;
+  border-right: 0.0625rem solid var(--light-grey);
+  height: 3rem;
+  margin: 0;
 }
 
 header button.navigation {
-    width: 3.5rem;
-    height: 3.5rem;
-    padding: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 1rem;
 }
 
 header img.logo {
-    max-width: 14rem;
-    margin-left: 0.5rem;
+  max-width: 14rem;
+  margin-left: 0.5rem;
 }
 
 header button.primary {
-    margin-right: 1.25rem;
-}
-
-header button.cart-items {
-    border: 0;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 5rem;
-    margin-left: 0.75rem;
-}
-
-header button.cart-items img.cart-icon {
-    max-width: 1.5rem;
-    margin-right: 1rem;
-}
-
-header button.cart-items .total-items {
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--sky-blue);
-    color: var(--white);
-    line-height: 1rem;
-    font-weight: 600;
-    width: 1.75rem;
-    height: 1.75rem;
+  margin-right: 1.25rem;
 }

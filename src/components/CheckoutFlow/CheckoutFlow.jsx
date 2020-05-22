@@ -1,10 +1,11 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import Cart from './Cart/Cart';
+import './checkout-flow.css';
 
 const CheckoutFlow = () => {
   return (
-    <div className="checkout">
-      <h2>Checkout</h2>
+    <div className="checkout-flow">
+      <Cart />
     </div>
   );
 };

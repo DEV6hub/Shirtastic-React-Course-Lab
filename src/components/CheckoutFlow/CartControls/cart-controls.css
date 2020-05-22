@@ -1,0 +1,27 @@
+.cart-controls button.cart-items {
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  margin-left: 0.75rem;
+}
+
+.cart-controls button.cart-items img.cart-icon {
+  max-width: 1.5rem;
+  margin-right: 1rem;
+}
+
+.cart-controls button.cart-items .total-items {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sky-blue);
+  color: var(--white);
+  line-height: 1rem;
+  font-weight: 600;
+  width: 1.75rem;
+  height: 1.75rem;
+}

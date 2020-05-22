@@ -2,7 +2,7 @@ import React, { useRef, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Navbar, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Cart from '../Cart/Cart';
+import Cart from '../CheckoutFlow/Cart/Cart';
 import SidenavShipping from '../CheckoutFlow/SidenavShipping/SidenavShipping';
 import Payment from '../CheckoutFlow/Payment/Payment';
 import Confirmation from '../Confirmation/Confirmation';
@@ -180,11 +180,11 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
               NEW DESIGN
             </Link>
           )}
-          <div className="vr" />
+          {/* <div className="vr" />
           <Row className="cart-btn" onClick={openCart}>
             <div className="nav-icon-basket" />
             <div className="cart-count">{shirtsInCart.length}</div>
-          </Row>
+          </Row> */}
         </Row>
       </Navbar>
     </>

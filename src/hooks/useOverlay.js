@@ -12,7 +12,7 @@ const useOverlay = () => {
   }, []);
 
   const toggleOverlay = useCallback(() => {
-    setIsOpen(isOpen);
+    setIsOpen(!isOpen);
   }, [isOpen]);
 
   return {
