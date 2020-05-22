@@ -1,26 +1,16 @@
 import React, { useCallback } from 'react';
 import './cart-item.css';
 
-// import { Row, Col } from 'reactstrap';
+const CartItem = ({ shirt, updateQuantity, remove }) => {
+  const onQuantityUpdate = useCallback(
+    (event) => {
+      const quantity = parseInt(event.target.value, 10);
+      shirt.quantity = isNaN(quantity) ? 0 : quantity;
 
-// const CartItem = ({ shirt, updateQuantity, removeFromCart }) => {
-//   const updateQuantityHandler = useCallback(
-//     (event) => {
-//       const quantity = parseInt(event.target.value, 10);
-//       shirt.quantity = isNaN(quantity) ? 0 : quantity;
-//       updateQuantity(shirt);
-//     },
-//     [shirt, updateQuantity],
-//   );
-const CartItem = ({ shirt, add, remove }) => {
-  // const updateQuantityHandler = useCallback(
-  //   (event) => {
-  //     const quantity = parseInt(event.target.value, 10);
-  //     shirt.quantity = isNaN(quantity) ? 0 : quantity;
-  //     updateQuantity(shirt);
-  //   },
-  //   [shirt, updateQuantity],
-  // );
+      updateQuantity(shirt);
+    },
+    [shirt, updateQuantity],
+  );
 
   const genderFolder = shirt.gender === 'M' ? 'mens' : 'womens';
 
@@ -49,11 +39,7 @@ const CartItem = ({ shirt, add, remove }) => {
         />
       </div>
       <div className="item-data">
-        <button
-          type="submit"
-          className="btn-close"
-          // onClick={removeFromCart}
-        >
+        <button type="submit" className="btn-close" onClick={remove}>
           X
         </button>
         <h3>
@@ -74,7 +60,7 @@ const CartItem = ({ shirt, add, remove }) => {
             maxLength="3"
             className="form-control form-control-sm quantity"
             value={shirt.quantity}
-            // onChange={updateQuantityHandler}
+            onChange={onQuantityUpdate}
           />
 
           <div className="price">@{shirt.price}</div>

@@ -4,19 +4,34 @@ import './Cart.css';
 import { useShoppingCartContext } from '../../../state/contexts/shoppingCartContext';
 import CartItem from '../CartItem/CartItem';
 
-// import ShirtInCart from '../ShirtInCart/ShirtInCart';
-
-// const Cart = ({ openShipping, closeCart, shirtsInCart, removeFromCart, updateQuantity }) => {
-
 const Cart = () => {
-  const { shirtsInCart, addToCart, removeFromCart } = useShoppingCartContext();
-  // const calculateTotal = useCallback(() => {
-  //   let total = 0;
-  //   shirtsInCart.forEach((shirt) => {
-  //     total += shirt.subtotal;
-  //   });
-  //   return Math.round(total * 100) / 100;
-  // }, [shirtsInCart]);
+  const { shirtsInCart, removeFromCart, setShirtsInCart } = useShoppingCartContext();
+
+  const calculateTotal = useCallback(() => {
+    let total = 0;
+    shirtsInCart.forEach((shirt) => {
+      total += shirt.subtotal;
+    });
+    return Math.round(total * 100) / 100;
+  }, [shirtsInCart]);
+
+  const updateQuantity = useCallback(
+    (shirt) => {
+      const cartItems = [...shirtsInCart];
+
+      const index = cartItems.findIndex((item) => {
+        return shirt.image === item.image;
+      });
+
+      if (index !== -1) {
+        cartItems[index].quantity = shirt.quantity;
+        cartItems[index].subtotal = cartItems[index].quantity * cartItems[index].price;
+      }
+
+      setShirtsInCart(cartItems);
+    },
+    [setShirtsInCart, shirtsInCart],
+  );
 
   return (
     <div>
@@ -29,15 +44,15 @@ const Cart = () => {
 
         {shirtsInCart.map((shirt, index) => (
           <div key={index}>
-            <CartItem shirt={shirt} add={addToCart} remove={removeFromCart} />
+            <CartItem shirt={shirt} remove={removeFromCart} updateQuantity={updateQuantity} />
             <hr />
           </div>
         ))}
-        {/* {shirtsInCart.length > 0 ? (
+        {shirtsInCart.length > 0 ? (
           <div className="subtotal">
             Subtotal: <span>${calculateTotal()}</span>
           </div>
-        ) : null} */}
+        ) : null}
         <button
           type="button"
           className="primary-btn"
