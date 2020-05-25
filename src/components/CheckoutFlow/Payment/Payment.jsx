@@ -3,7 +3,7 @@ import './Payment.css';
 import { Row, Col } from 'reactstrap';
 
 const Payment = ({ checkout }) => (
-  <div className="payment-container">
+  <div className="checkout-step payment-container">
     <div className="payment-title">Payment Method</div>
     <hr />
     <form>
