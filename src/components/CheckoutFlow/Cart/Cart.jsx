@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import CartControls from '../CartControls/CartControls';
+import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import './Cart.css';
 import { useShoppingCartContext } from '../../../state/contexts/shoppingCartContext';
 import CartItem from '../CartItem/CartItem';
@@ -53,16 +54,8 @@ const Cart = () => {
             Subtotal: <span>${calculateTotal()}</span>
           </div>
         ) : null}
-        <button
-          type="button"
-          className="primary-btn"
-          onClick={
-            console.log('test')
-            // openShipping
-          }
-        >
-          ewew
-        </button>
+
+        <PrimaryButton onClick={console.log('test')}>GO TO SHIPPING -&gt;</PrimaryButton>
       </div>
     </div>
   );
