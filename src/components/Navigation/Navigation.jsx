@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Row, Navbar, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Cart from '../CheckoutFlow/Cart/Cart';
-import SidenavShipping from '../CheckoutFlow/SidenavShipping/SidenavShipping';
-import Payment from '../CheckoutFlow/Payment/Payment';
-import Confirmation from '../Confirmation/Confirmation';
+// import SidenavShipping from '../CheckoutFlow/SidenavShipping/SidenavShipping';
+// import Payment from '../CheckoutFlow/Payment/Payment';
+// import Confirmation from '../Confirmation/Confirmation';
 
 import navLogo from '../../images/navlogo.png';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
