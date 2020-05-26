@@ -1,53 +1,36 @@
 import React from 'react';
 import './Payment.css';
-import { Row, Col } from 'reactstrap';
+import FormInput from '../../Forms/FormInput/FormInput';
 
 const Payment = ({ checkout }) => (
   <div className="checkout-step payment-container">
     <div className="payment-title">Payment Method</div>
     <hr />
     <form>
-      <Row className="row-item">
-        <Col className="form-group">
-          <label htmlFor="card">Credit Card Number</label>
-          <input
-            type="text"
-            className="form-control form-control-sm"
-            placeholder="**** **** **** 1234"
-          />
-        </Col>
-      </Row>
-      <Row className="row-item">
-        <Col className="form-group">
-          <label htmlFor="exp">Expiration</label>
-          <input type="text" className="form-control form-control-sm" placeholder="MM/YY" />
-        </Col>
-        <Col className="form-group">
-          <label htmlFor="ccv">CCV</label>
-          <input type="text" className="form-control form-control-sm" placeholder="123" />
-        </Col>
-      </Row>
+      <FormInput id="card" label="Credit Card Number" placeholder="**** **** **** 1234" />
+      <FormInput id="exp" label="Expiration" placeholder="MM/YY" />
+      <FormInput id="ccv" label="CCV" placeholder="123" />
     </form>
     <hr />
     <div>
-      <Row className="price-row">
-        <Col className="sub-title">Subtotal:</Col>
-        <Col className="amount">$61.94</Col>
-      </Row>
-      <Row className="price-row">
-        <Col className="sub-title">Tax:</Col>
-        <Col className="amount">$61.94</Col>
-      </Row>
-      <Row className="price-row">
-        <Col className="sub-title">Shipping:</Col>
-        <Col className="amount">$61.94</Col>
-      </Row>
+      <div className="price">
+        <div className="sub-title">Subtotal:</div>
+        <div className="amount">$61.94</div>
+      </div>
+      <div className="price">
+        <div className="sub-title">Tax:</div>
+        <div className="amount">$61.94</div>
+      </div>
+      <div className="price">
+        <div className="sub-title">Shipping:</div>
+        <div className="amount">$61.94</div>
+      </div>
     </div>
     <hr />
-    <Row className="price-row">
-      <Col className="total-title">Total:</Col>
-      <Col className="total-price">$61.94</Col>
-    </Row>
+    <div className="price">
+      <div className="total-title">Total:</div>
+      <div className="total-price">$61.94</div>
+    </div>
     <div>
       <button type="button" className="primary-btn float-right" onClick={checkout}>
         CHECKOUT
