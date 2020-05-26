@@ -2,14 +2,16 @@ import React from 'react';
 import Cart from './Cart/Cart';
 import Shipping from './Shipping/Shipping';
 import Payment from './Payment/Payment';
+import Confirmation from './Confirmation/Confirmation';
 import './checkout-flow.css';
 
 const CheckoutFlow = () => {
   return (
     <div className="checkout-flow">
-      <Cart />
+      {/* <Cart />
       <Shipping />
-      <Payment />
+      <Payment /> */}
+      <Confirmation />
     </div>
   );
 };
