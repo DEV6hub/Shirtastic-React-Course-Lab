@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './primary-button.css';
 
-const PrimaryButton = ({ children, onClick, btnStyle }) => (
-  <button className={btnStyle === 'primary' ? 'primary' : btnStyle} type="button" onClick={onClick}>
+const PrimaryButton = ({ children, onClick, btnStyle, isDisabled }) => (
+  <button
+    className={btnStyle === 'primary' ? 'primary' : btnStyle}
+    type="button"
+    onClick={onClick}
+    disabled={isDisabled}
+  >
     {children}
   </button>
 );
@@ -16,12 +21,14 @@ PrimaryButton.propTypes = {
   ]),
   onClick: PropTypes.func,
   btnStyle: PropTypes.string,
+  isDisabled: PropTypes.bool,
 };
 
 PrimaryButton.defaultProps = {
   children: '',
   onClick: () => null,
   btnStyle: 'primary',
+  isDisabled: false,
 };
 
 export default PrimaryButton;

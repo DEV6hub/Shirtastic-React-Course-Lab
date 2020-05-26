@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import CartControls from '../CartControls/CartControls';
 import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import './Cart.css';
 import { useShoppingCartContext } from '../../../state/contexts/shoppingCartContext';
 import CartItem from '../CartItem/CartItem';
 
-const Cart = () => {
+const Cart = ({ onCartComplete, isCartComplete }) => {
   const { shirtsInCart, removeFromCart, setShirtsInCart } = useShoppingCartContext();
 
   const calculateTotal = useCallback(() => {
@@ -35,30 +36,35 @@ const Cart = () => {
   );
 
   return (
-    <div>
-      <div className="checkout-step cart-container">
-        <div className="cart-header">
-          <h3 className="cart-title">Shopping Cart</h3>
-          <CartControls />
-        </div>
-        <hr />
-
-        {shirtsInCart.map((shirt, index) => (
-          <div key={index}>
-            <CartItem shirt={shirt} remove={removeFromCart} updateQuantity={updateQuantity} />
-            <hr />
-          </div>
-        ))}
-        {shirtsInCart.length > 0 ? (
-          <div className="subtotal">
-            Subtotal: <span>${calculateTotal()}</span>
-          </div>
-        ) : null}
-
-        <PrimaryButton onClick={console.log('test')}>GO TO SHIPPING -&gt;</PrimaryButton>
+    <div className={`checkout-step cart-container${isCartComplete ? ' complete-step' : ''}`}>
+      <div className="cart-header">
+        <h3 className="cart-title">Shopping Cart</h3>
+        <CartControls />
       </div>
+      <hr />
+
+      {shirtsInCart.map((shirt) => (
+        <div key={shirt.id}>
+          <CartItem shirt={shirt} remove={removeFromCart} updateQuantity={updateQuantity} />
+          <hr />
+        </div>
+      ))}
+      {shirtsInCart.length > 0 ? (
+        <div className="subtotal">
+          Subtotal: <span>${calculateTotal()}</span>
+        </div>
+      ) : null}
+
+      <PrimaryButton onClick={onCartComplete} isDisabled={shirtsInCart.length === 0}>
+        GO TO SHIPPING -&gt;
+      </PrimaryButton>
     </div>
   );
+};
+
+Cart.propTypes = {
+  onCartComplete: PropTypes.func.isRequired,
+  isCartComplete: PropTypes.bool.isRequired,
 };
 
 export default Cart;

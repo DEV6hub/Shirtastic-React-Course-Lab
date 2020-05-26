@@ -22,6 +22,10 @@ button.primary img {
   max-width: 0.75rem;
 }
 
+button.primary:disabled {
+  background-color: #d0d0d0;
+}
+
 button.navigation {
   background-color: transparent;
   display: flex;
