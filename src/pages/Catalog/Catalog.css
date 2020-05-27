@@ -1,134 +1,39 @@
-.fluid-container {
+.catalog-wrapper {
   width: 100%;
+  max-width: 96%;
 }
 
-nav {
-  background-color: #ffffff;
-  height: 80px;
-  box-shadow: 0 5px 6px -6px #777;
-}
-
-.mr-2 {
-  border: 0 !important;
-  min-width: 30px;
-  color: #274686 !important;
-}
-
-.nav-logo {
-  width: 280px;
-}
-
-.nav-toggle-btn {
-  margin-left: -10px !important;
+.catalog-wrapper .catalog-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  border-bottom: 0.0625rem solid var(--light-grey);
 }
 
-.input-shirt-title {
-  margin-right: 30px;
-  color: #10a2dc;
-  font-size: 16px;
-  font-weight: 700;
+.catalog-wrapper .catalog-header .tabs-container {
+  display: block;
+  width: 60%;
+  border-bottom: none;
 }
 
-.vr {
-  height: 54px;
-  width: 1px;
-  border: 0.5px solid #e2e2e2;
-  margin-right: 20px;
+.catalog-wrapper .catalog-header .tabs button {
+  color: var(--light-grey) !important;
 }
 
-.cart-btn-container {
-  margin: 0 !important;
-  align-items: center;
+.catalog-wrapper .catalog-header .tabs button:first-child {
+  margin-left: 0;
 }
 
-.cart-btn {
-  margin: 0 !important;
-  margin-right: 6px !important;
-  height: 30px;
-  cursor: pointer;
+.catalog-wrapper .catalog-header .tabs button.active {
+  color: var(--navy-blue) !important;
+  border-bottom-color: var(--navy-blue) !important;
 }
 
-.nav-icon-basket {
-  width: 30px;
-  /* content: url('../../images/icon-basket.svg'); */
-  margin-right: 15px;
-}
-
-.cart-count {
-  background-color: #10a2dc;
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  text-align: center;
-  padding: 5px 0;
-  font-size: 14px;
-}
-
-.nav-btn {
-  margin-right: 20px;
-  margin-top: 5px;
-}
-
-/* Side nav Cart */
-.sidenav-cart,
-.sidenav-shipping,
-.sidenav-payment,
-.sidenav-confirmation {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 5; /* Stay on top */
-  top: 0; /* Stay at the top */
-  right: 0;
-  background-color: #f0f0f0; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  transition: 0.2s; /* 0.5 second transition effect to slide in the sidenav */
-  border-right: 0.5px solid #cdcdcd;
-}
-
-div.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-  background: #ccc;
-}
-
-.sidenav-shipping div .shipping-title {
-  color: #274686;
-  font-size: 26px;
-  font-weight: 800;
-  margin-top: -5px;
-  padding-top: 0;
-  margin-bottom: 0;
-}
-
-@media only screen and (min-width: 500px) {
-  .fluid-container {
-    padding-left: 100px !important;
-  }
-}
-
-/* Sidenav media queries */
-@media only screen and (min-width: 500px) {
-  .sidenav-cart,
-  .sidenav-shipping,
-  .sidenav-payment {
-    max-width: 385px;
-  }
-
-  .sidenav-confirmation {
-    max-width: 600px;
-  }
-}
-
-@media only screen and (min-width: 1100px) {
-  .sidenav-confirmation {
-    max-width: 800px;
-  }
-}
-
-@media only screen and (min-width: 1500px) {
-  .sidenav-confirmation {
-    max-width: 1200px;
-  }
+.catalog-wrapper .catalog-header .shirts-displayed {
+  width: 40%;
+  color: var(--dark-grey);
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: right;
 }
