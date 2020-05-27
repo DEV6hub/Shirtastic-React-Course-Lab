@@ -65,16 +65,11 @@
 }
 
 .controls-container {
-  /* border: 1px solid; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: nowrap;
 }
-
-/* .controls-container .control {
-  border: 1px dotted;
-} */
 
 .controls-container .add-to-cart,
 .controls-container .edit {
@@ -88,9 +83,11 @@
   color: #444444;
 }
 
-.controls-container .add-to-cart {
-  content: url('../../images/icons/icon-basket.svg');
-  cursor: pointer;
+.button-with-icon {
+  min-width: 63px;
+  min-height: 36;
+  background-color: #fff;
+  border: none;
 }
 
 .controls-container .edit {

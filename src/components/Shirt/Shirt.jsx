@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import './Shirt.css';
 import { Link } from 'react-router-dom';
 import shirtShape from '../Models/shirtShape';
-import PrimaryButton from '../PrimaryButton/PrimaryButton';
+// import PrimaryButton from '../PrimaryButton/PrimaryButton';
 import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
-import { useOverlayContext } from '../../state/contexts/overlayContext';
+// import { useOverlayContext } from '../../state/contexts/overlayContext';
+
+import baskedIcon from '../../images/icons/icon-basket.svg';
 
 const Shirt = ({ shirt }) => {
   const { addToCart } = useShoppingCartContext();
@@ -44,13 +46,15 @@ const Shirt = ({ shirt }) => {
         {
           // TODO AK: Refactor Button to be able to render with various styles.
         }
-        <PrimaryButton
+        <button
+          className="button-with-icon"
+          type="button"
           onClick={() => {
             addToCart(shirt);
           }}
         >
-          add to cart
-        </PrimaryButton>
+          <img src={baskedIcon} alt="Add to basket" />
+        </button>
 
         <div className="control price">
           <strong>${shirt.price}</strong>
