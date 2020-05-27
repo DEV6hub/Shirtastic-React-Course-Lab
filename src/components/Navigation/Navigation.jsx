@@ -1,3 +1,5 @@
+// TODO: AK: See if this component is still needed.
+
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Navbar, Col } from 'reactstrap';

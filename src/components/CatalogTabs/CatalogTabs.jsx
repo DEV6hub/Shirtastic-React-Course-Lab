@@ -1,3 +1,5 @@
+// TODO: AK: Delete this component.
+
 import React, { useState, useCallback } from 'react';
 import './CatalogTabs.css';
 import { Container, Row, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
