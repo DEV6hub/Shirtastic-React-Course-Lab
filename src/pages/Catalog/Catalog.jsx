@@ -1,7 +1,9 @@
 import React from 'react';
 import PageLayout from '../../components/PageLayout/PageLayout';
-import './Catalog.css';
 import Tabs from '../../components/Tabs/Tabs';
+import CatalogGrid from '../../components/CatalogGrid/CatalogGrid';
+import { useShirtsContext } from '../../state/contexts/shirtsContext';
+import './Catalog.css';
 
 // import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 
@@ -28,6 +30,7 @@ const changeTab = (id) => {
 };
 
 const Catalog = () => {
+  const { shirtList } = useShirtsContext();
   return (
     <PageLayout>
       <div className="catalog-wrapper">
@@ -35,6 +38,7 @@ const Catalog = () => {
           <Tabs tabs={catalogTabs} activeTab={selectedTab} onTabClick={changeTab} />
           <div className="shirts-displayed">Showing {shirts} Designs</div>
         </div>
+        <CatalogGrid list={shirtList} />
       </div>
     </PageLayout>
   );
