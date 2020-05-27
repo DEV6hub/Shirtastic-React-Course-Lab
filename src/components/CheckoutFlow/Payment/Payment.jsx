@@ -1,8 +1,10 @@
 import React from 'react';
-import './Payment.css';
+import PropTypes from 'prop-types';
 import FormInput from '../../Forms/FormInput/FormInput';
+import PrimaryButton from '../../PrimaryButton/PrimaryButton';
+import './Payment.css';
 
-const Payment = ({ checkout }) => (
+const Payment = ({ onPaymentComplete }) => (
   <div className="checkout-step payment-container">
     <div className="payment-title">Payment Method</div>
     <hr />
@@ -32,11 +34,13 @@ const Payment = ({ checkout }) => (
       <div className="total-price">$61.94</div>
     </div>
     <div>
-      <button type="button" className="primary-btn float-right" onClick={checkout}>
-        CHECKOUT
-      </button>
+      <PrimaryButton onClick={onPaymentComplete}>Checkout</PrimaryButton>
     </div>
   </div>
 );
+
+Payment.propTypes = {
+  onPaymentComplete: PropTypes.func.isRequired,
+};
 
 export default Payment;

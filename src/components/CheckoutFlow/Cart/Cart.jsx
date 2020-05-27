@@ -6,7 +6,7 @@ import './Cart.css';
 import { useShoppingCartContext } from '../../../state/contexts/shoppingCartContext';
 import CartItem from '../CartItem/CartItem';
 
-const Cart = ({ onCartComplete, isCartComplete }) => {
+const Cart = ({ onCartComplete }) => {
   const { shirtsInCart, removeFromCart, setShirtsInCart } = useShoppingCartContext();
 
   const calculateTotal = useCallback(() => {
@@ -36,7 +36,7 @@ const Cart = ({ onCartComplete, isCartComplete }) => {
   );
 
   return (
-    <div className={`checkout-step cart-container${isCartComplete ? ' complete-step' : ''}`}>
+    <div className="cart-container">
       <div className="cart-header">
         <h3 className="cart-title">Shopping Cart</h3>
         <CartControls />
@@ -64,7 +64,6 @@ const Cart = ({ onCartComplete, isCartComplete }) => {
 
 Cart.propTypes = {
   onCartComplete: PropTypes.func.isRequired,
-  isCartComplete: PropTypes.bool.isRequired,
 };
 
 export default Cart;

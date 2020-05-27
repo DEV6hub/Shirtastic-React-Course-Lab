@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
 import './Shipping.css';
-import { Row, Col } from 'reactstrap';
+
 import { FormWithConstraints, FieldFeedbacks, FieldFeedback } from 'react-form-with-constraints';
 // import { createdUser } from '../../state/actions/actions';
 import { countries, regions } from '../Models/CountriesAndRegions';

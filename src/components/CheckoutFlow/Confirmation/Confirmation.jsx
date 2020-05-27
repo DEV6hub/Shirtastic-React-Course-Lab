@@ -16,7 +16,7 @@ const Confirmation = ({ onComplete }) => (
   </div>
 );
 
-Confirmation.protoTypes = {
+Confirmation.propTypes = {
   onComplete: PropTypes.func.isRequired,
 };
 

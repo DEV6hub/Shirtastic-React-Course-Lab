@@ -9,7 +9,7 @@ import { COUNTRIES, REGIONS } from '../../../constants/countriesAndRegions';
 
 import './shipping.css';
 
-const Shipping = ({ openPayment }) => {
+const Shipping = ({ onShippingComplete }) => {
   const [country, setCountry] = useState('');
   const countryOptions = COUNTRIES.map((item) => ({ text: item.name, value: item.id }));
   countryOptions.unshift({ text: 'Select a country', value: '' });
@@ -97,13 +97,7 @@ const Shipping = ({ openPayment }) => {
           placeholder={country === COUNTRIES[0].id ? 'A0A 0A0 or A0A0A0' : '(12345 or 12345-1234)'}
         />
         <div>
-          <button
-            type="button"
-            className="primary"
-            onClick={() => {
-              openPayment();
-            }}
-          >
+          <button type="button" className="primary" onClick={onShippingComplete}>
             GO TO PAYMENT -&gt;
           </button>
         </div>
@@ -113,7 +107,7 @@ const Shipping = ({ openPayment }) => {
 };
 
 Shipping.propTypes = {
-  openPayment: PropTypes.func.isRequired,
+  onShippingComplete: PropTypes.func.isRequired,
 };
 
 export default Shipping;
