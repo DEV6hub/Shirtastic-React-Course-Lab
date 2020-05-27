@@ -1,3 +1,7 @@
+.fluid-container {
+  width: 100%;
+}
+
 nav {
   background-color: #ffffff;
   height: 80px;
@@ -47,7 +51,7 @@ nav {
 
 .nav-icon-basket {
   width: 30px;
-  content: url('../../images/icon-basket.svg');
+  /* content: url('../../images/icon-basket.svg'); */
   margin-right: 15px;
 }
 

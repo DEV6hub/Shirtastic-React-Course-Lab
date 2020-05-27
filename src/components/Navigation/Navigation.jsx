@@ -150,13 +150,13 @@ const Navigation = ({ isDesign, shirtTitle, setShirtTitle, handleSaveShirt }) =>
           )}
         </div>
       </div> */}
-      Nav
       <Navbar color="faded" light>
         <Row className="nav-toggle-btn">
           <Col className="mr-2">
             <Link to="/" className="navbar-toggler-icon" />
           </Col>
           <div className="vr" />
+          eqww
           <img className="nav-logo" src={navLogo} alt="logo" />
         </Row>
         <Row className="cart-btn-container">
