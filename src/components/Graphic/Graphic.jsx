@@ -13,7 +13,7 @@ const Graphic = ({ selectedGraphic, selectGraphic }) => (
             className={`graphic-div ${selectedGraphic === graphic.image ? 'active' : ''}`}
             onClick={() => selectGraphic(graphic.image)}
           >
-            <img src={require(`../../images/${graphic.image}`)} alt="graphic" />
+            {/* <img src={require(`../../images/${graphic.image}`)} alt="graphic" /> */}
           </div>
         </div>
       ))}

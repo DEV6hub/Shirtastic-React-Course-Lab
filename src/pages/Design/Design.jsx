@@ -198,7 +198,7 @@ const Design = () => {
                             }`}
                             onClick={() => selectStyle(style.image)}
                           >
-                            <img
+                            {/* <img
                               className="img-fluid"
                               // eslint-disable-next-line import/no-dynamic-require, global-require
                               src={require(`../../images/${renderImage(
@@ -206,7 +206,7 @@ const Design = () => {
                                 shirtToEdit?.shirtColor?.name,
                               )}.jpg`)}
                               alt="shirt style"
-                            />
+                            /> */}
                           </button>
                           <div className="style-description">{style.description}</div>
                         </Col>
@@ -251,20 +251,21 @@ const Design = () => {
           </Col>
           <Col className="style-config-col">
             <Card className="img-configurator" id="imageRef">
-              <img
+              {/* <img
                 className="img-fluid"
                 src={require(`../../images/${renderImage(
                   shirtToEdit.shirtStyle,
                   shirtToEdit.shirtColor.name,
                 )}.jpg`)}
                 alt="shirt style"
-              />
+              /> */}
               {shirtToEdit?.graphic && (
-                <img
-                  className="img-fluid graphic-img"
-                  src={shirtToEdit?.graphic ? require(`../../images/${shirtToEdit.graphic}`) : ''}
-                  alt="shirt graphic"
-                />
+                <div>eqwe</div>
+                // <img
+                //   className="img-fluid graphic-img"
+                //   src={shirtToEdit?.graphic ? require(`../../images/${shirtToEdit.graphic}`) : ''}
+                //   alt="shirt graphic"
+                // />
               )}
               <div
                 className="shirt-text"
