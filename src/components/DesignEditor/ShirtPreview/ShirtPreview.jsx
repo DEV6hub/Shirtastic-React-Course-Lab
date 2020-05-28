@@ -46,7 +46,6 @@ const ShirtPreview = () => {
   return (
     <div className="shirt-preview">
       <div className="shirt-assets">
-        {/* <img className="shirt-image" src={shirtFileSrc} alt={shirt.shirtStyle.id} /> */}
         <img
           className="shirt-image"
           src={require('../../../images/shirts/mens/MensShirt-black.jpg')}
