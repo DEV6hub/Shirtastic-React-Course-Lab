@@ -36,7 +36,7 @@ Tabs.propTypes = {
 
 Tabs.defaultProps = {
   tabs: [{ id: '', label: '' }],
-  activeTab: 'step-1-form',
+  activeTab: null,
   activeClassName: 'active',
   onTabClick: (value) => {
     console.log(`${value} is being sent through but no function is handling it`);

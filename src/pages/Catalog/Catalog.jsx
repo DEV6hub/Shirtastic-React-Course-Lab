@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageLayout from '../../components/PageLayout/PageLayout';
 import Tabs from '../../components/Tabs/Tabs';
 import CatalogGrid from '../../components/CatalogGrid/CatalogGrid';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 import './Catalog.css';
-
-// TODO: AK: Refactor for tab change.
 
 const catalogTabs = [
   {
@@ -13,32 +11,53 @@ const catalogTabs = [
     label: 'All Designs',
   },
   {
-    id: 'mens-shirts',
+    id: 'mens',
     label: 'Mens',
   },
   {
-    id: 'womens-shirts',
+    id: 'womens',
     label: 'Womens',
   },
 ];
 
-const activeTab = catalogTabs[0].id;
-const shirts = 12;
-
-const changeTab = (id) => {
-  console.log('kra tabn', id);
-};
-
 const Catalog = () => {
   const { shirtList } = useShirtsContext();
+
+  const [activeTab, setActiveTab] = useState(catalogTabs[0].id);
+
+  const changeTab = (tabId) => {
+    setActiveTab(tabId);
+  };
+
+  const filterList = (id) => {
+    let list = [];
+
+    switch (id) {
+      case 'mens':
+        list = shirtList.filter((shirt) => {
+          return shirt.gender === 'M';
+        });
+        break;
+      case 'womens':
+        list = shirtList.filter((shirt) => {
+          return shirt.gender === 'W';
+        });
+        break;
+      default:
+        list = shirtList;
+    }
+
+    return list;
+  };
+
   return (
     <PageLayout>
       <div className="catalog-wrapper">
         <div className="catalog-header">
           <Tabs tabs={catalogTabs} activeTab={activeTab} onTabClick={changeTab} />
-          <div className="shirts-displayed">Showing {shirts} Designs</div>
+          <div className="shirts-displayed">Showing {filterList(activeTab).length} Designs</div>
         </div>
-        <CatalogGrid list={shirtList} />
+        <CatalogGrid list={filterList(activeTab)} />
       </div>
     </PageLayout>
   );
