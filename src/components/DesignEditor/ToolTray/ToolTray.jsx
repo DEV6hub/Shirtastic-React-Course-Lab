@@ -64,7 +64,12 @@ const ShirtOptions = () => {
   return (
     <div className="shirt-options">
       <div className="shirt-option-tabs">
-        <Tabs tabs={tabOptions} active={tab} onTabClick={(tabId) => setTab(tabId)} />
+        <Tabs
+          tabs={tabOptions}
+          activeTab={tab}
+          activeClassName="active"
+          onTabClick={(tabId) => setTab(tabId)}
+        />
       </div>
       <div className="options">
         {tab === tabOptions[0].id && (

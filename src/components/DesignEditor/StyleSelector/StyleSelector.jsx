@@ -1,11 +1,11 @@
 import React from 'react';
-import ShirtTypes from '../../../constants/shirtStyles';
+import { MEN, WOMEN } from '../../../constants/shirtStyles';
 import './style-selector.css';
 import { SHIRT_WHITE } from '../../../constants/shirtColorOptions';
 import * as OptionEvents from '../../../constants/optionEventTypes';
 import CheckmarkIcon from '../../CheckmarkIcon/CheckmarkIcon';
 
-const shirtStyles = [ShirtTypes.MEN, ShirtTypes.WOMEN];
+const shirtStyles = [MEN, WOMEN];
 
 const StyleSelector = ({ onStyleSelected, selectedStyle, selectedShirtColor }) => {
   return (
@@ -31,22 +31,31 @@ const StyleSelector = ({ onStyleSelected, selectedStyle, selectedShirtColor }) =
 };
 
 StyleSelector.defaultProps = {
-  selectedStyle: ShirtTypes.MEN.id,
+  selectedStyle: MEN.id,
   selectedShirtColor: SHIRT_WHITE,
   onStyleSelected: (data) => console.log('Need to implemented this', data),
 };
 
 const StyleOption = ({ styleOption, selectedColor, isSelected, onOptionClicked }) => {
-  const folder = styleOption.id === ShirtTypes.MEN.id ? 'mens' : 'womens';
+  const folder = styleOption.id === MEN.id ? 'mens' : 'womens';
+
   const fileName =
-    styleOption.id === ShirtTypes.MEN.id ? selectedColor.menFile : selectedColor.womenFile;
-  // const shirtImage = require(`../../images/shirts/${folder}/${fileName}`);
+    styleOption.id === MEN.id
+      ? `${styleOption.id}-${selectedColor.name}`
+      : `${styleOption.id}-${selectedColor.name}`;
 
   return (
-    <button onClick={() => onOptionClicked(styleOption.id)} className="shirt-style-option">
+    <button
+      type="button"
+      onClick={() => onOptionClicked(styleOption.id)}
+      className="shirt-style-option"
+    >
       <div className="shirt-image">
-        {/* <img src={shirtImage} alt={styleOption.description} />
-        {isSelected && <CheckmarkIcon />} */}
+        <img
+          src={require(`../../../images/shirts/${folder}/${fileName}.jpg`)}
+          alt={styleOption.description}
+        />
+        {isSelected && <CheckmarkIcon />}
       </div>
       <div className="description">{styleOption.description}</div>
     </button>
