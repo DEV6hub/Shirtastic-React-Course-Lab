@@ -55,10 +55,33 @@ const shirtToEdit = {
 
 // const ShirtOptions = ({ shirtToEdit, onOptionSelected }) => {
 const ShirtOptions = () => {
+  // TODO: AK: Convert to useReducer
   const [tab, setTab] = useState(tabOptions[0].id);
+  const [style, setStyle] = useState(shirtToEdit.shirtStyle);
+  const [color, setColor] = useState(shirtToEdit.shirtColor);
+  const [graphic, setGraphic] = useState(shirtToEdit.graphic);
+  const [graphicColor, setGraphicColor] = useState(shirtToEdit.graphicColor);
+
+  const onStyleSelected = (newStyle) => {
+    setStyle(newStyle.data);
+  };
+
+  const onColorSelected = (newColor) => {
+    setColor(newColor);
+  };
+
+  const onGraphicSelected = (newGraphic) => {
+    console.log(newGraphic.data);
+    setGraphic(newGraphic.data);
+  };
+
+  const onGraphicColorSelected = (newGraphicColor) => {
+    console.log(newGraphicColor);
+    setGraphicColor(newGraphicColor.data);
+  };
 
   const onOptionSelected = (option) => {
-    console.log('kra', option);
+    console.log('option', option);
   };
 
   return (
@@ -74,29 +97,26 @@ const ShirtOptions = () => {
       <div className="options">
         {tab === tabOptions[0].id && (
           <StyleSelector
-            selectedStyle={shirtToEdit.shirtStyle.id}
+            selectedStyle={style}
             selectedShirtColor={shirtToEdit.shirtColor}
-            onStyleSelected={(data) => onOptionSelected(data)}
+            onStyleSelected={(data) => onStyleSelected(data)}
           />
         )}
-
         {tab === tabOptions[1].id && (
           <ColorPicker
             title="Choose a shirt color"
-            selectedColor={shirtToEdit.shirtColor.colorOption}
-            onColorSelected={(color) => onOptionSelected({ type: SHIRT_COLOUR_EVENT, data: color })}
+            selectedColor={color}
+            onColorSelected={(data) => onColorSelected(data)}
           />
         )}
-
         {tab === tabOptions[2].id && (
           <GraphicPicker
-            selectedGraphic={shirtToEdit.graphic}
-            selectedGraphicColor={shirtToEdit.graphicColor}
-            onGraphicSelected={(event) => onOptionSelected(event)}
-            onGraphicColorSelected={(event) => onOptionSelected(event)}
+            selectedGraphic={graphic}
+            selectedGraphicColor={graphicColor}
+            onGraphicSelected={onGraphicSelected}
+            onGraphicColorSelected={onGraphicColorSelected}
           />
         )}
-
         {tab === tabOptions[3].id && (
           <ShirtText
             selectedTextColor={shirtToEdit.textColor}

@@ -46,13 +46,13 @@ GraphicPicker.defaultProps = {
 };
 
 const GraphicOption = ({ onGraphicSelected, fileName, isSelected }) => {
-  // const file = require(`../../images/shirt-graphics/${fileName}`);
   return (
     <button
+      type="button"
       onClick={() => onGraphicSelected({ type: GRAPHICS_EVENT, data: fileName })}
       className="graphic-option"
     >
-      {/* <img src={file} alt={fileName} /> */}
+      <img src={require(`../../../images/shirt-graphics/${fileName}`)} alt={fileName} />
       {isSelected && <CheckmarkIcon />}
     </button>
   );
