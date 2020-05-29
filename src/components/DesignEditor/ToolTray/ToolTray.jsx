@@ -5,7 +5,7 @@ import StyleSelector from '../StyleSelector/StyleSelector';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import { SHIRT_COLOUR_EVENT } from '../../../constants/optionEventTypes';
 import GraphicPicker from '../GraphicPicker/GraphicPicker';
-// import ShirtText from "../ShirtText/ShirtText";
+import ShirtText from '../ShirtText/ShirtText';
 
 const tabOptions = [
   {
@@ -92,12 +92,14 @@ const ShirtOptions = () => {
           />
         )}
 
-        {/* {tab === tabOptions[3].id && <ShirtText
-        selectedTextColor={shirtToEdit.textColor}
-        selectedShirtFont={shirtToEdit.font}
-        shirtText={shirtToEdit.text}
-        onOptionSelected={event => onOptionSelected(event)}
-      />} */}
+        {tab === tabOptions[3].id && (
+          <ShirtText
+            selectedTextColor={shirtToEdit.textColor}
+            selectedShirtFont={shirtToEdit.font}
+            shirtText={shirtToEdit.text}
+            onOptionSelected={(event) => onOptionSelected(event)}
+          />
+        )}
       </div>
     </div>
   );
