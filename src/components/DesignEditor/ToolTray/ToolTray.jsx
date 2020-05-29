@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Tabs from '../../Tabs/Tabs';
 import './tool-tray.css';
-// import ShirtStyles from "../ShirtStyles/ShirtStyles";
+import StyleSelector from '../StyleSelector/StyleSelector';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import { SHIRT_COLOUR_EVENT } from '../../../constants/optionEventTypes';
 // import GraphicPicker from "../GraphicPicker/GraphicPicker";
@@ -67,13 +67,13 @@ const ShirtOptions = () => {
         <Tabs tabs={tabOptions} active={tab} onTabClick={(tabId) => setTab(tabId)} />
       </div>
       <div className="options">
-        {/* {tab === tabOptions[0].id && (
-          <ShirtStyles
+        {tab === tabOptions[0].id && (
+          <StyleSelector
             selectedStyle={shirtToEdit.shirtStyle.id}
             selectedShirtColor={shirtToEdit.shirtColor}
             onStyleSelected={(data) => onOptionSelected(data)}
           />
-        )} */}
+        )}
 
         {tab === tabOptions[1].id && (
           <ColorPicker
