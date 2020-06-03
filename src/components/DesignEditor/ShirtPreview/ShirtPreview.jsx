@@ -38,7 +38,7 @@ const ShirtPreview = () => {
   const shirtStylePath = shirt.shirtStyle.id === MEN.id ? 'mens' : 'womens';
 
   // const shirtFileSrc = require(`../../../images/shirts/${shirtStylePath}/${shirtFileName}`);
-  console.log('path', shirtStylePath, shirtFileName);
+  // console.log('path', shirtStylePath, shirtFileName);
   // const isGraphicSelected = !!shirt.graphic;
 
   const hasText = !!shirt.text;

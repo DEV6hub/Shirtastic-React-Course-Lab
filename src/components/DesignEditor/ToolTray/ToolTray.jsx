@@ -26,83 +26,83 @@ const tabOptions = [
   },
 ];
 
-const shirtToEdit = {
-  id: 2,
-  name: '4 Coders',
-  description: 'Mens Fine Jersey Short Sleeve',
-  price: 14.99,
-  image: 'MensShirt-red',
-  gender: 'M',
-  quantity: 0,
-  subtotal: 0,
-  graphic: 'graphic1.svg',
-  font: "'Montserrat', sans-serif",
-  text: 'KEEP CALM AND CODE ON',
-  textColor: {
-    name: 'green',
-    color: '#44A265',
-  },
-  shirtStyle: 'MensShirt',
-  shirtColor: {
-    name: 'red',
-    color: '#A7386B',
-  },
-  graphicColor: {
-    name: 'white',
-    color: '#FFFFFF',
-  },
-};
+// const shirtToEdit = {
+//   id: 2,
+//   name: '4 Coders',
+//   description: 'Mens Fine Jersey Short Sleeve',
+//   price: 14.99,
+//   image: 'MensShirt-red',
+//   gender: 'M',
+//   quantity: 0,
+//   subtotal: 0,
+//   graphic: 'graphic1.svg',
+//   font: "'Montserrat', sans-serif",
+//   text: 'KEEP CALM AND CODE ON',
+//   textColor: {
+//     name: 'green',
+//     color: '#44A265',
+//   },
+//   shirtStyle: 'MensShirt',
+//   shirtColor: {
+//     name: 'red',
+//     color: '#A7386B',
+//   },
+//   graphicColor: {
+//     name: 'white',
+//     color: '#FFFFFF',
+//   },
+// };
 
 // const ShirtOptions = ({ shirtToEdit, onOptionSelected }) => {
-const ShirtOptions = () => {
+const ShirtOptions = ({ shirt, updateShirt }) => {
   // TODO: AK: Convert to useReducer
   const [tab, setTab] = useState(tabOptions[0].id);
-  const [style, setStyle] = useState(shirtToEdit.shirtStyle);
-  const [color, setColor] = useState(shirtToEdit.shirtColor);
-  const [graphic, setGraphic] = useState(shirtToEdit.graphic);
-  const [graphicColor, setGraphicColor] = useState(shirtToEdit.graphicColor);
-  const [text, setText] = useState(shirtToEdit.text);
-  const [font, setFont] = useState(shirtToEdit.font);
-  const [textColor, setTextColor] = useState(shirtToEdit.textColor);
 
-  const onStyleSelected = (newStyle) => {
-    setStyle(newStyle.data);
-  };
+  // const [color, setColor] = useState(shirt.shirtColor);
+  // const [graphic, setGraphic] = useState(shirt.graphic);
+  // const [graphicColor, setGraphicColor] = useState(shirt.graphicColor);
+  // const [text, setText] = useState(shirt.text);
+  // const [font, setFont] = useState(shirt.font);
+  // const [textColor, setTextColor] = useState(shirt.textColor);
 
-  const onColorSelected = (newColor) => {
-    setColor(newColor);
-  };
+  // const onStyleSelected = (newStyle) => {
+  //   updateShirt(newStyle);
+  // };
 
-  const onGraphicSelected = (newGraphic) => {
-    console.log(newGraphic.data);
-    setGraphic(newGraphic.data);
-  };
+  // const onColorSelected = (newColor) => {
+  //   setColor(newColor);
+  // };
 
-  const onGraphicColorSelected = (newGraphicColor) => {
-    console.log(newGraphicColor);
-    setGraphicColor(newGraphicColor.data);
-  };
+  // const onGraphicSelected = (newGraphic) => {
+  //   console.log(newGraphic.data);
+  //   setGraphic(newGraphic.data);
+  // };
 
-  const onTextSelected = (textData) => {
-    console.log('text', textData);
+  // const onGraphicColorSelected = (newGraphicColor) => {
+  //   console.log(newGraphicColor);
+  //   setGraphicColor(newGraphicColor.data);
+  // };
 
-    switch (textData.type) {
-      case 'TEXT_EVENT':
-        setText(textData.data);
-        break;
-      case 'TEXT_FONT_EVENT':
-        setFont(textData.data);
-        break;
-      case 'TEXT_COLOR_EVENT':
-        setTextColor(textData.data);
-        break;
-      default:
-    }
-  };
+  // const onTextSelected = (textData) => {
+  //   console.log('text', textData);
 
-  const onOptionSelected = (option) => {
-    console.log('option', option);
-  };
+  //   switch (textData.type) {
+  //     case 'TEXT_EVENT':
+  //       setText(textData.data);
+  //       break;
+  //     case 'TEXT_FONT_EVENT':
+  //       setFont(textData.data);
+  //       break;
+  //     case 'TEXT_COLOR_EVENT':
+  //       setTextColor(textData.data);
+  //       break;
+  //     default:
+  //   }
+  // };
+
+  // const onOptionSelected = (option) => {
+  //   console.log('option', option);
+  // };
 
   return (
     <div className="shirt-options">
@@ -117,33 +117,38 @@ const ShirtOptions = () => {
       <div className="options">
         {tab === tabOptions[0].id && (
           <StyleSelector
-            selectedStyle={style}
-            selectedShirtColor={shirtToEdit.shirtColor}
-            onStyleSelected={(data) => onStyleSelected(data)}
+            selectedStyle={shirt.shirtStyle}
+            selectedShirtColor={shirt.shirtColor}
+            onStyleSelected={(data) => updateShirt(data)}
           />
         )}
         {tab === tabOptions[1].id && (
           <ColorPicker
             title="Choose a shirt color"
-            selectedColor={color}
-            onColorSelected={(data) => onColorSelected(data)}
+            selectedColor={shirt.shirtColor}
+            onColorSelected={(data) => {
+              console.log(data);
+              updateShirt(data);
+            }}
           />
         )}
         {tab === tabOptions[2].id && (
-          <GraphicPicker
-            selectedGraphic={graphic}
-            selectedGraphicColor={graphicColor}
-            onGraphicSelected={onGraphicSelected}
-            onGraphicColorSelected={onGraphicColorSelected}
-          />
+          <div>graphic</div>
+          // <GraphicPicker
+          //   selectedGraphic={graphic}
+          //   selectedGraphicColor={graphicColor}
+          //   onGraphicSelected={onGraphicSelected}
+          //   onGraphicColorSelected={onGraphicColorSelected}
+          // />
         )}
         {tab === tabOptions[3].id && (
-          <ShirtText
-            selectedTextColor={textColor}
-            selectedShirtFont={font}
-            shirtText={text}
-            onOptionSelected={(data) => onTextSelected(data)}
-          />
+          <div>text</div>
+          // <ShirtText
+          //   selectedTextColor={textColor}
+          //   selectedShirtFont={font}
+          //   shirtText={text}
+          //   onOptionSelected={(data) => onTextSelected(data)}
+          // />
         )}
       </div>
     </div>
