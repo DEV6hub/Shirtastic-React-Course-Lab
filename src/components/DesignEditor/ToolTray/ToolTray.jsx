@@ -61,6 +61,9 @@ const ShirtOptions = () => {
   const [color, setColor] = useState(shirtToEdit.shirtColor);
   const [graphic, setGraphic] = useState(shirtToEdit.graphic);
   const [graphicColor, setGraphicColor] = useState(shirtToEdit.graphicColor);
+  const [text, setText] = useState(shirtToEdit.text);
+  const [font, setFont] = useState(shirtToEdit.font);
+  const [textColor, setTextColor] = useState(shirtToEdit.textColor);
 
   const onStyleSelected = (newStyle) => {
     setStyle(newStyle.data);
@@ -78,6 +81,23 @@ const ShirtOptions = () => {
   const onGraphicColorSelected = (newGraphicColor) => {
     console.log(newGraphicColor);
     setGraphicColor(newGraphicColor.data);
+  };
+
+  const onTextSelected = (textData) => {
+    console.log('text', textData);
+
+    switch (textData.type) {
+      case 'TEXT_EVENT':
+        setText(textData.data);
+        break;
+      case 'TEXT_FONT_EVENT':
+        setFont(textData.data);
+        break;
+      case 'TEXT_COLOR_EVENT':
+        setTextColor(textData.data);
+        break;
+      default:
+    }
   };
 
   const onOptionSelected = (option) => {
@@ -119,10 +139,10 @@ const ShirtOptions = () => {
         )}
         {tab === tabOptions[3].id && (
           <ShirtText
-            selectedTextColor={shirtToEdit.textColor}
-            selectedShirtFont={shirtToEdit.font}
-            shirtText={shirtToEdit.text}
-            onOptionSelected={(event) => onOptionSelected(event)}
+            selectedTextColor={textColor}
+            selectedShirtFont={font}
+            shirtText={text}
+            onOptionSelected={(data) => onTextSelected(data)}
           />
         )}
       </div>

@@ -23,7 +23,9 @@ const ShirtText = ({ selectedTextColor, selectedShirtFont, shirtText, onOptionSe
       label="Change font"
       options={fontOptions}
       value={selectedShirtFont}
-      onChangeFn={(e) => onOptionSelected({ type: TEXT_FONT_EVENT, data: e.target.value })}
+      onChange={(e) => {
+        onOptionSelected({ type: TEXT_FONT_EVENT, data: e.target.value });
+      }}
     />
     <hr />
     <ColorPicker
