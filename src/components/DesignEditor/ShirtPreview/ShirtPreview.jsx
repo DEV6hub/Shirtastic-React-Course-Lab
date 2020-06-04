@@ -3,35 +3,35 @@ import './shirt-preview.css';
 import { MEN } from '../../../constants/shirtStyles';
 // import ShirtSVGGraphic from '../ShirtSVGGraphic/ShirtSVGGraphic';
 
-const ShirtPreview = () => {
+const ShirtPreview = ({ shirt }) => {
   // TODO: AK: Replace dummy shirt with prop.
 
-  const shirt = {
-    id: 2,
-    name: '4 Coders',
-    description: 'Mens Fine Jersey Short Sleeve',
-    price: 14.99,
-    image: 'MensShirt-red',
-    gender: 'M',
-    quantity: 0,
-    subtotal: 0,
-    graphic: 'graphic1.svg',
-    font: "'Montserrat', sans-serif",
-    text: 'KEEP CALM AND CODE ON',
-    textColor: {
-      name: 'green',
-      color: '#44A265',
-    },
-    shirtStyle: 'MensShirt',
-    shirtColor: {
-      name: 'red',
-      color: '#A7386B',
-    },
-    graphicColor: {
-      name: 'white',
-      color: '#FFFFFF',
-    },
-  };
+  // const shirt = {
+  //   id: 2,
+  //   name: '4 Coders',
+  //   description: 'Mens Fine Jersey Short Sleeve',
+  //   price: 14.99,
+  //   image: 'MensShirt-red',
+  //   gender: 'M',
+  //   quantity: 0,
+  //   subtotal: 0,
+  //   graphic: 'graphic1.svg',
+  //   font: "'Montserrat', sans-serif",
+  //   text: 'KEEP CALM AND CODE ON',
+  //   textColor: {
+  //     name: 'green',
+  //     color: '#44A265',
+  //   },
+  //   shirtStyle: 'MensShirt',
+  //   shirtColor: {
+  //     name: 'red',
+  //     color: '#A7386B',
+  //   },
+  //   graphicColor: {
+  //     name: 'white',
+  //     color: '#FFFFFF',
+  //   },
+  // };
 
   const shirtFileName =
     shirt.shirtStyle.id === MEN.id ? shirt.shirtColor.menFile : shirt.shirtColor.womenFile;

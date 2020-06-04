@@ -37,7 +37,7 @@ const DesignEditor = () => {
   return (
     <div className="design-editor">
       <ToolTray shirt={shirt} updateShirt={updateShirt} />
-      <ShirtPreview shirt={shirtToEdit} />
+      <ShirtPreview shirt={shirt} />
     </div>
   );
 };
