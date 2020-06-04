@@ -32,6 +32,21 @@ const designReducer = (state, action) => {
       newState.graphicColor = action.data;
       break;
 
+    case TEXT_EVENT:
+      newState = { ...state };
+      newState.text = action.data;
+      break;
+
+    case TEXT_COLOR_EVENT:
+      newState = { ...state };
+      newState.textColor = action.data;
+      break;
+
+    case TEXT_FONT_EVENT:
+      newState = { ...state };
+      newState.font = action.data;
+      break;
+
     default:
       break;
   }

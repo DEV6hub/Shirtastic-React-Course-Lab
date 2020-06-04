@@ -1,11 +1,14 @@
 import React from 'react';
+
 import ColorPicker from '../ColorPicker/ColorPicker';
-import { COLOR_BLACK } from '../../../constants/colorOptions';
-import { FONT_MONTSERRAT, SHIRT_FONTS } from '../../../constants/fontOptions';
-import './shirt-text.css';
-import { TEXT_COLOR_EVENT, TEXT_EVENT, TEXT_FONT_EVENT } from '../../../constants/optionEventTypes';
 import FormInput from '../../Forms/FormInput/FormInput';
 import FormSelect from '../../Forms/FormSelect/FormSelect';
+
+import { COLOR_BLACK } from '../../../constants/colorOptions';
+import { FONT_MONTSERRAT, SHIRT_FONTS } from '../../../constants/fontOptions';
+import { TEXT_COLOR_EVENT, TEXT_EVENT, TEXT_FONT_EVENT } from '../../../constants/optionEventTypes';
+
+import './shirt-text.css';
 
 const fontOptions = SHIRT_FONTS.map((font) => ({ text: font.name, value: font.font }));
 

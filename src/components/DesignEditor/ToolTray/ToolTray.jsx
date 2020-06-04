@@ -11,7 +11,7 @@ import {
 } from '../../../constants/optionEventTypes';
 import GraphicPicker from '../GraphicPicker/GraphicPicker';
 import ShirtText from '../ShirtText/ShirtText';
-import { colors } from '../../../constants/colors';
+// import { colors } from '../../../constants/colors';
 
 const tabOptions = [
   {
@@ -95,13 +95,12 @@ const ShirtOptions = ({ shirt, updateShirt }) => {
           />
         )}
         {tab === tabOptions[3].id && (
-          <div>text</div>
-          // <ShirtText
-          //   selectedTextColor={textColor}
-          //   selectedShirtFont={font}
-          //   shirtText={text}
-          //   onOptionSelected={(data) => onTextSelected(data)}
-          // />
+          <ShirtText
+            selectedTextColor={shirt.textColor}
+            selectedShirtFont={shirt.font}
+            shirtText={shirt.text}
+            onOptionSelected={(textData) => updateShirt(textData)}
+          />
         )}
       </div>
     </div>
