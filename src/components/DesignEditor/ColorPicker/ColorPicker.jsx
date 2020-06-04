@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CheckmarkIcon from '../../CheckmarkIcon/CheckmarkIcon';
 import { COLOR_OPTIONS, COLOR_WHITE } from '../../../constants/colorOptions';
-import { SHIRT_COLOUR_EVENT } from '../../../constants/optionEventTypes';
 import './color-picker.css';
 
 const ColorPicker = ({ title, selectedColor, onColorSelected }) => (
@@ -15,9 +14,7 @@ const ColorPicker = ({ title, selectedColor, onColorSelected }) => (
             key={color.name}
             color={color}
             isSelected={selectedColor.color.toUpperCase() === color.color.toUpperCase()}
-            onClick={(colorOption) =>
-              onColorSelected({ type: SHIRT_COLOUR_EVENT, data: colorOption })
-            }
+            onClick={(colorOption) => onColorSelected(colorOption)}
           />
         );
       })}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { MEN, WOMEN } from '../../../constants/shirtStyles';
 import './style-selector.css';
 import { SHIRT_WHITE } from '../../../constants/shirtColorOptions';
-import * as OptionEvents from '../../../constants/optionEventTypes';
+// import * as OptionEvents from '../../../constants/optionEventTypes';
 import CheckmarkIcon from '../../CheckmarkIcon/CheckmarkIcon';
 
 const shirtStyles = [MEN, WOMEN];
@@ -20,9 +20,7 @@ const StyleSelector = ({ onStyleSelected, selectedStyle, selectedShirtColor }) =
               styleOption={style}
               selectedColor={selectedShirtColor}
               isSelected={selectedStyle === style.id}
-              onOptionClicked={(styleId) =>
-                onStyleSelected({ type: OptionEvents.STYLE_EVENT, data: styleId })
-              }
+              onOptionClicked={(styleId) => onStyleSelected(styleId)}
             />
           ))}
         </div>
