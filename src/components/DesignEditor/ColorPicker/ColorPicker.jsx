@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import CheckmarkIcon from '../../CheckmarkIcon/CheckmarkIcon';
+
 import { COLOR_OPTIONS, COLOR_WHITE } from '../../../constants/colorOptions';
+
 import './color-picker.css';
 
 const ColorPicker = ({ title, selectedColor, onColorSelected }) => (

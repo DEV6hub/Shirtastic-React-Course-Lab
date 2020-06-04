@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import ColorPicker from '../ColorPicker/ColorPicker';
 import ShirtGraphics from '../../../constants/shirtDesigns';
 import CheckmarkIcon from '../../CheckmarkIcon/CheckmarkIcon';
+
 import { COLOR_BLACK } from '../../../constants/colorOptions';
+
 import './graphic-picker.css';
 
 const graphicKeys = Object.keys(ShirtGraphics);

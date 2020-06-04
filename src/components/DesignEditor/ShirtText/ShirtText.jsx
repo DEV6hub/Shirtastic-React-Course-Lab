@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ColorPicker from '../ColorPicker/ColorPicker';
 import FormInput from '../../Forms/FormInput/FormInput';
@@ -12,12 +13,12 @@ import './shirt-text.css';
 
 const fontOptions = SHIRT_FONTS.map((font) => ({ text: font.name, value: font.font }));
 
-const ShirtText = ({ selectedTextColor, selectedShirtFont, shirtText, onOptionSelected }) => (
+const ShirtText = ({ selectedTextColor, selectedShirtFont, shirtText, onChange }) => (
   <div className="shirt-text-options">
     <FormInput
       id="shirt-text"
       label="Enter Text"
-      onChangeFn={(e) => onOptionSelected({ type: TEXT_EVENT, data: e.target.value })}
+      onChangeFn={(e) => onChange({ type: TEXT_EVENT, data: e.target.value })}
       inputValue={shirtText}
     />
     <hr />
@@ -27,23 +28,33 @@ const ShirtText = ({ selectedTextColor, selectedShirtFont, shirtText, onOptionSe
       options={fontOptions}
       value={selectedShirtFont}
       onChange={(e) => {
-        onOptionSelected({ type: TEXT_FONT_EVENT, data: e.target.value });
+        onChange({ type: TEXT_FONT_EVENT, data: e.target.value });
       }}
     />
     <hr />
     <ColorPicker
       title="Change text colour"
       selectedColor={selectedTextColor}
-      onColorSelected={(color) => onOptionSelected({ type: TEXT_COLOR_EVENT, data: color })}
+      onColorSelected={(color) => onChange({ type: TEXT_COLOR_EVENT, data: color })}
     />
   </div>
 );
 
+ShirtText.propTypes = {
+  selectedTextColor: PropTypes.shape({
+    color: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  selectedShirtFont: PropTypes.string,
+  shirtText: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
 ShirtText.defaultProps = {
   selectedTextColor: COLOR_BLACK,
-  onOptionSelected: (event) => console.log('Function need to be set to handle this event: ', event),
   shirtText: '',
   selectedShirtFont: FONT_MONTSERRAT.font,
+  onChange: ($event) => console.log('Function need to be set to handle this event: ', $event),
 };
 
 export default ShirtText;

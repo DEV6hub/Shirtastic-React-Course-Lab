@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MEN, WOMEN } from '../../../constants/shirtStyles';
-import './style-selector.css';
-import { SHIRT_WHITE } from '../../../constants/shirtColorOptions';
-// import * as OptionEvents from '../../../constants/optionEventTypes';
+
 import CheckmarkIcon from '../../CheckmarkIcon/CheckmarkIcon';
+
+import { MEN, WOMEN } from '../../../constants/shirtStyles';
+import { SHIRT_WHITE } from '../../../constants/shirtColorOptions';
+
+import './style-selector.css';
 
 const shirtStyles = [MEN, WOMEN];
 
@@ -93,7 +95,7 @@ StyleOption.defaultProps = {
     color: '',
   }),
   isSelected: false,
-  onOptionClicked: (e) => console.log('not implemented', e),
+  onOptionClicked: ($event) => console.log('not implemented', $event),
 };
 
 export default StyleSelector;

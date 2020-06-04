@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+
 import Tabs from '../../Tabs/Tabs';
-import './tool-tray.css';
 import StyleSelector from '../StyleSelector/StyleSelector';
 import ColorPicker from '../ColorPicker/ColorPicker';
+import GraphicPicker from '../GraphicPicker/GraphicPicker';
+import ShirtText from '../ShirtText/ShirtText';
+
 import {
   STYLE_EVENT,
   SHIRT_COLOUR_EVENT,
   GRAPHICS_EVENT,
   GRAPHICS_COLOR_EVENT,
 } from '../../../constants/optionEventTypes';
-import GraphicPicker from '../GraphicPicker/GraphicPicker';
-import ShirtText from '../ShirtText/ShirtText';
-// import { colors } from '../../../constants/colors';
+
+import './tool-tray.css';
 
 const tabOptions = [
   {
@@ -32,30 +34,8 @@ const tabOptions = [
   },
 ];
 
-// const ShirtOptions = ({ shirtToEdit, onOptionSelected }) => {
 const ShirtOptions = ({ shirt, updateShirt }) => {
   const [tab, setTab] = useState(tabOptions[0].id);
-
-  // const onTextSelected = (textData) => {
-  //   console.log('text', textData);
-
-  //   switch (textData.type) {
-  //     case 'TEXT_EVENT':
-  //       setText(textData.data);
-  //       break;
-  //     case 'TEXT_FONT_EVENT':
-  //       setFont(textData.data);
-  //       break;
-  //     case 'TEXT_COLOR_EVENT':
-  //       setTextColor(textData.data);
-  //       break;
-  //     default:
-  //   }
-  // };
-
-  // const onOptionSelected = (option) => {
-  //   console.log('option', option);
-  // };
 
   return (
     <div className="shirt-options">
@@ -99,7 +79,7 @@ const ShirtOptions = ({ shirt, updateShirt }) => {
             selectedTextColor={shirt.textColor}
             selectedShirtFont={shirt.font}
             shirtText={shirt.text}
-            onOptionSelected={(textData) => updateShirt(textData)}
+            onChange={(textData) => updateShirt(textData)}
           />
         )}
       </div>
