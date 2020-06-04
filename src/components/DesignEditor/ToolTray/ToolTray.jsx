@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Tabs from '../../Tabs/Tabs';
 import StyleSelector from '../StyleSelector/StyleSelector';
@@ -34,7 +35,7 @@ const tabOptions = [
   },
 ];
 
-const ShirtOptions = ({ shirt, updateShirt }) => {
+const ToolTray = ({ shirt, updateShirt }) => {
   const [tab, setTab] = useState(tabOptions[0].id);
 
   return (
@@ -87,4 +88,64 @@ const ShirtOptions = ({ shirt, updateShirt }) => {
   );
 };
 
-export default ShirtOptions;
+ToolTray.propTypes = {
+  shirt: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    image: PropTypes.string,
+    gender: PropTypes.string,
+    quantity: PropTypes.number,
+    subtotal: PropTypes.number,
+    graphic: PropTypes.string,
+    font: PropTypes.string,
+    text: PropTypes.string,
+    textColor: PropTypes.shape({
+      name: PropTypes.string,
+      color: PropTypes.string,
+    }),
+    shirtStyle: PropTypes.string,
+    shirtColor: PropTypes.shape({
+      name: PropTypes.string,
+      color: PropTypes.string,
+    }),
+    graphicColor: PropTypes.shape({
+      name: PropTypes.string,
+      color: PropTypes.string,
+    }),
+  }),
+  updateShirt: PropTypes.func,
+};
+
+ToolTray.defaultProps = {
+  shirt: {
+    id: 2,
+    name: '4 Coders',
+    description: 'Mens Fine Jersey Short Sleeve',
+    price: 14.99,
+    image: 'MensShirt-red',
+    gender: 'M',
+    quantity: 0,
+    subtotal: 0,
+    graphic: 'graphic1.svg',
+    font: "'Montserrat', sans-serif",
+    text: 'KEEP CALM AND CODE ON',
+    textColor: {
+      name: 'green',
+      color: '#44A265',
+    },
+    shirtStyle: 'MensShirt',
+    shirtColor: {
+      name: 'red',
+      color: '#A7386A',
+    },
+    graphicColor: {
+      name: 'white',
+      color: '#FFFFFF',
+    },
+  },
+  updateShirt: ($event) => console.log('Not implemented', $event),
+};
+
+export default ToolTray;

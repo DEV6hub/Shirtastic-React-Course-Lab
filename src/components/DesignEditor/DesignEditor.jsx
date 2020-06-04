@@ -23,7 +23,7 @@ const shirtToEdit = {
   shirtStyle: 'MensShirt',
   shirtColor: {
     name: 'red',
-    color: '#A7386B',
+    color: '#A7386A',
   },
   graphicColor: {
     name: 'white',
