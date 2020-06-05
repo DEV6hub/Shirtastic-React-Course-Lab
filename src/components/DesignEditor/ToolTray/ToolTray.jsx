@@ -7,6 +7,8 @@ import ColorPicker from '../ColorPicker/ColorPicker';
 import GraphicPicker from '../GraphicPicker/GraphicPicker';
 import ShirtText from '../ShirtText/ShirtText';
 
+import shirtType from '../../../types/shirt';
+
 import {
   STYLE_EVENT,
   SHIRT_COLOUR_EVENT,
@@ -89,32 +91,7 @@ const ToolTray = ({ shirt, updateShirt }) => {
 };
 
 ToolTray.propTypes = {
-  shirt: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    description: PropTypes.string,
-    price: PropTypes.number,
-    image: PropTypes.string,
-    gender: PropTypes.string,
-    quantity: PropTypes.number,
-    subtotal: PropTypes.number,
-    graphic: PropTypes.string,
-    font: PropTypes.string,
-    text: PropTypes.string,
-    textColor: PropTypes.shape({
-      name: PropTypes.string,
-      color: PropTypes.string,
-    }),
-    shirtStyle: PropTypes.string,
-    shirtColor: PropTypes.shape({
-      name: PropTypes.string,
-      color: PropTypes.string,
-    }),
-    graphicColor: PropTypes.shape({
-      name: PropTypes.string,
-      color: PropTypes.string,
-    }),
-  }),
+  shirt: shirtType,
   updateShirt: PropTypes.func,
 };
 
