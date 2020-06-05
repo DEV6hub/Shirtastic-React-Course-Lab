@@ -17,7 +17,7 @@ const App = () => {
         <Route exact path="/catalog">
           <Catalog />
         </Route>
-        <Route exact path="/design/:shirtId">
+        <Route exact path="/design/:shirtId?">
           <Design />
         </Route>
         <Route path="/graphic/:graphicLogo">
