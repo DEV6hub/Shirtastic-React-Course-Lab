@@ -1,33 +1,30 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useReducer } from 'react';
+import { designReducer } from '../state/reducers';
+import defaultShirt from '../constants/defaultShirt';
+import { UPDATE_SHIRT } from '../constants/optionEventTypes';
 
-const useEdit = () => {
-  const [isEdit, setEdit] = useState(false);
-  const [designName, setDesignName] = useState('');
+const useEditor = () => {
+  const [shirt, updateShirt] = useReducer(designReducer, defaultShirt);
 
-  const [shirtEdit, setShirtEdit] = useState(null);
+  const selectShirt = useCallback((shirtList, shirtId) => {
+    if (shirtList.length > 0) {
+      const theList = [...shirtList];
 
-  const update = useCallback((newShirt) => {
-    const updatedShirt = { ...newShirt };
-    setShirtEdit(updatedShirt);
-  }, []);
+      const shirtIndex = theList.findIndex((shirtItem) => {
+        return shirtItem.id === parseInt(shirtId, 10);
+      });
 
-  const setName = useCallback((newName) => {
-    console.log('new name', newName);
-    setDesignName(newName);
-  }, []);
-
-  const setEditMode = useCallback(() => {
-    setEdit(true);
+      if (shirtIndex !== -1) {
+        updateShirt({ type: UPDATE_SHIRT, data: theList[shirtIndex] });
+      }
+    }
   }, []);
 
   return {
-    shirtEdit,
-    setShirtEdit,
-    isEdit,
-    setEditMode,
-    designName,
-    setName,
+    shirt,
+    selectShirt,
+    updateShirt,
   };
 };
 
-export default useEdit;
+export default useEditor;

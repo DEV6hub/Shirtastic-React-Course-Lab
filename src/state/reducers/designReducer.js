@@ -1,4 +1,5 @@
 import {
+  UPDATE_SHIRT,
   STYLE_EVENT,
   SHIRT_COLOUR_EVENT,
   GRAPHICS_EVENT,
@@ -6,12 +7,17 @@ import {
   TEXT_EVENT,
   TEXT_COLOR_EVENT,
   TEXT_FONT_EVENT,
+  DESIGN_NAME_EVENT,
 } from '../../constants/optionEventTypes';
 
 const designReducer = (state, action) => {
   let newState = null;
 
   switch (action.type) {
+    case UPDATE_SHIRT:
+      newState = action.data;
+      break;
+
     case STYLE_EVENT:
       newState = { ...state };
       newState.shirtStyle = action.data;
@@ -45,6 +51,11 @@ const designReducer = (state, action) => {
     case TEXT_FONT_EVENT:
       newState = { ...state };
       newState.font = action.data;
+      break;
+
+    case DESIGN_NAME_EVENT:
+      newState = { ...state };
+      newState.name = action.data.name;
       break;
 
     default:

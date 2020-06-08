@@ -1,23 +1,20 @@
-import React, { useReducer } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ToolTray from './ToolTray/ToolTray';
 import ShirtPreview from './ShirtPreview/ShirtPreview';
-import { designReducer } from '../../state/reducers';
 import shirtType from '../../types/shirt';
 import './design-editor.css';
 
-const DesignEditor = ({ shirtToEdit }) => {
-  const [shirt, updateShirt] = useReducer(designReducer, shirtToEdit);
-
-  return (
-    <div className="design-editor">
-      <ToolTray shirt={shirt} updateShirt={updateShirt} />
-      <ShirtPreview shirt={shirt} />
-    </div>
-  );
-};
+const DesignEditor = ({ shirtToEdit, updateShirt }) => (
+  <div className="design-editor">
+    <ToolTray shirt={shirtToEdit} updateShirt={updateShirt} />
+    <ShirtPreview shirt={shirtToEdit} />
+  </div>
+);
 
 DesignEditor.propTypes = {
   shirtToEdit: shirtType.isRequired,
+  updateShirt: PropTypes.func.isRequired,
 };
 
 export default DesignEditor;
