@@ -5,14 +5,17 @@ import { ShirtsProvider } from './shirtsContext';
 import { UserProvider } from './userContext';
 import { OverlayProvider } from './overlayContext';
 import { ShoppingCartProvider } from './shoppingCartContext';
+import { DesignProvider } from './designContext';
 
 const AppProvider = ({ children }) => {
   return (
     <UserProvider>
       <OverlayProvider>
-        <ShirtsProvider>
-          <ShoppingCartProvider>{children}</ShoppingCartProvider>
-        </ShirtsProvider>
+        <DesignProvider>
+          <ShirtsProvider>
+            <ShoppingCartProvider>{children}</ShoppingCartProvider>
+          </ShirtsProvider>
+        </DesignProvider>
       </OverlayProvider>
     </UserProvider>
   );

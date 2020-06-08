@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PageLayout from '../../components/PageLayout/PageLayout';
 import DesignEditor from '../../components/DesignEditor/DesignEditor';
+import { useDesignContext } from '../../state/contexts/designContext';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
+
 import defaultShirt from '../../constants/defaultShirt';
 
 const Design = () => {
+  const { setName, setEditMode, setShirtEdit } = useDesignContext();
+
   const { shirtList } = useShirtsContext();
   const { shirtId } = useParams();
 
@@ -26,6 +30,12 @@ const Design = () => {
   } else {
     shirtToEdit = defaultShirt;
   }
+
+  useEffect(() => {
+    setName(defaultShirt.name);
+    setEditMode();
+    setShirtEdit(shirtToEdit);
+  }, [setEditMode, setName, setShirtEdit, shirtToEdit]);
 
   return (
     <PageLayout>
