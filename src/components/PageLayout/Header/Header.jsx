@@ -1,24 +1,27 @@
-import React, { useReducer } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import CartControls from '../../CheckoutFlow/CartControls/CartControls';
 import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import FormInput from '../../Forms/FormInput/FormInput';
-import { designReducer } from '../../../state/reducers';
 import { useDesignContext } from '../../../state/contexts/designContext';
 import { DESIGN_NAME_EVENT } from '../../../constants/optionEventTypes';
 import './header.css';
 import headerLogo from '../../../images/navlogo.png';
 
 const Header = () => {
-  // const { shirtEdit } = useDesignContext();
-  // const [shirt, updateShirt] = useReducer(designReducer, shirtEdit);
+  const location = useLocation();
+  const history = useHistory();
+
+  const { shirt, updateShirt } = useDesignContext();
 
   const updateName = ($event) => {
     $event.preventDefault();
+    updateShirt({ type: DESIGN_NAME_EVENT, data: $event.target.value });
+  };
 
-    // updateShirt({ type: DESIGN_NAME_EVENT, data: { name: $event.target.value } });
-    // console.log('shirt', shirt);
-    console.log('e', $event.target.value);
+  const saveDesign = ($event) => {
+    // TODO: AK: Implement save design.
+    console.log('save design', $event);
   };
 
   return (
@@ -26,9 +29,9 @@ const Header = () => {
       <div className="left">
         <PrimaryButton
           btnStyle="navigation"
-          onClick={() => {
-            // TODO: AK: Implement call back;
-            console.log('nav click');
+          onClick={($event) => {
+            $event.preventDefault();
+            history.push('/catalog');
           }}
         >
           <div className="line" />
@@ -41,16 +44,16 @@ const Header = () => {
         </Link>
       </div>
       <div className="right">
-        {/* {shirtEdit ? (
+        {location.pathname.indexOf('design') > -1 ? (
           <div className="shirt-edit-controls">
-            <FormInput id="design-name" inputValue={shirtEdit.name} onChangeFn={updateName} />
-            <PrimaryButton>Save</PrimaryButton>
+            <FormInput id="design-name" inputValue={shirt.name} onChangeFn={updateName} />
+            <PrimaryButton onClick={saveDesign}>Save</PrimaryButton>
           </div>
-        ) : ( */}
-        <Link to="/create-shirt">
-          <PrimaryButton>New Design</PrimaryButton>
-        </Link>
-        {/* )} */}
+        ) : (
+          <Link to="/design" className="button button-primary">
+            New Design
+          </Link>
+        )}
         <div className="vertical-line" />
         <CartControls />
       </div>

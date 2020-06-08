@@ -55,7 +55,7 @@ const designReducer = (state, action) => {
 
     case DESIGN_NAME_EVENT:
       newState = { ...state };
-      newState.name = action.data.name;
+      newState.name = action.data;
       break;
 
     default:

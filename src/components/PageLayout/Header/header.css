@@ -34,7 +34,7 @@ header img.logo {
   margin-left: 0.5rem;
 }
 
-header button.primary {
+header a.button.button-primary {
   margin-right: 1.25rem;
 }
 
