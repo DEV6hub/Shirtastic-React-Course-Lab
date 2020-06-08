@@ -37,3 +37,15 @@ header img.logo {
 header button.primary {
   margin-right: 1.25rem;
 }
+
+header .shirt-edit-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header .shirt-edit-controls .primary,
+header .shirt-edit-controls .form-group {
+  margin: 15px;
+}

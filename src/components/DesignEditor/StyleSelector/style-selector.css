@@ -1,0 +1,43 @@
+.shirt-styles .options-heading {
+    margin-bottom: 1rem;
+}
+
+.shirt-styles .style-options {
+    display: flex;
+}
+
+.shirt-styles button.shirt-style-option {
+    max-width: 9.75rem;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    color: var(--dark-grey);
+    font-weight: 900;
+    position: relative;
+}
+
+.shirt-styles button.shirt-style-option:first-child {
+    margin-right: 1rem;
+}
+
+.shirt-styles button.shirt-style-option .shirt-image {
+    box-shadow: inset 0 0 0 0.0625rem var(--light-grey);
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.shirt-styles button.shirt-style-option:hover .shirt-image {
+    box-shadow: inset 0 0 0 0.125rem var(--sky-blue);
+}
+
+.shirt-styles button.shirt-style-option .shirt-image img {
+    width: 100%;
+}
+
+.shirt-styles button.shirt-style-option .shirt-image .checkmark-icon {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+}

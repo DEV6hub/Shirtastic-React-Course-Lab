@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// import './App.css';
 import Home from '../pages/Home/Home';
 import Catalog from '../pages/Catalog/Catalog';
+import Design from '../pages/Design/Design';
 import GraphicDisplay from './GraphicDisplay/GraphicDisplay';
 import AppProvider from '../state/contexts/AppProvider';
-import Design from '../pages/Design/Design';
 
 const App = () => {
   return (
@@ -18,7 +17,7 @@ const App = () => {
         <Route exact path="/catalog">
           <Catalog />
         </Route>
-        <Route exact path="/design/:shirtId">
+        <Route exact path="/design/:shirtId?">
           <Design />
         </Route>
         <Route path="/graphic/:graphicLogo">
