@@ -44,7 +44,7 @@ const useShirts = () => {
   }, [loadShirts]);
 
   // Create a new shirt, add to internal state, post to API
-  const createShirt = useCallback(
+  const addShirt = useCallback(
     (shirt) => {
       // Add the next id number
       const shirtWithId = {
@@ -60,7 +60,7 @@ const useShirts = () => {
     [shirtsState.shirtList.length],
   );
 
-  const updateShirt = useCallback((shirt) => {
+  const saveShirt = useCallback((shirt) => {
     // Update database
     putShirt(shirt);
     // Update state
@@ -71,8 +71,8 @@ const useShirts = () => {
     isFetchingShirts: shirtsState.isFetchingShirts,
     shirtList: shirtsState.shirtList,
     loadShirts,
-    createShirt,
-    updateShirt,
+    addShirt,
+    saveShirt,
   };
 };
 

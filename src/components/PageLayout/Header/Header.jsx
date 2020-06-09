@@ -4,6 +4,7 @@ import CartControls from '../../CheckoutFlow/CartControls/CartControls';
 import PrimaryButton from '../../PrimaryButton/PrimaryButton';
 import FormInput from '../../Forms/FormInput/FormInput';
 import { useDesignContext } from '../../../state/contexts/designContext';
+import { useShirtsContext } from '../../../state/contexts/shirtsContext';
 import { DESIGN_NAME_EVENT } from '../../../constants/optionEventTypes';
 import './header.css';
 import headerLogo from '../../../images/navlogo.png';
@@ -13,6 +14,7 @@ const Header = () => {
   const history = useHistory();
 
   const { shirt, updateShirt } = useDesignContext();
+  const { addShirt, saveShirt } = useShirtsContext();
 
   const updateName = ($event) => {
     $event.preventDefault();
@@ -21,7 +23,11 @@ const Header = () => {
 
   const saveDesign = ($event) => {
     // TODO: AK: Implement save design.
-    console.log('save design', $event);
+    if (location.pathname.indexOf('design') > -1) {
+      console.log('save design', $event);
+    } else {
+      console.log('new design', $event);
+    }
   };
 
   return (

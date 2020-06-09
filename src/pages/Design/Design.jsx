@@ -5,6 +5,7 @@ import DesignEditor from '../../components/DesignEditor/DesignEditor';
 import { useDesignContext } from '../../state/contexts/designContext';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
+import defaultShirt from '../../constants/defaultShirt';
 import { SELECT_SHIRT } from '../../constants/optionEventTypes';
 
 const Design = () => {
@@ -27,8 +28,14 @@ const Design = () => {
       }
     };
 
+    const initWithNewShirt = () => {
+      updateShirt({ type: SELECT_SHIRT, data: defaultShirt });
+    };
+
     if (shirtId) {
       selectExistingShirt(shirtList, shirtId);
+    } else {
+      initWithNewShirt(defaultShirt, shirtId);
     }
   }, [shirtId, shirtList, updateShirt]);
 
