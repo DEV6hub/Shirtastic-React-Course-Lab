@@ -1,5 +1,5 @@
 import {
-  UPDATE_SHIRT,
+  SELECT_SHIRT,
   STYLE_EVENT,
   SHIRT_COLOUR_EVENT,
   GRAPHICS_EVENT,
@@ -14,7 +14,7 @@ const designReducer = (state, action) => {
   let newState = null;
 
   switch (action.type) {
-    case UPDATE_SHIRT:
+    case SELECT_SHIRT:
       newState = action.data;
       break;
 

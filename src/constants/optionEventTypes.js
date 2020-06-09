@@ -1,4 +1,4 @@
-export const UPDATE_SHIRT = 'UPDATE_SHIRT';
+export const SELECT_SHIRT = 'SELECT_SHIRT';
 export const STYLE_EVENT = 'STYLE_EVENT';
 export const SHIRT_COLOUR_EVENT = 'SHIRT_COLOUR_EVENT';
 export const GRAPHICS_EVENT = 'GRAPHICS_EVENT';
