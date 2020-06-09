@@ -46,6 +46,7 @@ const useShirts = () => {
   // Create a new shirt, add to internal state, post to API
   const addShirt = useCallback(
     (shirt) => {
+      console.log('shirt add');
       // Add the next id number
       const shirtWithId = {
         ...shirt,
@@ -56,6 +57,7 @@ const useShirts = () => {
       postShirt(shirtWithId);
       // Add to state
       shirtsDispatcher({ type: CREATE_SHIRT, shirt: shirtWithId });
+      console.log('shirt add');
     },
     [shirtsState.shirtList.length],
   );

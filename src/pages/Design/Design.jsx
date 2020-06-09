@@ -10,10 +10,15 @@ import { SELECT_SHIRT } from '../../constants/optionEventTypes';
 
 const Design = () => {
   const { shirtId } = useParams();
-  const { shirt, updateShirt } = useDesignContext();
+  const { shirt, updateShirt, setNewDesign } = useDesignContext();
   const { shirtList } = useShirtsContext();
 
   useEffect(() => {
+    const initWithNewShirt = () => {
+      updateShirt({ type: SELECT_SHIRT, data: defaultShirt });
+      setNewDesign(true);
+    };
+
     const selectExistingShirt = (existingShirtList, selectedShirtId) => {
       if (shirtList.length > 0) {
         const theShirtsList = [...existingShirtList];
@@ -24,20 +29,20 @@ const Design = () => {
 
         if (shirtIndex !== -1) {
           updateShirt({ type: SELECT_SHIRT, data: theShirtsList[shirtIndex] });
+          setNewDesign(false);
+        } else {
+          initWithNewShirt();
+          setNewDesign(true);
         }
       }
-    };
-
-    const initWithNewShirt = () => {
-      updateShirt({ type: SELECT_SHIRT, data: defaultShirt });
     };
 
     if (shirtId) {
       selectExistingShirt(shirtList, shirtId);
     } else {
-      initWithNewShirt(defaultShirt, shirtId);
+      initWithNewShirt();
     }
-  }, [shirtId, shirtList, updateShirt]);
+  }, [setNewDesign, shirtId, shirtList, updateShirt]);
 
   return (
     <PageLayout>

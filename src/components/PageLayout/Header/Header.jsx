@@ -13,7 +13,7 @@ const Header = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const { shirt, updateShirt } = useDesignContext();
+  const { shirt, updateShirt, isNewDesign } = useDesignContext();
   const { addShirt, saveShirt } = useShirtsContext();
 
   const updateName = ($event) => {
@@ -21,13 +21,13 @@ const Header = () => {
     updateShirt({ type: DESIGN_NAME_EVENT, data: $event.target.value });
   };
 
-  const saveDesign = ($event) => {
-    // TODO: AK: Implement save design.
-    if (location.pathname.indexOf('design') > -1) {
-      console.log('save design', $event);
+  const saveDesign = () => {
+    if (isNewDesign) {
+      addShirt(shirt);
     } else {
-      console.log('new design', $event);
+      saveShirt(shirt);
     }
+    history.push('/catalog');
   };
 
   return (
