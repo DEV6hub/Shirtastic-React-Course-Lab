@@ -45,12 +45,12 @@
   color: #444444;
 }
 
-.shirt-graphic-img,
+.svg-graphic,
 .shirt-text-final {
   position: absolute;
 }
 
-.shirt-graphic-img {
+.svg-graphic {
   left: 27%;
   top: 12%;
   width: 180px;

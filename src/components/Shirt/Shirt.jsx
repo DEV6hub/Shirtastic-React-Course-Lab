@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Shirt.css';
 import { Link } from 'react-router-dom';
 import shirtShape from '../Models/shirtShape';
+import ShirtSVGGraphic from '../ShirtSVGGraphic/ShirtSVGGraphic';
 // import PrimaryButton from '../PrimaryButton/PrimaryButton';
 import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
 // import { useOverlayContext } from '../../state/contexts/overlayContext';
@@ -19,23 +20,19 @@ const Shirt = ({ shirt }) => {
 
   return (
     <div className="shirt-wrapper">
-      {shirt.graphic ? (
+      {shirt.graphic && (
         <Link to={`/graphic/${shirt.graphic}`}>
-          <img
-            className="img-fluid shirt-graphic-img"
-            src={shirt.graphic ? require(`../../images/shirt-graphics/${shirt.graphic}`) : ''}
-            alt="shirt graphic"
-          />
+          <ShirtSVGGraphic graphic={shirt.graphic} color={shirt.graphicColor.color} />
         </Link>
-      ) : null}
-      {shirt.text ? (
+      )}
+      {shirt.text && (
         <div
           className="shirt-text-final"
           style={{ color: shirt.textColor.color, fontFamily: shirt.font }}
         >
           {shirt.text}
         </div>
-      ) : null}
+      )}
       <img
         className="img-fluid"
         src={require(`../../images/shirts/${stylePath}/${fileName}`)}
