@@ -1,5 +1,6 @@
 import React from 'react';
 import Shirt from '../Shirt/Shirt';
+import shirtType from '../../types/shirt';
 import './catalog-grid.css';
 
 const CatalogGrid = ({ list }) => {
@@ -10,6 +11,10 @@ const CatalogGrid = ({ list }) => {
       })}
     </div>
   );
+};
+
+CatalogGrid.propTypes = {
+  list: shirtType.isRequired,
 };
 
 export default CatalogGrid;
