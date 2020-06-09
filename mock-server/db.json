@@ -323,6 +323,31 @@
         "name": "white",
         "color": "#FFFFFF"
       }
+    },
+    {
+      "id": 13,
+      "image": "",
+      "name": "krasava",
+      "price": 18.99,
+      "quantity": 0,
+      "subtotal": 0,
+      "shirtStyle": "MensShirt",
+      "shirtColor": {
+        "name": "white",
+        "color": "#FFFFFF"
+      },
+      "text": "Some",
+      "textColor": {
+        "name": "white",
+        "color": "#FFFFFF"
+      },
+      "font": "'Montserrat', sans-serif",
+      "graphic": "graphic10.svg",
+      "graphicColor": {
+        "color": "#a7386a",
+        "name": "red"
+      },
+      "description": "Custom Shirt Design"
     }
   ]
 }

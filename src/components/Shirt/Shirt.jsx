@@ -7,12 +7,15 @@ import shirtShape from '../Models/shirtShape';
 import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
 // import { useOverlayContext } from '../../state/contexts/overlayContext';
 
+import { MEN } from '../../constants/shirtStyles';
+
 import baskedIcon from '../../images/icons/icon-basket.svg';
 
 const Shirt = ({ shirt }) => {
   const { addToCart } = useShoppingCartContext();
 
-  const genderFolder = shirt.gender === 'M' ? 'mens' : 'womens';
+  const stylePath = shirt.shirtStyle === MEN.id ? 'mens' : 'womens';
+  const fileName = `${shirt.shirtStyle}-${shirt.shirtColor.name}.jpg`;
 
   return (
     <div className="shirt-wrapper">
@@ -35,7 +38,7 @@ const Shirt = ({ shirt }) => {
       ) : null}
       <img
         className="img-fluid"
-        src={require(`../../images/shirts/${genderFolder}/${shirt.image}.jpg`)}
+        src={require(`../../images/shirts/${stylePath}/${fileName}`)}
         alt="Shirt"
       />
 
