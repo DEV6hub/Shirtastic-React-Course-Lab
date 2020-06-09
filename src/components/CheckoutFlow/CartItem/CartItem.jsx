@@ -15,6 +15,7 @@ const CartItem = ({ shirt, updateQuantity, remove }) => {
   const genderFolder = shirt.gender === 'M' ? 'mens' : 'womens';
 
   return (
+    // TODO: AK: Fix broken CartItem with proper SVG graphics.
     <div className="item-container">
       <div className="item-img">
         {shirt.graphic ? (
