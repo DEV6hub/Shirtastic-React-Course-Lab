@@ -35,12 +35,12 @@ const Catalog = () => {
     switch (id) {
       case 'mens':
         list = shirtList.filter((shirt) => {
-          return shirt.gender === 'M';
+          return shirt.shirtStyle === 'MensShirt';
         });
         break;
       case 'womens':
         list = shirtList.filter((shirt) => {
-          return shirt.gender === 'W';
+          return shirt.shirtStyle === 'WomensShirt';
         });
         break;
       default:
