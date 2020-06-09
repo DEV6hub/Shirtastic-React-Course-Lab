@@ -7,9 +7,6 @@ import {
 } from '../../constants/ActionTypes';
 
 const shirtsReducer = (prevState, action) => {
-  console.log('Shirts Reducer previous state:', prevState);
-  console.log('Shirts Reducer action:', action);
-
   let newState = null;
 
   switch (action.type) {

@@ -23,6 +23,5 @@ export const getShirts = async () => {
   const response = await fetch(shirtsApiUrl);
   if (response.status !== 200) throw new Error(`${response.status} ${response.statusText}`);
   const data = await response.json();
-  console.log('shirts', data);
   return data;
 };

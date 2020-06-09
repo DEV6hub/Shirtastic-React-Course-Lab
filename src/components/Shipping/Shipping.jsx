@@ -62,8 +62,6 @@ const Shipping = (props) => {
           data: { ...info, email, password },
         })
           .then((response) => {
-            console.log(response);
-            // userDispatch(createdUser(response.data));
             userDispatch({ type: actionTypes.CREATE_USER, reponse: response.data });
           })
           .catch((error) => {
