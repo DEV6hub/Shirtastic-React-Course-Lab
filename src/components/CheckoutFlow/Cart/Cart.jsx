@@ -49,11 +49,11 @@ const Cart = ({ onCartComplete }) => {
           <hr />
         </div>
       ))}
-      {shirtsInCart.length > 0 ? (
+      {shirtsInCart.length > 0 && (
         <div className="subtotal">
           Subtotal: <span>${calculateTotal()}</span>
         </div>
-      ) : null}
+      )}
 
       <PrimaryButton onClick={onCartComplete} isDisabled={shirtsInCart.length === 0}>
         GO TO SHIPPING -&gt;

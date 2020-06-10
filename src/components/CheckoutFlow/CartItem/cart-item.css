@@ -12,12 +12,13 @@
   width: 60%;
 }
 
-.cart-shirt-graphic-img,
+.svg-graphic,
 .cart-shirt-text-final {
   position: absolute;
 }
-.cart-shirt-graphic-img {
-  left: 36%;
+
+.item-container .svg-graphic {
+  left: 37%;
   top: 16%;
   width: 32px;
 }

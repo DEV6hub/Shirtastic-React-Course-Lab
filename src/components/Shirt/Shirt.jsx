@@ -4,9 +4,7 @@ import './Shirt.css';
 import { Link } from 'react-router-dom';
 import shirtShape from '../Models/shirtShape';
 import ShirtSVGGraphic from '../ShirtSVGGraphic/ShirtSVGGraphic';
-// import PrimaryButton from '../PrimaryButton/PrimaryButton';
 import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext';
-// import { useOverlayContext } from '../../state/contexts/overlayContext';
 
 import { MEN } from '../../constants/shirtStyles';
 
