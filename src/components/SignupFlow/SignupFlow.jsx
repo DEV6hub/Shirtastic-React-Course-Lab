@@ -19,7 +19,7 @@ const SignUp = ({ signupTabs, activeTab, updateTab }) => {
 
   return (
     <div className="step1">
-      {activeTab === signupTabs[0].id ? <h2>Sign up</h2> : null}
+      {activeTab === signupTabs[0].id && <h2>Sign up</h2>}
       <Tabs
         tabs={signupTabs}
         activeClassName="active"
