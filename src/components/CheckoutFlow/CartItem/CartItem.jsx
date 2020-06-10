@@ -47,7 +47,7 @@ const CartItem = ({ shirt, updateQuantity, remove }) => {
         />
       </div>
       <div className="item-data">
-        <button type="submit" className="btn-close" onClick={remove}>
+        <button type="submit" className="btn-close" onClick={() => remove(shirt)}>
           X
         </button>
         <h3>

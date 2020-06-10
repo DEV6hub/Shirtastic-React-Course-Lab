@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import CartControls from '../CartControls/CartControls';
-import PrimaryButton from '../../PrimaryButton/PrimaryButton';
-import './Cart.css';
-import { useShoppingCartContext } from '../../../state/contexts/shoppingCartContext';
 import CartItem from '../CartItem/CartItem';
+import PrimaryButton from '../../PrimaryButton/PrimaryButton';
+import { useShoppingCartContext } from '../../../state/contexts/shoppingCartContext';
+import './Cart.css';
 
 const Cart = ({ onCartComplete }) => {
   const { shirtsInCart, removeFromCart, setShirtsInCart } = useShoppingCartContext();

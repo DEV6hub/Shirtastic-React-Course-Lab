@@ -29,7 +29,7 @@ const useShoppingCart = () => {
       const updatedShirtsList = [...shirtsInCart];
 
       const index = updatedShirtsList.findIndex((item) => {
-        return shirtToRemove.image === item.image;
+        return shirtToRemove.id === item.id;
       });
 
       updatedShirtsList.splice(index, 1);
