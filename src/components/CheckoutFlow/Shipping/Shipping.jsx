@@ -13,7 +13,9 @@ const Shipping = ({ onShippingComplete }) => {
   const [country, setCountry] = useState('');
   const countryOptions = COUNTRIES.map((item) => ({ text: item.name, value: item.id }));
   countryOptions.unshift({ text: 'Select a country', value: '' });
+
   let regionOptions = [];
+
   if (country) {
     regionOptions = REGIONS[country].map((item) => ({ text: item, value: item }));
     regionOptions.unshift({

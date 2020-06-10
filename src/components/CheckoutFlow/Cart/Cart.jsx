@@ -7,15 +7,7 @@ import { useShoppingCartContext } from '../../../state/contexts/shoppingCartCont
 import './Cart.css';
 
 const Cart = ({ onCartComplete }) => {
-  const { shirtsInCart, removeFromCart, setShirtsInCart } = useShoppingCartContext();
-
-  const calculateTotal = useCallback(() => {
-    let total = 0;
-    shirtsInCart.forEach((shirt) => {
-      total += shirt.subtotal;
-    });
-    return Math.round(total * 100) / 100;
-  }, [shirtsInCart]);
+  const { shirtsInCart, removeFromCart, setShirtsInCart, subTotal } = useShoppingCartContext();
 
   const updateQuantity = useCallback(
     (shirt, quantity) => {
@@ -51,7 +43,7 @@ const Cart = ({ onCartComplete }) => {
       ))}
       {shirtsInCart.length > 0 && (
         <div className="subtotal">
-          Subtotal: <span>${calculateTotal()}</span>
+          Subtotal: <span>${subTotal}</span>
         </div>
       )}
 

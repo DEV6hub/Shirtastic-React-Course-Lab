@@ -1,7 +1,33 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const useShoppingCart = () => {
   const [shirtsInCart, setShirtsInCart] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+  const [shipping, setShipping] = useState(0);
+  const [afterTax, setAfterTax] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    let newSubTotal = 0;
+
+    shirtsInCart.forEach((shirt) => {
+      newSubTotal += shirt.subtotal;
+    });
+
+    setSubTotal(Math.round(newSubTotal * 100) / 100);
+  }, [shirtsInCart]);
+
+  useEffect(() => {
+    setAfterTax(Math.round(subTotal * 0.13 * 100) / 100);
+  }, [subTotal]);
+
+  useEffect(() => {
+    setShipping(Math.round(subTotal * 0.05 * 100) / 100);
+  }, [subTotal]);
+
+  useEffect(() => {
+    setTotal(Math.round((subTotal + shipping + afterTax) * 100) / 100);
+  }, [subTotal, shipping, afterTax]);
 
   const addToCart = useCallback(
     (shirtToAdd) => {
@@ -48,6 +74,10 @@ const useShoppingCart = () => {
     removeFromCart,
     emptyCart,
     setShirtsInCart,
+    subTotal,
+    afterTax,
+    shipping,
+    total,
   };
 };
 
