@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import './Home.css';
 
 import Login from '../../components/Login/Login';
-import SignUp from '../../components/Forms/Signup/Signup';
+import SignUp from '../../components/SignupFlow/SignupFlow';
 import signupTabs from '../../constants/SignUpTabs';
 import logoVertical from '../../images/Shirtastic-vertical.svg';
 

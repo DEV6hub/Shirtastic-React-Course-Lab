@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './step2.css';
-import FormInput from '../../FormInput/FormInput';
-import PrimaryButton from '../../../PrimaryButton/PrimaryButton';
-import { COUNTRIES, REGIONS } from '../../../../constants/countriesAndRegions';
-import FormSelect from '../../FormSelect/FormSelect';
+import FormInput from '../../Forms/FormInput/FormInput';
+import PrimaryButton from '../../PrimaryButton/PrimaryButton';
+import { COUNTRIES, REGIONS } from '../../../constants/countriesAndRegions';
+import FormSelect from '../../Forms/FormSelect/FormSelect';
 
 const Step2 = ({ onComplete }) => {
   const [country, setCountry] = useState('');
