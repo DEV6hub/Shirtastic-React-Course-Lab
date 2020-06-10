@@ -10,10 +10,13 @@ import './cart-item.css';
 const CartItem = ({ shirt, updateQuantity, remove }) => {
   const onQuantityUpdate = useCallback(
     (event) => {
-      const quantity = parseInt(event.target.value, 10);
-      shirt.quantity = isNaN(quantity) ? 0 : quantity;
+      const newQuantity = parseInt(event.target.value, 10);
 
-      updateQuantity(shirt);
+      if (!Number.isNaN(newQuantity)) {
+        updateQuantity(shirt, newQuantity);
+      } else {
+        updateQuantity(shirt, 0);
+      }
     },
     [shirt, updateQuantity],
   );

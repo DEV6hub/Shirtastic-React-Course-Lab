@@ -18,15 +18,15 @@ const Cart = ({ onCartComplete }) => {
   }, [shirtsInCart]);
 
   const updateQuantity = useCallback(
-    (shirt) => {
+    (shirt, quantity) => {
       const cartItems = [...shirtsInCart];
 
       const index = cartItems.findIndex((item) => {
-        return shirt.image === item.image;
+        return shirt.id === item.id;
       });
 
       if (index !== -1) {
-        cartItems[index].quantity = shirt.quantity;
+        cartItems[index].quantity = quantity;
         cartItems[index].subtotal = cartItems[index].quantity * cartItems[index].price;
       }
 
