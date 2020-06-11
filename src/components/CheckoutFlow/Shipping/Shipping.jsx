@@ -10,6 +10,8 @@ import { COUNTRIES, REGIONS } from '../../../constants/countriesAndRegions';
 import './shipping.css';
 
 const Shipping = ({ onShippingComplete }) => {
+  const [userData, updateUser] = useUserContext();
+
   const [country, setCountry] = useState('');
   const countryOptions = COUNTRIES.map((item) => ({ text: item.name, value: item.id }));
   countryOptions.unshift({ text: 'Select a country', value: '' });
@@ -26,20 +28,6 @@ const Shipping = ({ onShippingComplete }) => {
 
   const [userInfo, setUserInfo] = useUserContext();
 
-  // componentWillReceiveProps(nextProps) {
-  //   setState({
-  //     name: nextProps.user.name,
-  //     email: nextProps.user.email,
-  //     address1: nextProps.user.address1,
-  //     address2: nextProps.user.address2,
-  //     phone: nextProps.user.phone,
-  //     city: nextProps.user.city,
-  //     country: nextProps.user.country,
-  //     province: nextProps.user.province,
-  //     zip: nextProps.user.zip,
-  //   });
-  // }
-
   const handleInputChange = (event) => {
     const { target } = event;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -51,52 +39,60 @@ const Shipping = ({ onShippingComplete }) => {
     });
   };
 
-  // const updateShippingInfo = (event) => {
-  //   const field = event.currentTarget;
-  //   const val = field.value;
-  //   setState({
-  //     [field.id]: val,
-  //   });
-
-  //   if (field.id === 'country') {
-  //     setState({ region: '' });
-  //   }
-  // };
-
-  const updateUser = () => {
-    createUser(userInfo);
-  };
-
-  // console.log(props.getUser());
-  // const regionsForSelectedCountry = regions[userInfo.country];
-
   return (
     <div className="checkout-step sidenav-shipping-container">
       <div className="sidenav-shipping-title">Shipping Info</div>
       <hr />
       <form onSubmit={updateUser}>
-        <FormInput id="shipping-name" label="Name" placeholder="Johnny Applseed" />
-        <FormInput id="shipping-email" label="Email" placeholder="Your Email Address" />
-        <FormInput id="step2-phone-number" label="Phone Number" placeholder="555-123-1234" />
-        <FormInput id="step2-city" label="City" placeholder="Toronto" />
-        <FormInput id="step2-address1" label="Address 1" placeholder="123 Anywhere Ave" />
-        <FormInput id="step2-address2" label="Address 2" placeholder="Suite 101" />
+        <FormInput
+          id="shipping-name"
+          label="Name"
+          placeholder="Johnny Applseed"
+          value={userData.fullname}
+        />
+        <FormInput
+          id="shipping-email"
+          label="Email"
+          placeholder="Your Email Address"
+          value={userData.email}
+        />
+        <FormInput
+          id="step2-phone-number"
+          label="Phone Number"
+          placeholder="555-123-1234"
+          value={userData.phone}
+        />
+        <FormInput id="step2-city" label="City" placeholder="Toronto" value={userData.city} />
+        <FormInput
+          id="step2-address1"
+          label="Address 1"
+          placeholder="123 Anywhere Ave"
+          value={userData.address1}
+        />
+        <FormInput
+          id="step2-address2"
+          label="Address 2"
+          placeholder="Suite 101"
+          value={userData.address2}
+        />
         <FormSelect
           id="step2-country"
           options={countryOptions}
           label="Country"
           onChange={(e) => setCountry(e.target.value)}
-          value={country}
+          value={userData.country}
         />
         <FormSelect
           id="step2-province"
           label={country === COUNTRIES[0].id ? 'Province' : 'State'}
           options={regionOptions}
+          value={userData.province}
         />
         <FormInput
           id="step2-postal-code"
           label={country === COUNTRIES[0].id ? 'Postal Code' : 'Zip Code'}
           placeholder={country === COUNTRIES[0].id ? 'A0A 0A0 or A0A0A0' : '(12345 or 12345-1234)'}
+          value={userData.zip}
         />
         <div>
           <button type="button" className="primary" onClick={onShippingComplete}>
