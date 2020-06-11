@@ -1,11 +1,4 @@
-.step2-component {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
-}
-
 .step2-form .form-row {
-  /* border: 1px solid; */
   display: flex;
   justify-content: space-between;
   align-items: center;
