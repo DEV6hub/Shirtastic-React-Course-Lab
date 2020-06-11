@@ -1,21 +1,18 @@
-.step2-component .step2-row {
+.step2-component {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+.step2-form .form-row {
+  /* border: 1px solid; */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.step2-component .step2-row .form-group,
-.step2-component .step2-row .step2-row {
+.step2-form .form-column {
   width: 48.5%;
-}
-
-.step2-component .step2-row .form-group label {
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.step2-component .step2-row .step2-row .form-group {
-  width: 47%;
 }
 
 .step2-component .actions {

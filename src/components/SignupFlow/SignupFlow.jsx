@@ -10,12 +10,10 @@ const SignUp = ({ signupTabs, activeTab, updateTab }) => {
   const history = useHistory();
 
   const [userData, updateUser] = useUserContext();
-  console.log('userData', userData);
 
   const onComplete = (data) => {
-    // console.log(data);
-
     if (data.userInfo) {
+      const user = { ...data.userInfo };
       updateTab(signupTabs[1].id);
     } else {
       // history.push('/catalog');

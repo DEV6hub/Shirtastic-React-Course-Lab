@@ -9,7 +9,7 @@ import './step2.css';
 
 const Step2 = ({ onComplete }) => {
   const signupForm = useRef(null);
-  const [name, setName] = useState('');
+  const [fullname, setFullname] = useState('');
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
   const [phone, setPhone] = useState('');
@@ -30,7 +30,7 @@ const Step2 = ({ onComplete }) => {
   }
 
   const fieldToSetStateMap = {
-    name: setName,
+    fullname: setFullname,
     address1: setAddress1,
     address2: setAddress2,
     phone: setPhone,
@@ -41,7 +41,7 @@ const Step2 = ({ onComplete }) => {
   };
 
   const info = {
-    name,
+    fullname,
     address1,
     address2,
     phone,
@@ -57,7 +57,12 @@ const Step2 = ({ onComplete }) => {
   };
 
   async function handleInputChange({ target }) {
-    console.log(target);
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name } = target;
+    const setStateCallback = fieldToSetStateMap[name];
+    setStateCallback(value);
+    await signupForm.current.validateForm();
+    await signupForm.current.validateFields(target);
   }
 
   return (
@@ -67,76 +72,122 @@ const Step2 = ({ onComplete }) => {
         Welcome to the club, where can we ship your shirts to? You can always provide this
         information at checkout.
       </p>
-      {/* <form className="step2-address"> */}
-      <FormWithConstraints onSubmit={handleSignup} ref={signupForm} className="step2-address">
-        <FormInput
-          id="step2-name"
-          label="Name"
-          value={name}
-          required
-          placeholder="Johnny Applseed"
-          onChange={handleInputChange}
-        />
-        <div className="step2-row">
+      <FormWithConstraints onSubmit={handleSignup} ref={signupForm} className="step2-form">
+        <div className="form-row">
           <FormInput
-            id="address1"
-            name="address1"
-            label="Address 1"
-            value={address1}
+            id="fullname"
+            label="Name"
+            name="fullname"
+            value={fullname}
             required
-            placeholder="123 Anywhere Ave"
+            placeholder="Johnny Applseed"
             onChange={handleInputChange}
           />
-          <FormInput
-            id="address2"
-            label="Address 2"
-            placeholder="Suite 101"
-            value={address2}
-            onChange={handleInputChange}
-          />
+          <FieldFeedbacks for="fullname">
+            <FieldFeedback when="valueMissing" />
+          </FieldFeedbacks>
         </div>
-        <div className="step2-row">
-          <FormInput
-            id="step2-phone-number"
-            label="Phone Number"
-            placeholder="555-123-1234"
-            value={phone}
-            onChange={handleInputChange}
-          />
-          <FormInput
-            id="step2-city"
-            label="City"
-            placeholder="Toronto"
-            value={city}
-            required
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="step2-row">
-          <FormSelect
-            id="step2-country"
-            options={countryOptions}
-            label="Country"
-            onChange={(e) => setCountry(e.target.value)}
-            value={country}
-          />
-          <div className="step2-row">
-            <FormSelect
-              id="step2-province"
-              label={country === COUNTRIES[0].id ? 'Province' : 'State'}
-              options={regionOptions}
-              value={province}
-              onChange={(e) => setProvince(e.target.value)}
-            />
+        <div className="form-row">
+          <div className="form-column">
             <FormInput
-              id="step2-postal-code"
-              label={country === COUNTRIES[0].id ? 'Postal Code' : 'Zip Code'}
-              placeholder={
-                country === COUNTRIES[0].id ? 'A0A 0A0 or A0A0A0' : '(12345 or 12345-1234)'
-              }
-              value={zip}
+              id="address1"
+              name="address1"
+              label="Address 1"
+              value={address1}
+              required
+              placeholder="123 Anywhere Ave"
               onChange={handleInputChange}
             />
+            <FieldFeedbacks for="address1">
+              <FieldFeedback when="valueMissing" />
+            </FieldFeedbacks>
+          </div>
+
+          <div className="form-column">
+            <FormInput
+              id="address2"
+              name="address2"
+              label="Address 2"
+              placeholder="Suite 101"
+              value={address2}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div className="form-column">
+            <FormInput
+              id="phone"
+              name="phone"
+              label="Phone Number"
+              placeholder="555-123-1234"
+              value={phone}
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              onChange={handleInputChange}
+            />
+            <FieldFeedbacks for="phone">
+              <FieldFeedback when="valueMissing" />
+              <FieldFeedback when="patternMismatch">Provide Phone</FieldFeedback>
+            </FieldFeedbacks>
+          </div>
+          <div className="form-column">
+            <FormInput
+              id="city"
+              name="city"
+              label="City"
+              placeholder="Toronto"
+              value={city}
+              required
+              onChange={handleInputChange}
+            />
+            <FieldFeedbacks for="city">
+              <FieldFeedback when="valueMissing" />
+            </FieldFeedbacks>
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div className="form-column">
+            <FormSelect
+              id="country"
+              name="country"
+              options={countryOptions}
+              label="Country"
+              onChange={(e) => setCountry(e.target.value)}
+              value={country}
+            />
+          </div>
+
+          <div className="form-column">
+            <div className="form-row">
+              <div className="form-column">
+                <FormSelect
+                  id="province"
+                  name="province"
+                  label={country === COUNTRIES[0].id ? 'Province' : 'State'}
+                  options={regionOptions}
+                  value={province}
+                  onChange={(e) => setProvince(e.target.value)}
+                />
+              </div>
+
+              <div className="form-column">
+                <FormInput
+                  id="zip"
+                  name="zip"
+                  label={country === COUNTRIES[0].id ? 'Postal Code' : 'Zip Code'}
+                  placeholder={
+                    country === COUNTRIES[0].id ? 'A0A 0A0 or A0A0A0' : '(12345 or 12345-1234)'
+                  }
+                  value={zip}
+                  onChange={handleInputChange}
+                />
+                <FieldFeedbacks for="zip">
+                  <FieldFeedback when="valueMissing" />
+                </FieldFeedbacks>
+              </div>
+            </div>
           </div>
         </div>
         <div className="actions">
