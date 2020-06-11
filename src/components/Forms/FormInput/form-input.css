@@ -9,7 +9,8 @@
   font-size: 0.825rem;
 }
 
-.form-group input[type='text'] {
+.form-group input[type='text'],
+.form-group input[type='password'] {
   border: 0.0625rem solid #ccc;
   border-radius: 0.25rem;
   font-size: 1rem;

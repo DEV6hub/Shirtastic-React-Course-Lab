@@ -6,3 +6,26 @@
   align-items: flex-start;
   width: 100%;
 }
+
+span[data-feedback] {
+  font-size: 0.95em;
+  margin-top: -0.9rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+span[data-feedback].error {
+  color: red;
+}
+
+span[data-feedback].warning {
+  color: orange;
+}
+
+span[data-feedback].info {
+  color: blue;
+}
+
+span[data-feedback].when-valid {
+  color: green;
+}
