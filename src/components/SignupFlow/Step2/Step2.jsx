@@ -7,7 +7,7 @@ import { COUNTRIES, REGIONS } from '../../../constants/countriesAndRegions';
 import FormSelect from '../../Forms/FormSelect/FormSelect';
 import './step2.css';
 
-const Step2 = ({ onComplete }) => {
+const Step2 = ({ onSkipShipping, onComplete }) => {
   const signupForm = useRef(null);
   const [fullname, setFullname] = useState('');
   const [address1, setAddress1] = useState('');
@@ -17,6 +17,8 @@ const Step2 = ({ onComplete }) => {
   const [country, setCountry] = useState('');
   const [province, setProvince] = useState('');
   const [zip, setZip] = useState('');
+
+  const [isValidForm, setVaidForm] = useState(false);
 
   const countryOptions = COUNTRIES.map((item) => ({ text: item.name, value: item.id }));
   countryOptions.unshift({ text: 'Select a country', value: '' });
@@ -53,7 +55,7 @@ const Step2 = ({ onComplete }) => {
 
   const handleSignup = ($event) => {
     $event.preventDefault();
-    onComplete($event, 1);
+    onComplete({ shippingInfo: info });
   };
 
   async function handleInputChange({ target }) {
@@ -63,6 +65,12 @@ const Step2 = ({ onComplete }) => {
     setStateCallback(value);
     await signupForm.current.validateForm();
     await signupForm.current.validateFields(target);
+
+    if (signupForm.current.isValid()) {
+      setVaidForm(true);
+    } else {
+      setVaidForm(false);
+    }
   }
 
   return (
@@ -123,7 +131,7 @@ const Step2 = ({ onComplete }) => {
               label="Phone Number"
               placeholder="555-123-1234"
               value={phone}
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               onChange={handleInputChange}
             />
             <FieldFeedbacks for="phone">
@@ -191,8 +199,17 @@ const Step2 = ({ onComplete }) => {
           </div>
         </div>
         <div className="actions">
-          <PrimaryButton onClick={handleSignup}>Do This later</PrimaryButton>
-          <PrimaryButton onClick={handleSignup}>Save</PrimaryButton>
+          <PrimaryButton
+            onClick={($event) => {
+              $event.preventDefault();
+              onSkipShipping();
+            }}
+          >
+            Do This later
+          </PrimaryButton>
+          <PrimaryButton onClick={handleSignup} isDisabled={!isValidForm}>
+            Save
+          </PrimaryButton>
         </div>
       </FormWithConstraints>
     </div>
@@ -201,6 +218,11 @@ const Step2 = ({ onComplete }) => {
 
 Step2.propTypes = {
   onComplete: PropTypes.func.isRequired,
+  onSkipShipping: PropTypes.func,
+};
+
+Step2.defaultProps = {
+  onSkipShipping: ($event) => console.log('Not implemented: ', $event),
 };
 
 export default Step2;

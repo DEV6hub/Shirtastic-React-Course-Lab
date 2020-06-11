@@ -4,8 +4,7 @@ const userReducer = (state, action) => {
   switch (action.type) {
     case CREATE_USER:
       return {
-        ...state,
-        user: action.response,
+        ...action.response,
       };
     default:
       return state;

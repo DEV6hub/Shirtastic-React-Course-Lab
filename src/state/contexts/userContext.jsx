@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
     city: '',
     country: '',
     province: '',
+    password: '',
     zip: '',
   };
 

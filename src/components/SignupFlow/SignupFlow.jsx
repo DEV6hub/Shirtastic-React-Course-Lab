@@ -4,24 +4,48 @@ import PropTypes from 'prop-types';
 import Step1 from './Step1/Step1';
 import Step2 from './Step2/Step2';
 import Tabs from '../Tabs/Tabs';
+import postUser from '../../utils/userApi';
 import { useUserContext } from '../../state/contexts/userContext';
+import { CREATE_USER } from '../../constants/ActionTypes';
 
 const SignUp = ({ signupTabs, activeTab, updateTab }) => {
   const history = useHistory();
 
   const [userData, updateUser] = useUserContext();
 
-  const onComplete = (data) => {
-    if (data.userInfo) {
-      const user = { ...data.userInfo };
+  const saveUser = async (user) => {
+    try {
+      const response = await postUser(user);
+
+      updateUser({ type: CREATE_USER, response });
       updateTab(signupTabs[1].id);
-    } else {
-      // history.push('/catalog');
+    } catch (error) {
+      history.push('/');
+      console.log('error', error);
     }
+  };
+
+  const onComplete = async (data) => {
+    if (data.userInfo) {
+      const { email, password } = { ...data.userInfo };
+
+      await saveUser({ ...userData, email, password });
+    } else {
+      const { email, password } = { ...userData };
+      const newUser = { ...data.shippingInfo, email, password };
+
+      await saveUser(newUser);
+      history.push('/catalog');
+    }
+  };
+
+  const onSkipShipping = () => {
+    history.push('/catalog');
   };
 
   return (
     <div className="step1">
+      <pre>{JSON.stringify(userData)}</pre>
       {activeTab === signupTabs[0].id && <h2>Sign up</h2>}
       <Tabs
         tabs={signupTabs}
@@ -34,7 +58,7 @@ const SignUp = ({ signupTabs, activeTab, updateTab }) => {
       {activeTab === signupTabs[0].id ? (
         <Step1 onComplete={onComplete} />
       ) : (
-        <Step2 onComplete={onComplete} />
+        <Step2 onSkipShipping={onSkipShipping} onComplete={onComplete} />
       )}
     </div>
   );
