@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 import Step1 from './Step1/Step1';
 import Step2 from './Step2/Step2';
 import Tabs from '../Tabs/Tabs';
+import { useUserContext } from '../../state/contexts/userContext';
 
 const SignUp = ({ signupTabs, activeTab, updateTab }) => {
   const history = useHistory();
+
+  const [userData, updateUser] = useUserContext();
+  console.log('userData', userData);
 
   const onComplete = (data) => {
     // console.log(data);
