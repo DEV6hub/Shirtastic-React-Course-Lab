@@ -1,5 +1,5 @@
-import reducer from './shirts';
-import * as types from '../constants/ActionTypes';
+import reducer from './shirtsReducer';
+import * as types from '../../constants/ActionTypes';
 
 describe('shirts reducer', () => {
   it('should return the initial state', () => {
