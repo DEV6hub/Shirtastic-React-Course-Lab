@@ -25,17 +25,8 @@ const Shipping = ({ onShippingComplete }) => {
     });
   }
 
-  const [userInfo, setUserInfo] = useUserContext();
-
   const handleInputChange = (event) => {
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
-
-    setUserInfo({
-      ...userInfo,
-      [name]: value,
-    });
+    console.log(event);
   };
 
   return (
@@ -48,18 +39,21 @@ const Shipping = ({ onShippingComplete }) => {
           label="Name"
           placeholder="Johnny Applseed"
           value={userData.fullname}
+          onChange={handleInputChange}
         />
         <FormInput
           id="shipping-email"
           label="Email"
           placeholder="Your Email Address"
           value={userData.email}
+          onChange={handleInputChange}
         />
         <FormInput
           id="step2-phone-number"
           label="Phone Number"
           placeholder="555-123-1234"
           value={userData.phone}
+          onChange={handleInputChange}
         />
         <FormInput id="step2-city" label="City" placeholder="Toronto" value={userData.city} />
         <FormInput
