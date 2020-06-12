@@ -51,6 +51,7 @@ const Step1 = ({ onComplete }) => {
   return (
     <FormWithConstraints onSubmit={signupSubmit} ref={signupForm} className="sign-up">
       <FormInput
+        id="email"
         label="Email Address"
         name="email"
         value={email}
@@ -65,6 +66,7 @@ const Step1 = ({ onComplete }) => {
       </FieldFeedbacks>
 
       <FormInput
+        id="password"
         label="Password"
         name="password"
         type="password"
