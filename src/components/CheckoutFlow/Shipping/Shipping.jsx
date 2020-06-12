@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import FormInput from '../../Forms/FormInput/FormInput';
 import FormSelect from '../../Forms/FormSelect/FormSelect';
-import { createUser } from '../../../state/actions/actions';
 
 import { useUserContext } from '../../../state/contexts/userContext';
 import { COUNTRIES, REGIONS } from '../../../constants/countriesAndRegions';

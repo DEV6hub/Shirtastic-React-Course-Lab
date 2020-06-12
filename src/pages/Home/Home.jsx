@@ -1,32 +1,18 @@
-import React, { useState, useCallback } from 'react';
-import './Home.css';
-
+import React, { useState } from 'react';
 import Login from '../../components/Login/Login';
 import SignUp from '../../components/SignupFlow/SignupFlow';
 import signupTabs from '../../constants/SignUpTabs';
 import logoVertical from '../../images/Shirtastic-vertical.svg';
+import './Home.css';
 
 const Home = () => {
-  const [activeTab] = useState('1');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const info = { activeTab, email, password };
-
-  const signUpData = useCallback(
-    ({ newEmail, newPassword }) => {
-      setEmail(newEmail);
-      setPassword(newPassword);
-    },
-    [setEmail, setPassword],
-  );
-
   const [step, setStep] = useState(signupTabs[0].id);
 
   return (
     <div className="home">
       {step === signupTabs[0].id && (
         <div className="left-column">
-          <Login userSignUpData={info} />
+          <Login />
         </div>
       )}
       <div className="middle-column">

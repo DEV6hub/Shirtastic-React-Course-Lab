@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Step1 from './Step1/Step1';
 import Step2 from './Step2/Step2';
 import Tabs from '../Tabs/Tabs';
-import postUser from '../../utils/userApi';
+import { postUser } from '../../utils/userApi';
 import { useUserContext } from '../../state/contexts/userContext';
 import { CREATE_USER } from '../../constants/ActionTypes';
 
