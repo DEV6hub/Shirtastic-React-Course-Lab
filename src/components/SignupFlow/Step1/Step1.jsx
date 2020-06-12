@@ -8,17 +8,17 @@ import './step1.css';
 const Step1 = ({ onComplete }) => {
   const signupForm = useRef(null);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [signupEmail, setEmail] = useState('');
+  const [signupPassword, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const [isValidForm, setVaidForm] = useState(false);
 
-  const userInfo = { email, password, passwordConfirm };
+  const userInfo = { email: signupEmail, password: signupPassword, passwordConfirm };
 
   const fieldToSetStateMap = {
-    email: setEmail,
-    password: setPassword,
+    signupEmail: setEmail,
+    signupPassword: setPassword,
     passwordConfirm: setPasswordConfirm,
   };
 
@@ -35,6 +35,7 @@ const Step1 = ({ onComplete }) => {
   async function handleInputChange({ target }) {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
+    console.log('name', name, target);
     const setStateCallback = fieldToSetStateMap[name];
     setStateCallback(value);
 
@@ -51,14 +52,14 @@ const Step1 = ({ onComplete }) => {
   return (
     <FormWithConstraints onSubmit={signupSubmit} ref={signupForm} className="sign-up">
       <FormInput
-        id="email"
+        id="signupEmail"
         label="Email Address"
-        name="email"
-        value={email}
+        name="signupEmail"
+        value={signupEmail}
         placeholder="Your Email Address"
         onChange={handleInputChange}
       />
-      <FieldFeedbacks for="email">
+      <FieldFeedbacks for="signupEmail">
         <FieldFeedback when="valueMissing">You must provide email address.</FieldFeedback>
         <FieldFeedback when={(value) => !/\S+@\S+/.test(value)}>
           Invalid email address.
@@ -66,16 +67,16 @@ const Step1 = ({ onComplete }) => {
       </FieldFeedbacks>
 
       <FormInput
-        id="password"
+        id="signupPassword"
         label="Password"
-        name="password"
+        name="signupPassword"
         type="password"
         required
-        value={password}
+        value={signupPassword}
         onChange={handleInputChange}
         pattern=".{5,}"
       />
-      <FieldFeedbacks for="password">
+      <FieldFeedbacks for="signupPassword">
         <FieldFeedback when="valueMissing" />
         <FieldFeedback when="patternMismatch">Should be at least 5 characters long</FieldFeedback>
         <FieldFeedback when={(value) => !/\d/.test(value)} warning>
@@ -103,7 +104,9 @@ const Step1 = ({ onComplete }) => {
       />
 
       <FieldFeedbacks for="passwordConfirm">
-        <FieldFeedback when={(value) => value !== password}>Not the same password</FieldFeedback>
+        <FieldFeedback when={(value) => value !== signupPassword}>
+          Not the same password
+        </FieldFeedback>
       </FieldFeedbacks>
 
       <p>
