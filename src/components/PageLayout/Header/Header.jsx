@@ -52,7 +52,7 @@ const Header = () => {
       <div className="right">
         {location.pathname.indexOf('design') > -1 ? (
           <div className="shirt-edit-controls">
-            <FormInput id="design-name" inputValue={shirt.name} onChangeFn={updateName} />
+            <FormInput id="design-name" value={shirt.name} onChange={updateName} />
             <PrimaryButton onClick={saveDesign}>Save</PrimaryButton>
           </div>
         ) : (
