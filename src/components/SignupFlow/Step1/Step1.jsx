@@ -35,7 +35,7 @@ const Step1 = ({ onComplete }) => {
   async function handleInputChange({ target }) {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
-    console.log('name', name, target);
+
     const setStateCallback = fieldToSetStateMap[name];
     setStateCallback(value);
 

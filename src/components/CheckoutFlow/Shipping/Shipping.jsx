@@ -30,7 +30,6 @@ const Shipping = ({ onShippingComplete }) => {
     const { target } = event;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
-    console.log('ev', name, target);
     const newData = { ...userData };
     newData[name] = value;
 
