@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Catalog from '../pages/Catalog/Catalog';
 import Design from '../pages/Design/Design';
-import GraphicDisplay from './GraphicDisplay/GraphicDisplay';
+import Graphic from '../pages/Graphic/Graphic';
 import AppProvider from '../state/contexts/AppProvider';
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
           <Design />
         </Route>
         <Route path="/graphic/:graphicLogo">
-          <GraphicDisplay />
+          <Graphic />
         </Route>
       </Router>
     </AppProvider>

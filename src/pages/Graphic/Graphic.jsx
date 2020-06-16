@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const GraphicDisplay = () => {
+const Graphic = () => {
   const { graphicLogo } = useParams();
 
   return (
@@ -28,12 +28,11 @@ const GraphicDisplay = () => {
       <img
         style={styles.graphicContainer}
         className="img-fluid shirt-graphic-img"
-        // eslint-disable-next-line import/no-dynamic-require, global-require
-        src={require(`../../images/${graphicLogo}`)}
+        src={require(`../../images/shirt-graphics/${graphicLogo}`)}
         alt="shirt graphic"
       />
     </div>
   );
 };
 
-export default GraphicDisplay;
+export default Graphic;
