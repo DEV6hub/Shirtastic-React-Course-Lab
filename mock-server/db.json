@@ -1,15 +1,15 @@
 {
   "userInfo": {
-    "fullname": "Lalarukh Mahmood",
-    "address1": "11 Ester Drive",
+    "name": "",
+    "email": "alex@krasava.com",
+    "address1": "",
     "address2": "",
     "phone": "",
-    "city": "Scarborough",
-    "country": "canada",
-    "province": "Ontario",
-    "zip": "m9b 2e1",
-    "email": "lala@mahmood",
-    "password": "12345"
+    "city": "",
+    "country": "",
+    "province": "",
+    "password": "12345",
+    "zip": ""
   },
   "shirts": [
     {

@@ -18,8 +18,8 @@ const ShirtText = ({ selectedTextColor, selectedShirtFont, shirtText, onChange }
     <FormInput
       id="shirt-text"
       label="Enter Text"
-      onChangeFn={(e) => onChange({ type: TEXT_EVENT, data: e.target.value })}
-      inputValue={shirtText}
+      onChange={(e) => onChange({ type: TEXT_EVENT, data: e.target.value })}
+      value={shirtText}
     />
     <hr />
     <FormSelect

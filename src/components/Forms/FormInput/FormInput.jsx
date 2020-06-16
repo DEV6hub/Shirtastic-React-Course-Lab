@@ -34,6 +34,7 @@ const FormInput = ({
 FormInput.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string,
+  type: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   children: PropTypes.oneOfType([
@@ -41,16 +42,21 @@ FormInput.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
+  required: PropTypes.bool,
   value: PropTypes.string,
+  pattern: PropTypes.string,
   onChange: PropTypes.func,
 };
 
 FormInput.defaultProps = {
   label: '',
   name: '',
+  type: 'text',
   placeholder: '',
   children: '',
   value: '',
+  required: false,
+  pattern: '',
   onChange: ($event) => console.log('Not implemented', $event),
 };
 
