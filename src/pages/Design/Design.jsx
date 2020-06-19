@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import PageLayout from '../../components/PageLayout/PageLayout';
 import DesignEditor from '../../components/DesignEditor/DesignEditor';
-import { useDesignContext } from '../../state/contexts/designContext';
 import { useShirtsContext } from '../../state/contexts/shirtsContext';
 
 import initialShirt from '../../constants/initialShirt';
 
-import { SELECT_SHIRT } from '../../constants/optionEventTypes';
+import { selectShirt } from '../../state/redux/actions/actionCreators';
 
 const Design = () => {
   const { shirtId } = useParams();
-  const { shirt, updateShirt, setNewDesign } = useDesignContext();
   const { shirtList } = useShirtsContext();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const initWithNewShirt = () => {
-      updateShirt({ type: SELECT_SHIRT, data: initialShirt });
-      setNewDesign(true);
+      dispatch(selectShirt({ ...initialShirt, isNewDesign: true }));
     };
 
     const selectExistingShirt = (existingShirtList, selectedShirtId) => {
@@ -29,11 +28,9 @@ const Design = () => {
         });
 
         if (shirtIndex !== -1) {
-          updateShirt({ type: SELECT_SHIRT, data: theShirtsList[shirtIndex] });
-          setNewDesign(false);
+          dispatch(selectShirt({ ...theShirtsList[shirtIndex], isNewDesign: false }));
         } else {
           initWithNewShirt();
-          setNewDesign(true);
         }
       }
     };
@@ -43,11 +40,11 @@ const Design = () => {
     } else {
       initWithNewShirt();
     }
-  }, [setNewDesign, shirtId, shirtList, updateShirt]);
+  }, [dispatch, shirtId, shirtList]);
 
   return (
     <PageLayout>
-      <DesignEditor shirtToEdit={shirt} updateShirt={updateShirt} />
+      <DesignEditor />
     </PageLayout>
   );
 };

@@ -7,18 +7,24 @@ import FormSelect from '../../Forms/FormSelect/FormSelect';
 
 import { COLOR_BLACK } from '../../../constants/colorOptions';
 import { FONT_MONTSERRAT, SHIRT_FONTS } from '../../../constants/fontOptions';
-import { TEXT_COLOR_EVENT, TEXT_EVENT, TEXT_FONT_EVENT } from '../../../constants/optionEventTypes';
 
 import './shirt-text.css';
 
 const fontOptions = SHIRT_FONTS.map((font) => ({ text: font.name, value: font.font }));
 
-const ShirtText = ({ selectedTextColor, selectedShirtFont, shirtText, onChange }) => (
+const ShirtText = ({
+  selectedTextColor,
+  selectedShirtFont,
+  shirtText,
+  onTextChange,
+  onTextFontChange,
+  onTextColorChange,
+}) => (
   <div className="shirt-text-options">
     <FormInput
       id="shirt-text"
       label="Enter Text"
-      onChange={(e) => onChange({ type: TEXT_EVENT, data: e.target.value })}
+      onChange={(e) => onTextChange(e.target.value)}
       value={shirtText}
     />
     <hr />
@@ -28,14 +34,14 @@ const ShirtText = ({ selectedTextColor, selectedShirtFont, shirtText, onChange }
       options={fontOptions}
       value={selectedShirtFont}
       onChange={(e) => {
-        onChange({ type: TEXT_FONT_EVENT, data: e.target.value });
+        onTextFontChange(e.target.value);
       }}
     />
     <hr />
     <ColorPicker
       title="Change text colour"
       selectedColor={selectedTextColor}
-      onColorSelected={(color) => onChange({ type: TEXT_COLOR_EVENT, data: color })}
+      onColorSelected={(color) => onTextColorChange(color)}
     />
   </div>
 );
@@ -47,14 +53,20 @@ ShirtText.propTypes = {
   }),
   selectedShirtFont: PropTypes.string,
   shirtText: PropTypes.string,
-  onChange: PropTypes.func,
+  onTextChange: PropTypes.func,
+  onTextFontChange: PropTypes.func,
+  onTextColorChange: PropTypes.func,
 };
 
 ShirtText.defaultProps = {
   selectedTextColor: COLOR_BLACK,
   shirtText: '',
   selectedShirtFont: FONT_MONTSERRAT.font,
-  onChange: ($event) => console.log('Function need to be set to handle this event: ', $event),
+  onTextChange: ($event) => console.log('Function need to be set to handle this event: ', $event),
+  onTextFontChange: ($event) =>
+    console.log('Function need to be set to handle this event: ', $event),
+  onTextColorChange: ($event) =>
+    console.log('Function need to be set to handle this event: ', $event),
 };
 
 export default ShirtText;

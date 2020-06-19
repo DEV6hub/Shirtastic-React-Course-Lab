@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Tabs from '../../Tabs/Tabs';
 import StyleSelector from '../StyleSelector/StyleSelector';
@@ -7,14 +7,15 @@ import ColorPicker from '../ColorPicker/ColorPicker';
 import GraphicPicker from '../GraphicPicker/GraphicPicker';
 import ShirtText from '../ShirtText/ShirtText';
 
-import shirtType from '../../../types/shirt';
-
 import {
-  STYLE_EVENT,
-  SHIRT_COLOUR_EVENT,
-  GRAPHICS_EVENT,
-  GRAPHICS_COLOR_EVENT,
-} from '../../../constants/optionEventTypes';
+  styleEvent,
+  shirtColourEvent,
+  graphicsEvent,
+  graphicsColorEvent,
+  textEvent,
+  textFontEvent,
+  textColorEvent,
+} from '../../../state/redux/actions/actionCreators';
 
 import './tool-tray.css';
 
@@ -37,8 +38,12 @@ const tabOptions = [
   },
 ];
 
-const ToolTray = ({ shirt, updateShirt }) => {
+const ToolTray = () => {
   const [tab, setTab] = useState(tabOptions[0].id);
+  const shirt = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  if (!shirt) return null;
 
   return (
     <div className="shirt-options">
@@ -55,26 +60,22 @@ const ToolTray = ({ shirt, updateShirt }) => {
           <StyleSelector
             selectedStyle={shirt.shirtStyle}
             selectedShirtColor={shirt.shirtColor}
-            onStyleSelected={(style) => updateShirt({ type: STYLE_EVENT, data: style })}
+            onStyleSelected={(style) => dispatch(styleEvent(style))}
           />
         )}
         {tab === tabOptions[1].id && (
           <ColorPicker
             title="Choose a shirt color"
             selectedColor={shirt.shirtColor}
-            onColorSelected={(color) => updateShirt({ type: SHIRT_COLOUR_EVENT, data: color })}
+            onColorSelected={(color) => dispatch(shirtColourEvent(color))}
           />
         )}
         {tab === tabOptions[2].id && (
           <GraphicPicker
             selectedGraphic={shirt.graphic}
             selectedGraphicColor={shirt.graphicColor}
-            onGraphicSelected={(graphic) => {
-              updateShirt({ type: GRAPHICS_EVENT, data: graphic });
-            }}
-            onGraphicColorSelected={(color) =>
-              updateShirt({ type: GRAPHICS_COLOR_EVENT, data: color })
-            }
+            onGraphicSelected={(graphic) => dispatch(graphicsEvent(graphic))}
+            onGraphicColorSelected={(color) => dispatch(graphicsColorEvent(color))}
           />
         )}
         {tab === tabOptions[3].id && (
@@ -82,21 +83,14 @@ const ToolTray = ({ shirt, updateShirt }) => {
             selectedTextColor={shirt.textColor}
             selectedShirtFont={shirt.font}
             shirtText={shirt.text}
-            onChange={(textData) => updateShirt(textData)}
+            onTextChange={(text) => dispatch(textEvent(text))}
+            onTextFontChange={(font) => dispatch(textFontEvent(font))}
+            onTextColorChange={(color) => dispatch(textColorEvent(color))}
           />
         )}
       </div>
     </div>
   );
-};
-
-ToolTray.propTypes = {
-  shirt: shirtType.isRequired,
-  updateShirt: PropTypes.func,
-};
-
-ToolTray.defaultProps = {
-  updateShirt: ($event) => console.log('Not implemented', $event),
 };
 
 export default ToolTray;
