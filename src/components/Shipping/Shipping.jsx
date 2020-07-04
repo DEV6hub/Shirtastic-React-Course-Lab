@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useRef } from 'react';
-import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
 import './Shipping.css';
@@ -56,7 +55,7 @@ const Shipping = (props) => {
       event.preventDefault();
       shippingForm.current.validateFields(event.currentTarget.name);
       if (shippingForm.current.isValid()) {
-        axios({
+        fetch({
           method: 'post',
           url: 'http://localhost:9000/userInfo',
           data: { ...info, email, password },

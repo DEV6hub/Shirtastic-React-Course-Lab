@@ -8,7 +8,7 @@ import { useShoppingCartContext } from '../../state/contexts/shoppingCartContext
 
 import { MEN } from '../../constants/shirtStyles';
 
-import baskedIcon from '../../images/icons/icon-basket.svg';
+import basketIcon from '../../images/icons/icon-basket.svg';
 
 const Shirt = ({ shirt }) => {
   const { addToCart } = useShoppingCartContext();
@@ -51,7 +51,7 @@ const Shirt = ({ shirt }) => {
             addToCart(shirt);
           }}
         >
-          <img src={baskedIcon} alt="Add to basket" />
+          <img src={basketIcon} alt="Add to basket" />
         </button>
 
         <div className="control price">
