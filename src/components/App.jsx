@@ -6,6 +6,7 @@ import Catalog from '../pages/Catalog/Catalog';
 import Design from '../pages/Design/Design';
 import Graphic from '../pages/Graphic/Graphic';
 import AppProvider from '../state/contexts/AppProvider';
+import Shirt from '../pages/Shirt/Shirt';
 
 const App = () => {
   return (
@@ -22,6 +23,9 @@ const App = () => {
         </Route>
         <Route path="/graphic/:graphicLogo">
           <Graphic />
+        </Route>
+        <Route exact path="/shirt">
+          <Shirt />
         </Route>
       </Router>
     </AppProvider>
