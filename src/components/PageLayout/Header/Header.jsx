@@ -1,5 +1,6 @@
 import React from 'react';
 import headerLogo from '../../../images/navlogo.png';
+import './header.css';
 
 const Header = () => (
   <header>
