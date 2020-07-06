@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ShirtsProvider } from './shirtsContext';
+// import { ShirtsProvider } from './shirtsContext';
 import { UserProvider } from './userContext';
 import { OverlayProvider } from './overlayContext';
 import { ShoppingCartProvider } from './shoppingCartContext';
@@ -12,9 +12,7 @@ const AppProvider = ({ children }) => {
     <UserProvider>
       <OverlayProvider>
         <DesignProvider>
-          <ShirtsProvider>
-            <ShoppingCartProvider>{children}</ShoppingCartProvider>
-          </ShirtsProvider>
+          <ShoppingCartProvider>{children}</ShoppingCartProvider>
         </DesignProvider>
       </OverlayProvider>
     </UserProvider>
