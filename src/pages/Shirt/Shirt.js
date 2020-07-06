@@ -35,20 +35,29 @@ const shirts = [
     graphicColor: { color: '#44a264', name: 'green' },
   },
 ];
+const womensShirt = shirts[0];
 function Shirt() {
   return (
-    <div>
-      {shirts.map((shirt) => {
-        return shirt.shirtStyle === 'WomensShirt' ? (
-          <div key={shirt.id}>
-            <p>{shirt.name}</p>
-            <p>{shirt.description}</p>
-            <p>{shirt.price}</p>
-          </div>
-        ) : (
-          <></>
-        );
-      })}
+    <div className="container">
+      <div className="shirt-panel">
+        <h4>{womensShirt.name}</h4>
+        <img
+          className="shirt-img"
+          alt="womens-shirt"
+          src={require(`../../images/shirts/womens/${womensShirt.image}.jpg`)}
+        />
+        <p
+          style={{
+            position: 'absolute',
+            fontFamily: womensShirt.font,
+            color: womensShirt.textColor.color,
+          }}
+        >
+          {womensShirt.text}
+        </p>
+        <p>{womensShirt.description}</p>
+        <p>{womensShirt.price}</p>
+      </div>
     </div>
   );
 }
