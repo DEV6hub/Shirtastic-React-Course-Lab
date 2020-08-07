@@ -9,14 +9,13 @@ import './shirt-preview.css';
 const ShirtPreview = () => {
   const shirt = useSelector((state) => state);
 
-  if (shirt) {
     const stylePath = shirt.shirtStyle === MEN.id ? 'mens' : 'womens';
     const fileName = `${shirt.shirtStyle}-${shirt.shirtColor.name}.jpg`;
 
     const isGraphicSelected = !!shirt.graphic;
     const hasText = !!shirt.text;
 
-    return (
+    return shirt ? (
       <div className="shirt-preview">
         <div className="shirt-assets">
           <img
@@ -37,10 +36,7 @@ const ShirtPreview = () => {
           )}
         </div>
       </div>
-    );
-  }
-
-  return null;
+    ) : null;
 };
 
 export default ShirtPreview;
